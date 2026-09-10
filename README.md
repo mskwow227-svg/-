@@ -12,7 +12,7 @@
 
 ```
 index.html              # 마크업
-vercel.json             # Vercel 캐시·보안 헤더 (빌드 없음)
+vercel.json             # Vercel 보안·캐시 헤더 (빌드 없음)
 assets/
   css/styles.css        # 디자인 토큰(CSS 변수) + 컴포넌트 스타일
   js/config.js          # ★ 대회 데이터 전부 (여기만 고치면 됨)
@@ -73,7 +73,8 @@ assets/
 3. **Framework Preset**: `Other` · **Root Directory**: `./` · Build/Output 설정은 비워 둠 (정적)
 4. **Deploy**
 
-`vercel.json` 에 캐시·보안 헤더가 정의돼 있습니다. 빌드 단계는 없습니다.
+`vercel.json` 에 보안 헤더와 캐시 정책(`max-age=0, must-revalidate`)이 정의돼 있습니다.
+파일마다 ETag로 재검증하므로 push 후 내용이 **즉시** 반영됩니다(선착순 조기 마감 배지 전환 포함). 빌드 단계는 없습니다.
 
 > 커스텀 도메인을 붙이면 `index.html` 의 `canonical`, `og:url` (10·19번째 줄 부근)을 그 주소로 바꿔 주세요.
 
