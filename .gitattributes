@@ -1,0 +1,7 @@
+# 모든 텍스트 파일을 저장소에서 LF로 통일
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary

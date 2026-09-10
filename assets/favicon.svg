@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="산림레포츠 축제">
+  <rect width="64" height="64" rx="14" fill="#2e5a44"/>
+  <path d="M32 12 20 30h6L16 46h14v6h4v-6h14L38 30h6z" fill="#f2f8f4"/>
+  <circle cx="32" cy="33" r="5.5" fill="none" stroke="#e07a5f" stroke-width="3"/>
+  <path d="M32 27.5 34 33l-2 5.5-2-5.5z" fill="#e07a5f"/>
+</svg>
