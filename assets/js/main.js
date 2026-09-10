@@ -142,6 +142,11 @@
     if (!container || !OL.classes) return;
 
     container.innerHTML = OL.classes.map(function (c) {
+      // 대상 문구 끝의 '(2인 1팀)' 같은 괄호 부분은 다음 줄로
+      var m = String(c.target).match(/^(.*?)\s*(\([^)]*\))\s*$/);
+      var targetHtml = m
+        ? m[1] + '<span class="class-item__fmt">' + m[2] + "</span>"
+        : c.target;
       return (
         '<button type="button" class="class-item" data-action="class-detail" data-id="' + c.id + '">' +
           '<span class="class-item__top">' +
@@ -149,7 +154,7 @@
             '<span class="badge badge--method ' + typeBadgeClass(c.type) + '">' + c.type + "</span>" +
           "</span>" +
           "<h5>" + c.name + "</h5>" +
-          "<p>" + c.target + "</p>" +
+          "<p>" + targetHtml + "</p>" +
         "</button>"
       );
     }).join("");
