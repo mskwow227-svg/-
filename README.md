@@ -8,10 +8,11 @@
 
 ## 기술 구성
 
-빌드 도구·프레임워크 없이 **순수 HTML / CSS / JS**로만 만들어졌습니다. 저장소를 그대로 GitHub Pages에 올리면 배포됩니다.
+빌드 도구·프레임워크 없이 **순수 HTML / CSS / JS**로만 만들어졌습니다. 저장소를 그대로 정적 호스팅에 올리면 배포됩니다.
 
 ```
 index.html              # 마크업
+vercel.json             # Vercel 캐시·보안 헤더 (빌드 없음)
 assets/
   css/styles.css        # 디자인 토큰(CSS 변수) + 컴포넌트 스타일
   js/config.js          # ★ 대회 데이터 전부 (여기만 고치면 됨)
@@ -42,14 +43,24 @@ assets/
 빌드가 필요 없습니다. `index.html` 을 브라우저로 바로 열면 됩니다.
 (정적 서버를 쓰고 싶다면 VS Code "Live Server" 확장 등 아무거나 가능)
 
-## 배포 (GitHub Pages)
+## 배포 (Vercel)
 
-1. 이 저장소 → **Settings → Pages**
-2. **Source**: `Deploy from a branch`
-3. **Branch**: `main` / `/ (root)` → Save
-4. 잠시 후 `https://<사용자명>.github.io/<저장소명>/` 에 게시됩니다.
+프로젝트 이름: **`echo-ol`** · 게시 주소: `https://echo-ol.vercel.app/`
 
-`assets/` 경로는 모두 상대경로라 하위 경로 배포에서도 정상 동작합니다.
+최초 1회만 연결하면 이후 `main` 에 push할 때마다 자동 배포됩니다.
+
+1. [vercel.com/new](https://vercel.com/new) → **Import Git Repository** 에서 `mskwow227-svg/-` 선택
+2. **Project Name**: `echo-ol` (Vercel은 대문자를 허용하지 않아 소문자로)
+3. **Framework Preset**: `Other` · **Root Directory**: `./` · Build/Output 설정은 비워 둠 (정적)
+4. **Deploy**
+
+`vercel.json` 에 캐시·보안 헤더가 정의돼 있습니다. 빌드 단계는 없습니다.
+
+> 커스텀 도메인을 붙이면 `index.html` 의 `canonical`, `og:url` (10·19번째 줄 부근)을 그 주소로 바꿔 주세요.
+
+### GitHub Pages 로도 띄우려면
+
+`Settings → Pages → Deploy from a branch → main / (root)`. `assets/` 경로가 모두 상대경로라 하위 경로에서도 동작합니다.
 
 ## 앞으로 할 일 (콘텐츠·자산 필요)
 
