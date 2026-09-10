@@ -33,7 +33,7 @@ assets/
 | 클래스 7종 (이름·대상·방식·설명) | `config.js` → `OL.classes` |
 | 클래스 찾기 위저드 옵션·매칭 규칙 | `config.js` → `OL.finder` |
 | 시상 내역 (상 이름·팀 수) | `config.js` → `OL.awards` |
-| 체험 부스 | `config.js` → `OL.booths` |
+| 체험교육부스 | `config.js` → `OL.booths` |
 | FAQ 질문·답변 | `index.html` 의 `#faq-list` (검색이 DOM 텍스트 기반이라 마크업 유지) |
 | 색상·간격·폰트 | `assets/css/styles.css` 상단 `:root` |
 
