@@ -169,7 +169,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .brand__sub { font-size: .72rem; color: var(--forest-500); margin-top: 1px; }
 @media (max-width: 480px) { .brand__sub { display: none; } }
 
-.nav { display: flex; align-items: center; gap: 1.15rem; }
+.nav { display: flex; align-items: center; gap: 1.5rem; }
 .nav a { font-size: .875rem; font-weight: 500; color: var(--ink-soft); transition: color .15s ease; white-space: nowrap; }
 .nav a:hover { color: var(--forest-500); }
 
@@ -190,7 +190,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .nav-toggle[aria-expanded="true"] .nav-toggle__bar::before { transform: translateY(6px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] .nav-toggle__bar::after  { transform: translateY(-6px) rotate(-45deg); }
 
-@media (max-width: 1120px) {
+@media (max-width: 980px) {
   .nav {
     position: absolute; left: 0; right: 0; top: 100%;
     flex-direction: column; align-items: stretch; gap: 0;
@@ -408,24 +408,12 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 
 .stamp-tracker__lead { font-size: .8rem; color: var(--ink-soft); max-width: 34rem; margin: 0 auto .9rem; }
 
-/* ---------- 대회 실시간 기록 ---------- */
-.results-panel { max-width: 38rem; margin-inline: auto; }
-.results-card {
-  background: var(--white); border: 1px solid var(--line-strong);
-  border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);
-  padding: 2rem 1.5rem; text-align: center;
-}
-.results-card--live { border-color: var(--forest-300); }
-.results-card__icon { font-size: 2rem; }
-.results-card h3 { font-size: 1.05rem; font-weight: 700; margin-top: .5rem; }
-.results-card p { font-size: .875rem; color: var(--ink-soft); margin-top: .5rem; }
-.results-card--live .btn { margin-top: 1.25rem; }
-.results-card__src { font-size: .72rem; color: var(--ink-faint); margin-top: .75rem; }
-
-/* ---------- 대회 진행 안내 (준비 중 카드) ---------- */
-.notice-grid { display: grid; gap: 1rem; }
-@media (min-width: 768px) { .notice-grid { grid-template-columns: repeat(3, 1fr); } }
+/* ---------- 대회 진행 안내 카드 ---------- */
+.notice-grid { display: grid; gap: 1rem; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 900px) { .notice-grid { grid-template-columns: repeat(4, 1fr); } }
 .notice-card { background: var(--white); border: 1px solid var(--line-strong); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: var(--shadow-xs); }
+.notice-card--accent { border-color: var(--blossom-500); box-shadow: 0 0 0 1px var(--blossom-500) inset, var(--shadow-xs); }
+.notice-card a { color: var(--forest-700); text-decoration: underline; text-underline-offset: 2px; }
 .notice-card__icon { font-size: 1.6rem; }
 .notice-card h3 { font-size: .95rem; font-weight: 700; margin-top: .35rem; }
 .notice-card__status { display: inline-block; margin: .45rem 0 .55rem; font-size: .72rem; font-weight: 700; color: var(--forest-600); background: var(--forest-50); border-radius: var(--radius-pill); padding: .2rem .65rem; }
