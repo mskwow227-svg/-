@@ -13,8 +13,10 @@
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   document.addEventListener("DOMContentLoaded", function () {
+    applyFormLinks();
     initRegistrationStatus();
     initCountdown();
+    renderTimetable();
     renderClassList();
     initFinder();
     renderAwards();
@@ -25,6 +27,27 @@
     initMobileNav();
     initSmoothScroll();
   });
+
+  /* ---------- 신청 링크 일괄 적용 (URL 은 config 한 곳에서만 관리) ---------- */
+  function applyFormLinks() {
+    var url = OL.event && OL.event.formUrl;
+    if (!url) return;
+    $$("[data-reg-link]").forEach(function (a) { a.setAttribute("href", url); });
+  }
+
+  /* ---------- 당일 타임테이블 ---------- */
+  function renderTimetable() {
+    var body = document.getElementById("timetable-body");
+    if (!body || !OL.timetable) return;
+    body.innerHTML = OL.timetable.map(function (row) {
+      return (
+        '<tr>' +
+          '<th scope="row">' + row.time + "</th>" +
+          "<td><strong>" + row.title + "</strong><span>" + row.desc + "</span></td>" +
+        "</tr>"
+      );
+    }).join("");
+  }
 
   /* ---------- 0. 참가 신청 모집 상태 ---------- */
   function initRegistrationStatus() {
