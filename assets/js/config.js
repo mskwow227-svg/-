@@ -14,9 +14,9 @@ window.OL = {
     dateLabel: '2026.10.17(토)',
     timeLabel: '09:30 ~ 15:00 (개회식 10:30)',
     audience: '전국 청소년·시민 500명',
-    feeLabel: '참가비 전액 지원 (복권기금)',
-    venue: '진달래동산 야외 무대',
-    venueArea: '진달래동산 일대',
+    feeLabel: '참가비 전액 지원',
+    venue: '원미산 진달래동산 야외 무대',
+    venueArea: '원미산 진달래동산 일대',
     capacity: 500,
     formUrl: 'https://forms.gle/JfCArNtD6sbM8xMs8',
 
@@ -24,7 +24,7 @@ window.OL = {
     registration: {
       deadlineISO: '2026-10-06T18:00:00+09:00',
       deadlineLabel: '2026.10.06(화) 오후 6시',
-      deadlineShort: '10.06(화) 18시', // 좁은 화면 배지용 짧은 표기
+      deadlineShort: '10월 6일(화) 18시', // 히어로 배지용 표기
       // 'auto'   = 위 마감일 기준으로 자동 전환 (기본)
       // 'open'   = 마감일과 무관하게 계속 '모집 중'
       // 'closed' = 지금 즉시 '마감' (선착순 조기 마감 시 이 값으로 변경)
@@ -53,7 +53,7 @@ window.OL = {
     { time: '14:00–15:00', title: '시상식 · 폐회식', desc: '만족도 조사 제출 시 기념품 배부, 청소년·청년 축하공연, 클래스별 시상, 경품 추첨' },
   ],
 
-  // 부천종합운동장 부설 주차장 요금 체계
+  // 부천종합운동장 부설주차장 요금 체계
   parking: {
     baseFee: 400,        // 최초 baseMinutes 요금
     baseMinutes: 30,
