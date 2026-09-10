@@ -381,6 +381,29 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 @keyframes fade-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 .modal:not([hidden]) .modal__panel { animation: fade-in .18s ease; }
 
+/* ---------- 접근성 전용 텍스트 ---------- */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- 복권기금 고지 ---------- */
+.infocard__funding { margin-top: 1rem; padding-top: .75rem; border-top: 1px solid var(--line); font-size: .68rem; color: var(--ink-muted); line-height: 1.5; }
+.final-cta__funding { margin-top: 1.5rem; font-size: .72rem; color: var(--forest-100); opacity: .9; }
+.site-footer__funding { margin-top: .5rem; color: #a9c3b6; }
+
+/* ---------- 타임테이블 ---------- */
+.timetable-wrap { overflow-x: auto; margin-bottom: 2rem; }
+.timetable { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--line-strong); border-radius: var(--radius-lg); overflow: hidden; font-size: .85rem; }
+.timetable thead th { background: var(--forest-500); color: #fff; text-align: left; padding: .7rem 1rem; font-size: .8rem; font-weight: 700; }
+.timetable tbody th { text-align: left; vertical-align: top; padding: .8rem 1rem; white-space: nowrap; font-weight: 700; color: var(--forest-700); font-variant-numeric: tabular-nums; width: 8.5rem; }
+.timetable tbody td { padding: .8rem 1rem; color: var(--ink-soft); }
+.timetable tbody td strong { display: block; color: var(--ink); font-weight: 700; margin-bottom: .15rem; }
+.timetable tbody td span { display: block; font-size: .8rem; }
+.timetable tbody tr + tr th, .timetable tbody tr + tr td { border-top: 1px solid var(--line); }
+
+.stamp-tracker__lead { font-size: .8rem; color: var(--ink-soft); max-width: 34rem; margin: 0 auto .9rem; }
+
 /* ---------- 대회 진행 안내 (준비 중 카드) ---------- */
 .notice-grid { display: grid; gap: 1rem; }
 @media (min-width: 768px) { .notice-grid { grid-template-columns: repeat(3, 1fr); } }
