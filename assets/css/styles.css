@@ -235,9 +235,20 @@ ul { margin: 0; padding: 0; list-style: none; }
 .stat--place .stat__sub { font-size: .95rem; font-weight: 700; color: var(--forest-700); line-height: 1.25; margin-top: 0; }
 
 .hero__cta { display: flex; flex-wrap: wrap; gap: .6rem; }
-.hero__edu { margin-top: .9rem; font-size: .85rem; }
-.hero__edu a { color: var(--forest-700); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-.hero__edu a:hover { color: var(--forest-500); }
+/* 오리엔티어링 기초 교육 영상 카드 (히어로 우측, 정보 카드 아래) */
+.edu-card {
+  display: flex; align-items: center; gap: .8rem;
+  margin-top: 1rem; padding: 1rem 1.15rem;
+  background: var(--white); border: 1px solid var(--blossom-200);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-xs);
+  transition: border-color .15s ease, background-color .15s ease, box-shadow .15s ease;
+}
+.edu-card:hover { border-color: var(--blossom-500); background: var(--blossom-100); box-shadow: var(--shadow-sm); }
+.edu-card__icon { font-size: 1.4rem; flex-shrink: 0; }
+.edu-card__body { display: flex; flex-direction: column; gap: .1rem; line-height: 1.35; }
+.edu-card__body strong { font-size: .875rem; color: var(--forest-700); }
+.edu-card__body span { font-size: .8rem; font-weight: 700; color: var(--blossom-600); }
+.edu-card__arrow { margin-left: auto; font-size: 1.1rem; font-weight: 700; color: var(--blossom-500); flex-shrink: 0; }
 .hero__note { font-size: .78rem; color: var(--ink-soft); line-height: 1.6; background: var(--forest-50); border: 1px solid var(--forest-100); border-radius: var(--radius-sm); padding: .6rem .8rem; }
 
 /* Hero 정보 카드 */
