@@ -24,7 +24,6 @@
     initFinder();
     renderAwards();
     initStampTour();
-    initParkingCalc();
     initFaq();
     initModals();
     initMobileNav();
@@ -371,60 +370,6 @@
         }
       }
     });
-  }
-
-  /* ---------- 6. 주차 요금 계산기 ---------- */
-  function initParkingCalc() {
-    var range = document.getElementById("parking-range");
-    var timeOut = document.getElementById("parking-time");
-    var feeOut = document.getElementById("parking-fee");
-    var p = OL.parking;
-    if (!range || !p) return;
-
-    range.min = String(p.baseMinutes);
-    range.max = String(p.maxMinutes);
-    range.step = String(p.baseMinutes);
-    range.value = String(p.defaultMinutes);
-
-    function fmtTime(mins) {
-      var h = Math.floor(mins / 60);
-      var m = mins % 60;
-      var parts = [];
-      if (h > 0) parts.push(h + "시간");
-      if (m > 0) parts.push(m + "분");
-      return parts.join(" ") || "0분";
-    }
-
-    function calcFee(mins) {
-      var fee = p.baseFee;
-      if (mins > p.baseMinutes) {
-        var units = Math.ceil((mins - p.baseMinutes) / p.unitMinutes);
-        fee += units * p.unitFee;
-      }
-      return Math.min(fee, p.dailyCap);
-    }
-
-    var noteOut = document.getElementById("parking-fee-note");
-
-    function update() {
-      var mins = parseInt(range.value, 10) || p.baseMinutes;
-      var label = fmtTime(mins);
-      var fee = calcFee(mins);
-      var isCapped = fee >= p.dailyCap;
-      if (timeOut) timeOut.textContent = label;
-      if (feeOut) feeOut.textContent = fee.toLocaleString() + " 원";
-      if (noteOut) {
-        noteOut.hidden = !isCapped;
-        noteOut.textContent = "(일 최대 " + p.dailyCap.toLocaleString() + "원 적용)";
-      }
-      range.setAttribute(
-        "aria-valuetext",
-        label + ", 예상 " + fee.toLocaleString() + "원" + (isCapped ? " (일 최대 적용)" : "")
-      );
-    }
-
-    range.addEventListener("input", update);
-    update();
   }
 
   /* ---------- 7. FAQ 아코디언 + 검색 ---------- */

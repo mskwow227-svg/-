@@ -71,17 +71,6 @@ window.OL = {
     { time: '14:00–15:00', title: '시상식 · 폐회식', desc: '만족도 조사 제출 시 기념품 배부, 청소년·청년 축하공연, 클래스별 시상, 경품 추첨' },
   ],
 
-  // 부천종합운동장 부설주차장 요금 체계
-  parking: {
-    baseFee: 400,        // 최초 baseMinutes 요금
-    baseMinutes: 30,
-    unitFee: 200,        // 초과 unitMinutes 마다
-    unitMinutes: 10,
-    dailyCap: 6000,      // 승용차 일 최대
-    defaultMinutes: 180,
-    maxMinutes: 480,
-  },
-
   // 클래스 7종
   classes: [
     { id: 'c1', cat: '가족',   name: '아기오리가족', target: '7세~10세 청소년 포함 가족',        type: '스코어 방식', desc: '어린 자녀와 함께 즐기는 스코어 방식의 가족 입문 코스' },
