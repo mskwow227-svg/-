@@ -141,9 +141,9 @@ window.OL = {
 
   // 시상 구조 (클래스별 1·2·3위)
   awards: [
-    { rank: '1위', medal: '🥇', prize: '부천시장상',                    note: '각 클래스 최고 득점자', teams: 7, color: '#2e5a44' },
-    { rank: '2위', medal: '🥈', prize: '부천여성청소년재단 대표이사상', note: '각 클래스 준우승 팀',   teams: 7, color: '#81b29a' },
-    { rank: '3위', medal: '🥉', prize: '산울림청소년센터장상',          note: '각 클래스 3위 팀',      teams: 7, color: '#e07a5f' },
+    { rank: '1위', medal: '🥇', prize: '부천시장상',                    note: '각 클래스 1위 팀', teams: 7, color: '#2e5a44' },
+    { rank: '2위', medal: '🥈', prize: '부천여성청소년재단 대표이사상', note: '각 클래스 2위 팀', teams: 7, color: '#81b29a' },
+    { rank: '3위', medal: '🥉', prize: '산울림청소년센터장상',          note: '각 클래스 3위 팀', teams: 7, color: '#e07a5f' },
   ],
 
   // 스탬프 투어 — 체험교육부스

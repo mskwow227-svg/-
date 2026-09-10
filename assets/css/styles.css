@@ -172,6 +172,14 @@ ul { margin: 0; padding: 0; list-style: none; }
 .nav { display: flex; align-items: center; gap: 1.5rem; }
 .nav a { font-size: .875rem; font-weight: 500; color: var(--ink-soft); transition: color .15s ease; white-space: nowrap; }
 .nav a:hover { color: var(--forest-500); }
+.nav a.is-active { color: var(--forest-600); font-weight: 700; }
+@media (min-width: 981px) {
+  .nav a { position: relative; }
+  .nav a.is-active::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -.4rem;
+    height: 2px; background: var(--forest-500); border-radius: 2px;
+  }
+}
 
 .header-actions { display: flex; align-items: center; gap: .5rem; }
 
