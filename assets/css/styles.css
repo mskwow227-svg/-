@@ -235,6 +235,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .stat--place .stat__sub { font-size: .95rem; font-weight: 700; color: var(--forest-700); line-height: 1.25; margin-top: 0; }
 
 .hero__cta { display: flex; flex-wrap: wrap; gap: .6rem; }
+.hero__cta .btn { flex: 1 1 13rem; }
 /* 오리엔티어링 기초 교육 영상 카드 (히어로 우측, 정보 카드 아래) */
 .edu-card {
   display: flex; align-items: center; gap: .8rem;
