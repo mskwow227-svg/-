@@ -224,6 +224,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .stat__sub { display: block; font-size: .72rem; color: var(--ink-muted); margin-top: .1rem; }
 
 .hero__cta { display: flex; flex-wrap: wrap; gap: .75rem; }
+.hero__note { font-size: .78rem; color: var(--ink-soft); line-height: 1.6; background: var(--forest-50); border: 1px solid var(--forest-100); border-radius: var(--radius-sm); padding: .6rem .8rem; }
 
 /* Hero 정보 카드 */
 .infocard { position: relative; overflow: hidden; padding: 1.5rem; background: var(--white); border: 1px solid var(--forest-100); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); }
