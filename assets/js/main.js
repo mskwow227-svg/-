@@ -76,10 +76,10 @@
     if (badge) {
       var text = badge.querySelector("[data-reg-text]");
       if (open) {
-        if (text) text.textContent = "선착순 모집 중 · 신청 마감 " + shortLabel;
+        if (text) text.textContent = "선착순 모집 중 · " + shortLabel + " 대회 신청 마감";
       } else {
         badge.classList.add("pill-live--closed");
-        if (text) text.textContent = "참가 접수 마감 (" + shortLabel + ")";
+        if (text) text.textContent = "대회 접수 마감 (" + shortLabel + " 마감)";
       }
     }
 
