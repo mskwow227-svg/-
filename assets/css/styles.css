@@ -226,6 +226,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .stat__value { display: block; font-weight: 700; font-size: .95rem; color: var(--forest-700); margin-top: .2rem; line-height: 1.25; }
 .stat__value--accent { color: var(--blossom-500); }
 .stat__sub { display: block; font-size: .72rem; color: var(--ink-muted); margin-top: .1rem; }
+/* 개최 장소: '원미산' + '진달래동산 일대' 는 한 지명이라 두 줄 글씨체를 동일하게 */
+.stat--place .stat__sub { font-size: .95rem; font-weight: 700; color: var(--forest-700); line-height: 1.25; margin-top: 0; }
 
 .hero__cta { display: flex; flex-wrap: wrap; gap: .75rem; }
 .hero__note { font-size: .78rem; color: var(--ink-soft); line-height: 1.6; background: var(--forest-50); border: 1px solid var(--forest-100); border-radius: var(--radius-sm); padding: .6rem .8rem; }
