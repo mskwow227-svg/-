@@ -235,9 +235,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .stat--place .stat__sub { font-size: .95rem; font-weight: 700; color: var(--forest-700); line-height: 1.25; margin-top: 0; }
 
 .hero__cta { display: flex; flex-wrap: wrap; gap: .6rem; }
-.hero__edu { margin-top: .9rem; font-size: .85rem; }
-.hero__edu a { color: var(--forest-700); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-.hero__edu a:hover { color: var(--forest-500); }
+.btn--video { margin-top: .7rem; background: var(--white); color: var(--blossom-600); border-color: var(--blossom-200); box-shadow: var(--shadow-xs); }
+.btn--video:hover { background: var(--blossom-100); border-color: var(--blossom-500); }
 .hero__note { font-size: .78rem; color: var(--ink-soft); line-height: 1.6; background: var(--forest-50); border: 1px solid var(--forest-100); border-radius: var(--radius-sm); padding: .6rem .8rem; }
 
 /* Hero 정보 카드 */
