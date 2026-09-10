@@ -28,6 +28,7 @@
     initModals();
     initMobileNav();
     initSmoothScroll();
+    initScrollSpy();
   });
 
   /* ---------- 신청 링크 일괄 적용 (URL 은 config 한 곳에서만 관리) ---------- */
@@ -316,7 +317,7 @@
           '<div class="prize">' +
             '<div class="prize__medal" aria-hidden="true">' + a.medal + "</div>" +
             '<div class="prize__name">' + a.prize + "</div>" +
-            '<div class="prize__note">' + a.rank + " · 총 " + a.teams + "팀 · " + a.note + "</div>" +
+            '<div class="prize__note">' + a.note + " · 총 " + a.teams + "팀 시상</div>" +
           "</div>"
         );
       }).join("");
@@ -518,6 +519,42 @@
       target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
       target.setAttribute("tabindex", "-1");
       target.focus({ preventScroll: true });
+
+      // 클릭 즉시 해당 네비 항목 강조 (스크롤 완료 전이라도)
+      if (link.closest("#primary-nav")) {
+        $$("#primary-nav a").forEach(function (a) { a.classList.remove("is-active"); });
+        link.classList.add("is-active");
+      }
+    });
+  }
+
+  /* ---------- 11. 현재 섹션 네비 강조 (스크롤스파이) ---------- */
+  function initScrollSpy() {
+    var nav = document.getElementById("primary-nav");
+    if (!nav || !("IntersectionObserver" in window)) return;
+
+    var byId = {};
+    $$('a[href^="#"]', nav).forEach(function (a) {
+      var id = a.getAttribute("href").slice(1);
+      if (document.getElementById(id)) byId[id] = a;
+    });
+
+    function setActive(id) {
+      $$("#primary-nav a").forEach(function (a) { a.classList.remove("is-active"); });
+      if (byId[id]) byId[id].classList.add("is-active");
+    }
+
+    var obs = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) setActive(e.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+
+    Object.keys(byId).forEach(function (id) {
+      obs.observe(document.getElementById(id));
     });
   }
 })();
