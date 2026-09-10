@@ -139,6 +139,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 .badge--emerald { background: var(--emerald-bg);  color: var(--emerald-fg); }
 .badge--blue    { background: var(--blue-bg);     color: var(--blue-fg); }
 .badge--soft    { background: var(--forest-50);   color: var(--forest-700); font-weight: 600; }
+/* 경기 방식 — 카테고리(채움) 배지와 구분되도록 테두리형, 스코어=코랄 / 포인트=그린 */
+.badge--method  { background: var(--white); border: 1px solid currentColor; }
+.badge--score   { color: var(--blossom-600); }
+.badge--point   { color: var(--forest-600); }
+.badge--method::before { content: ""; display: inline-block; width: .4rem; height: .4rem; margin-right: .3rem; border-radius: 50%; background: currentColor; vertical-align: 1px; }
 
 /* ---------- 카드 ---------- */
 .card {
@@ -269,28 +274,16 @@ ul { margin: 0; padding: 0; list-style: none; }
 .finder__result .btn { margin-top: 1rem; }
 .finder__tip { font-size: .75rem; color: var(--ink-muted); margin-top: .75rem; text-align: center; }
 
-/* ---------- 시상 시각화 ---------- */
-.awards { display: grid; gap: 2rem; align-items: start; }
-@media (min-width: 1024px) { .awards { grid-template-columns: 1fr 1fr; } }
-
-.award-chart__head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-bottom: 1rem; }
-.award-chart__head h3 { font-size: .875rem; font-weight: 700; }
-.award-rows { display: grid; gap: .5rem; }
-.award-row { display: grid; grid-template-columns: 5.5rem 1fr; align-items: center; gap: .6rem; font-size: .8rem; }
-.award-row__label { color: var(--ink-soft); font-weight: 600; text-align: right; }
-.award-row__bar { display: flex; height: 1.5rem; border-radius: 6px; overflow: hidden; }
-.award-row__seg { flex: 1; }
-.award-legend { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin-top: 1rem; font-size: .72rem; color: var(--ink-soft); }
-.award-legend span { display: inline-flex; align-items: center; gap: .35rem; }
-.award-legend i { width: .7rem; height: .7rem; border-radius: 3px; display: inline-block; }
-
-.class-list { display: grid; gap: .5rem; max-height: 25rem; overflow-y: auto; padding-right: .25rem; }
-.class-item { width: 100%; text-align: left; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: .85rem; transition: border-color .15s ease, box-shadow .15s ease; }
+/* ---------- 클래스별 상세 가이드 (가로 배치) ---------- */
+.class-list { display: grid; gap: .6rem; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 560px)  { .class-list { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 800px)  { .class-list { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1080px) { .class-list { grid-template-columns: repeat(7, 1fr); } }
+.class-item { width: 100%; height: 100%; display: flex; flex-direction: column; text-align: left; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: .85rem; transition: border-color .15s ease, box-shadow .15s ease; }
 .class-item:hover { border-color: var(--forest-400); box-shadow: var(--shadow-xs); }
-.class-item__top { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
-.class-item__type { font-size: .75rem; font-weight: 600; color: var(--blossom-500); }
-.class-item h5 { font-size: .875rem; font-weight: 700; margin-top: .25rem; }
-.class-item p { font-size: .78rem; color: var(--ink-muted); }
+.class-item__top { display: flex; align-items: center; justify-content: flex-start; gap: .3rem; flex-wrap: wrap; }
+.class-item h5 { font-size: .875rem; font-weight: 700; margin-top: .3rem; }
+.class-item p { font-size: .75rem; color: var(--ink-muted); margin-top: .15rem; }
 .list-hint { font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: .5rem; }
 
 .prize-grid { display: grid; gap: 1rem; margin-top: 2rem; }
