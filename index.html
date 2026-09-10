@@ -82,12 +82,13 @@
 
             <nav id="primary-nav" class="nav" aria-label="주요 메뉴">
                 <a href="#about">대회개요</a>
-                <a href="#schedule">진행 안내</a>
+                <a href="#schedule">진행안내</a>
+                <a href="#results">실시간 기록</a>
                 <a href="#class-finder">클래스 찾기</a>
                 <a href="#structure">클래스/시상</a>
                 <a href="#booths">체험교육부스</a>
-                <a href="#transit">오시는길/주차</a>
-                <a href="#faq">FAQ &amp; 준비물</a>
+                <a href="#transit">오시는 길</a>
+                <a href="#faq">FAQ</a>
             </nav>
 
             <div class="header-actions">
@@ -150,6 +151,9 @@
                             </a>
                             <a class="btn btn--ghost" href="#class-finder">
                                 🎯 내 클래스 추천받기
+                            </a>
+                            <a class="btn btn--ghost" id="edu-video-link" href="https://www.youtube.com/watch?v=1H4xNmC8txA" target="_blank" rel="noopener noreferrer">
+                                📺 기초 교육 영상 보기
                             </a>
                         </div>
                         <p class="hero__note">※ 사전 접수는 <strong>오리엔티어링 대회</strong>만 해당합니다. 체험교육부스·부대행사는 <strong>당일 현장에서 누구나 자유롭게</strong> 참여할 수 있습니다.</p>
@@ -238,6 +242,18 @@
             </div>
         </section>
 
+        <!-- 대회 실시간 기록 -->
+        <section id="results" class="section section--plain" aria-labelledby="results-heading">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow eyebrow--forest">Live Results</span>
+                    <h2 id="results-heading" class="section-title">대회 실시간 기록</h2>
+                    <p>전자 기록(SI카드) 기반으로 클래스별 순위가 집계됩니다.</p>
+                </div>
+                <div id="results-panel" class="results-panel"></div>
+            </div>
+        </section>
+
         <!-- Class Finder -->
         <section id="class-finder" class="section section--plain" aria-labelledby="finder-heading">
             <div class="container">
@@ -279,21 +295,8 @@
                     <p>총 7개 클래스에서 21개 팀이 수상의 영예를 안게 됩니다. 경기 방식과 대상을 한눈에 비교해 보세요.</p>
                 </div>
 
-                <div class="awards">
-                    <div class="card card--pad">
-                        <div class="award-chart__head">
-                            <h3>클래스별 시상 팀 분포 (총 21팀)</h3>
-                            <span class="badge badge--soft">1, 2, 3위 시상</span>
-                        </div>
-                        <div id="award-rows" class="award-rows"></div>
-                        <div id="award-legend" class="award-legend"></div>
-                    </div>
-
-                    <div>
-                        <p class="list-hint">클래스별 상세 가이드 (클릭하여 확인)</p>
-                        <div id="class-list" class="class-list"></div>
-                    </div>
-                </div>
+                <p class="list-hint">클래스별 상세 가이드 (클릭하여 확인)</p>
+                <div id="class-list" class="class-list"></div>
 
                 <div id="prize-grid" class="prize-grid"></div>
             </div>

@@ -14,9 +14,11 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     applyFormLinks();
+    initEducationLink();
     initRegistrationStatus();
     initCountdown();
     renderTimetable();
+    initResults();
     renderClassList();
     initFinder();
     renderAwards();
@@ -33,6 +35,49 @@
     var url = OL.event && OL.event.formUrl;
     if (!url) return;
     $$("[data-reg-link]").forEach(function (a) { a.setAttribute("href", url); });
+  }
+
+  /* ---------- 기초 교육 영상 링크 ---------- */
+  function initEducationLink() {
+    var link = document.getElementById("edu-video-link");
+    if (!link) return;
+    var url = OL.education && OL.education.videoUrl;
+    if (url) link.setAttribute("href", url);
+    else link.hidden = true;
+  }
+
+  /* ---------- 대회 실시간 기록 ---------- */
+  function initResults() {
+    var panel = document.getElementById("results-panel");
+    var r = OL.results;
+    if (!panel || !r) return;
+
+    var status = r.status || "before";
+    if (status === "before" || !r.url) {
+      panel.innerHTML =
+        '<div class="results-card">' +
+          '<span class="results-card__icon" aria-hidden="true">🕛</span>' +
+          "<h3>대회 전</h3>" +
+          "<p>실시간 순위는 <strong>" + (r.openLabel || "대회 당일") + "</strong>부터 이곳에서 공개됩니다.</p>" +
+        "</div>";
+      return;
+    }
+
+    var isFinal = status === "final";
+    panel.innerHTML =
+      '<div class="results-card results-card--live">' +
+        '<span class="results-card__icon" aria-hidden="true">' + (isFinal ? "🏆" : "📊") + "</span>" +
+        "<h3>" + (isFinal ? "최종 결과" : "실시간 순위 집계 중") + "</h3>" +
+        "<p>" +
+          (isFinal
+            ? "클래스별 최종 순위를 확인하세요."
+            : "SI카드 리딩 결과가 실시간으로 반영됩니다. 결과 페이지를 새로고침하면 최신 순위가 표시됩니다.") +
+        "</p>" +
+        '<a class="btn btn--primary" href="' + r.url + '" target="_blank" rel="noopener noreferrer">' +
+          (isFinal ? "최종 결과 보기 →" : "실시간 순위 보기 →") +
+        "</a>" +
+        '<p class="results-card__src">결과 페이지는 기록 담당 업체가 운영합니다.</p>' +
+      "</div>";
   }
 
   /* ---------- 당일 타임테이블 ---------- */
@@ -133,19 +178,28 @@
     return "badge--blue";
   }
 
+  function typeBadgeClass(type) {
+    return (type || "").indexOf("스코어") !== -1 ? "badge--score" : "badge--point";
+  }
+
   function renderClassList() {
     var container = document.getElementById("class-list");
     if (!container || !OL.classes) return;
 
     container.innerHTML = OL.classes.map(function (c) {
+      // 대상 문구 끝의 '(2인 1팀)' 같은 괄호 부분은 다음 줄로
+      var m = String(c.target).match(/^(.*?)\s*(\([^)]*\))\s*$/);
+      var targetHtml = m
+        ? m[1] + '<span class="class-item__fmt">' + m[2] + "</span>"
+        : c.target;
       return (
         '<button type="button" class="class-item" data-action="class-detail" data-id="' + c.id + '">' +
           '<span class="class-item__top">' +
             '<span class="badge ' + catBadgeClass(c.cat) + '">' + c.cat + "</span>" +
-            '<span class="class-item__type">' + c.type + "</span>" +
+            '<span class="badge badge--method ' + typeBadgeClass(c.type) + '">' + c.type + "</span>" +
           "</span>" +
           "<h5>" + c.name + "</h5>" +
-          "<p>" + c.target + "</p>" +
+          "<p>" + targetHtml + "</p>" +
         "</button>"
       );
     }).join("");
@@ -209,7 +263,7 @@
       result.innerHTML =
         '<div class="finder__result-head">' +
           '<span class="badge badge--forest">추천 클래스</span>' +
-          '<span class="class-item__type">' + c.type + "</span>" +
+          '<span class="badge badge--method ' + typeBadgeClass(c.type) + '">' + c.type + "</span>" +
         "</div>" +
         "<h4>🎉 " + c.name + " 클래스</h4>" +
         '<p class="sub"><strong>대상:</strong> ' + c.target + "</p>" +
@@ -230,31 +284,9 @@
     recalc();
   }
 
-  /* ---------- 4. 시상 시각화 (CSS 막대) ---------- */
+  /* ---------- 4. 시상 내역 (1·2·3위 카드) ---------- */
   function renderAwards() {
-    var rows = document.getElementById("award-rows");
-    var legend = document.getElementById("award-legend");
-    if (!OL.awards || !OL.classes) return;
-
-    if (rows) {
-      rows.innerHTML = OL.classes.map(function (c) {
-        var segs = OL.awards.map(function (a) {
-          return '<span class="award-row__seg" style="background:' + a.color + '" title="' + c.name + " · " + a.medal + " " + a.rank + ' 1팀 수상"></span>';
-        }).join("");
-        return (
-          '<div class="award-row">' +
-            '<span class="award-row__label">' + c.name + "</span>" +
-            '<span class="award-row__bar">' + segs + "</span>" +
-          "</div>"
-        );
-      }).join("");
-    }
-
-    if (legend) {
-      legend.innerHTML = OL.awards.map(function (a) {
-        return '<span><i style="background:' + a.color + '"></i>' + a.medal + " " + a.rank + " (" + a.prize + ")</span>";
-      }).join("");
-    }
+    if (!OL.awards) return;
 
     var prizeGrid = document.getElementById("prize-grid");
     if (prizeGrid) {
@@ -486,7 +518,7 @@
     var nav = document.getElementById("primary-nav");
     if (!toggle || !nav) return;
 
-    var mq = window.matchMedia("(max-width: 980px)");
+    var mq = window.matchMedia("(max-width: 1120px)");
     var setHidden = function (hidden) {
       if (mq.matches) nav.hidden = hidden;
       else nav.hidden = false;
