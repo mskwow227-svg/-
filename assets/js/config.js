@@ -44,6 +44,20 @@ window.OL = {
     },
   },
 
+  // 대회 실시간 기록 — 기록 담당 업체가 제공하는 결과 페이지로 연결
+  results: {
+    // 'before' 대회 전 안내 / 'live' 실시간 순위 공개 / 'final' 최종 결과
+    status: 'before',
+    url: '',                    // ★ 업체에게 받은 실시간 결과 페이지 URL 을 여기에
+    openLabel: '대회 당일 낮 12시경',
+  },
+
+  // 오리엔티어링 기초 교육 영상 (전년도 제작)
+  education: {
+    videoUrl: 'https://www.youtube.com/watch?v=1H4xNmC8txA',
+    label: '기초 교육 영상 보기',
+  },
+
   // 당일 타임테이블 (참가자 기준) — 계획서 세부 추진내용 발췌
   timetable: [
     { time: '09:30–10:30', title: '참가자 접수 · 물품 배부', desc: '배번표, SI카드(전자 기록칩), 물품 보관 봉투 수령 · 클래스별 사전 교육' },

@@ -14,9 +14,11 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     applyFormLinks();
+    initEducationLink();
     initRegistrationStatus();
     initCountdown();
     renderTimetable();
+    initResults();
     renderClassList();
     initFinder();
     renderAwards();
@@ -33,6 +35,49 @@
     var url = OL.event && OL.event.formUrl;
     if (!url) return;
     $$("[data-reg-link]").forEach(function (a) { a.setAttribute("href", url); });
+  }
+
+  /* ---------- 기초 교육 영상 링크 ---------- */
+  function initEducationLink() {
+    var link = document.getElementById("edu-video-link");
+    if (!link) return;
+    var url = OL.education && OL.education.videoUrl;
+    if (url) link.setAttribute("href", url);
+    else link.hidden = true;
+  }
+
+  /* ---------- 대회 실시간 기록 ---------- */
+  function initResults() {
+    var panel = document.getElementById("results-panel");
+    var r = OL.results;
+    if (!panel || !r) return;
+
+    var status = r.status || "before";
+    if (status === "before" || !r.url) {
+      panel.innerHTML =
+        '<div class="results-card">' +
+          '<span class="results-card__icon" aria-hidden="true">🕛</span>' +
+          "<h3>대회 전</h3>" +
+          "<p>실시간 순위는 <strong>" + (r.openLabel || "대회 당일") + "</strong>부터 이곳에서 공개됩니다.</p>" +
+        "</div>";
+      return;
+    }
+
+    var isFinal = status === "final";
+    panel.innerHTML =
+      '<div class="results-card results-card--live">' +
+        '<span class="results-card__icon" aria-hidden="true">' + (isFinal ? "🏆" : "📊") + "</span>" +
+        "<h3>" + (isFinal ? "최종 결과" : "실시간 순위 집계 중") + "</h3>" +
+        "<p>" +
+          (isFinal
+            ? "클래스별 최종 순위를 확인하세요."
+            : "SI카드 리딩 결과가 실시간으로 반영됩니다. 결과 페이지를 새로고침하면 최신 순위가 표시됩니다.") +
+        "</p>" +
+        '<a class="btn btn--primary" href="' + r.url + '" target="_blank" rel="noopener noreferrer">' +
+          (isFinal ? "최종 결과 보기 →" : "실시간 순위 보기 →") +
+        "</a>" +
+        '<p class="results-card__src">결과 페이지는 기록 담당 업체가 운영합니다.</p>' +
+      "</div>";
   }
 
   /* ---------- 당일 타임테이블 ---------- */
@@ -473,7 +518,7 @@
     var nav = document.getElementById("primary-nav");
     if (!toggle || !nav) return;
 
-    var mq = window.matchMedia("(max-width: 980px)");
+    var mq = window.matchMedia("(max-width: 1120px)");
     var setHidden = function (hidden) {
       if (mq.matches) nav.hidden = hidden;
       else nav.hidden = false;
