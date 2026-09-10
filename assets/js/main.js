@@ -15,6 +15,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     applyFormLinks();
     initEducationLink();
+    initKakaoMapLink();
     initRegistrationStatus();
     initCountdown();
     renderTimetable();
@@ -23,7 +24,6 @@
     initFinder();
     renderAwards();
     initStampTour();
-    initParkingCalc();
     initFaq();
     initModals();
     initMobileNav();
@@ -37,13 +37,28 @@
     $$("[data-reg-link]").forEach(function (a) { a.setAttribute("href", url); });
   }
 
-  /* ---------- 기초 교육 영상 링크 ---------- */
+  /* ---------- 오리엔티어링 기초 교육 영상 링크 ---------- */
   function initEducationLink() {
     var link = document.getElementById("edu-video-link");
     if (!link) return;
     var url = OL.education && OL.education.videoUrl;
     if (url) link.setAttribute("href", url);
     else link.hidden = true;
+  }
+
+  /* ---------- 카카오맵 길찾기 링크 ---------- */
+  function initKakaoMapLink() {
+    var link = document.getElementById("kakao-map-link");
+    var t = OL.event && OL.event.transit;
+    if (!link || !t) return;
+    if (t.kakaoMapUrl) {
+      link.setAttribute("href", t.kakaoMapUrl);
+    } else if (t.kakaoMapQuery) {
+      link.setAttribute(
+        "href",
+        "https://map.kakao.com/link/search/" + encodeURIComponent(t.kakaoMapQuery)
+      );
+    }
   }
 
   /* ---------- 대회 실시간 기록 ---------- */
@@ -355,60 +370,6 @@
         }
       }
     });
-  }
-
-  /* ---------- 6. 주차 요금 계산기 ---------- */
-  function initParkingCalc() {
-    var range = document.getElementById("parking-range");
-    var timeOut = document.getElementById("parking-time");
-    var feeOut = document.getElementById("parking-fee");
-    var p = OL.parking;
-    if (!range || !p) return;
-
-    range.min = String(p.baseMinutes);
-    range.max = String(p.maxMinutes);
-    range.step = String(p.baseMinutes);
-    range.value = String(p.defaultMinutes);
-
-    function fmtTime(mins) {
-      var h = Math.floor(mins / 60);
-      var m = mins % 60;
-      var parts = [];
-      if (h > 0) parts.push(h + "시간");
-      if (m > 0) parts.push(m + "분");
-      return parts.join(" ") || "0분";
-    }
-
-    function calcFee(mins) {
-      var fee = p.baseFee;
-      if (mins > p.baseMinutes) {
-        var units = Math.ceil((mins - p.baseMinutes) / p.unitMinutes);
-        fee += units * p.unitFee;
-      }
-      return Math.min(fee, p.dailyCap);
-    }
-
-    var noteOut = document.getElementById("parking-fee-note");
-
-    function update() {
-      var mins = parseInt(range.value, 10) || p.baseMinutes;
-      var label = fmtTime(mins);
-      var fee = calcFee(mins);
-      var isCapped = fee >= p.dailyCap;
-      if (timeOut) timeOut.textContent = label;
-      if (feeOut) feeOut.textContent = fee.toLocaleString() + " 원";
-      if (noteOut) {
-        noteOut.hidden = !isCapped;
-        noteOut.textContent = "(일 최대 " + p.dailyCap.toLocaleString() + "원 적용)";
-      }
-      range.setAttribute(
-        "aria-valuetext",
-        label + ", 예상 " + fee.toLocaleString() + "원" + (isCapped ? " (일 최대 적용)" : "")
-      );
-    }
-
-    range.addEventListener("input", update);
-    update();
   }
 
   /* ---------- 7. FAQ 아코디언 + 검색 ---------- */

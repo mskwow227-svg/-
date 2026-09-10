@@ -33,14 +33,18 @@ window.OL = {
 
     phone: '032-344-4480',
     phoneTeam: '청소년활동팀',
-    host: '부천여성청소년재단 산울림청소년센터',            // 주관·운영
-    support: '산림청 · 한국산림복지진흥원 · 복권위원회',      // 지원
-    fundingNotice: '본 행사는 산림청, 한국산림복지진흥원, 복권위원회의 지원을 받아 복권기금으로 운영됩니다.',
+    host: '산림청 · 한국산림복지진흥원 · 복권위원회',          // 주최
+    operator: '부천여성청소년재단 산울림청소년센터',           // 주관
+    fundingNotice: '본 행사는 산림청 · 한국산림복지진흥원 · 복권위원회가 주최하며, 복권기금으로 운영됩니다.',
     transit: {
       line: '지하철 7호선',
       station: '부천종합운동장역',
       exit: '2번 출구',
       walkMinutes: 5,
+      // 카카오맵 연결 — 정확한 좌표가 확보되면 kakaoMapUrl 에
+      // 'https://map.kakao.com/link/to/원미산 진달래동산 야외무대,위도,경도' 형태로 넣으면 길찾기로 바뀜
+      kakaoMapUrl: '',
+      kakaoMapQuery: '원미산 진달래동산',
     },
   },
 
@@ -55,7 +59,7 @@ window.OL = {
   // 오리엔티어링 기초 교육 영상 (전년도 제작)
   education: {
     videoUrl: 'https://www.youtube.com/watch?v=1H4xNmC8txA',
-    label: '기초 교육 영상 보기',
+    label: '오리엔티어링 기초 영상',
   },
 
   // 당일 타임테이블 (참가자 기준) — 계획서 세부 추진내용 발췌
@@ -66,17 +70,6 @@ window.OL = {
     { time: '11:00–14:00', title: '체험교육부스 · 푸드트럭', desc: '산림·아웃도어 체험교육부스 운영, 스탬프 투어 완주자 푸드트럭 이용' },
     { time: '14:00–15:00', title: '시상식 · 폐회식', desc: '만족도 조사 제출 시 기념품 배부, 청소년·청년 축하공연, 클래스별 시상, 경품 추첨' },
   ],
-
-  // 부천종합운동장 부설주차장 요금 체계
-  parking: {
-    baseFee: 400,        // 최초 baseMinutes 요금
-    baseMinutes: 30,
-    unitFee: 200,        // 초과 unitMinutes 마다
-    unitMinutes: 10,
-    dailyCap: 6000,      // 승용차 일 최대
-    defaultMinutes: 180,
-    maxMinutes: 480,
-  },
 
   // 클래스 7종
   classes: [
