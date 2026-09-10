@@ -13,6 +13,7 @@
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   document.addEventListener("DOMContentLoaded", function () {
+    initRegistrationStatus();
     initCountdown();
     renderClassList();
     initFinder();
@@ -24,6 +25,45 @@
     initMobileNav();
     initSmoothScroll();
   });
+
+  /* ---------- 0. 참가 신청 모집 상태 ---------- */
+  function initRegistrationStatus() {
+    var reg = OL.event && OL.event.registration;
+    if (!reg) return;
+
+    var mode = reg.statusOverride || "auto";
+    var open;
+    if (mode === "open") open = true;
+    else if (mode === "closed") open = false;
+    else {
+      var dl = new Date(reg.deadlineISO).getTime();
+      open = isNaN(dl) ? true : Date.now() < dl;
+    }
+
+    document.body.setAttribute("data-reg", open ? "open" : "closed");
+
+    // 마감일 라벨 채우기 (여러 위치)
+    $$("[data-reg-deadline]").forEach(function (el) {
+      el.textContent = reg.deadlineLabel + (open ? "" : " (마감)");
+    });
+
+    // 히어로 배지
+    var shortLabel = reg.deadlineShort || reg.deadlineLabel;
+    var badge = document.getElementById("reg-badge");
+    if (badge) {
+      var text = badge.querySelector("[data-reg-text]");
+      if (open) {
+        if (text) text.textContent = "선착순 모집 중 · 신청 마감 " + shortLabel;
+      } else {
+        badge.classList.add("pill-live--closed");
+        if (text) text.textContent = "참가 접수 마감 (" + shortLabel + ")";
+      }
+    }
+
+    // 열림/마감 상태별로 보이는 안내 문구
+    $$("[data-reg-open-note]").forEach(function (el) { el.hidden = !open; });
+    $$("[data-reg-closed-note]").forEach(function (el) { el.hidden = open; });
+  }
 
   /* ---------- 1. 카운트다운 ---------- */
   function initCountdown() {
@@ -414,7 +454,7 @@
     var nav = document.getElementById("primary-nav");
     if (!toggle || !nav) return;
 
-    var mq = window.matchMedia("(max-width: 900px)");
+    var mq = window.matchMedia("(max-width: 980px)");
     var setHidden = function (hidden) {
       if (mq.matches) nav.hidden = hidden;
       else nav.hidden = false;

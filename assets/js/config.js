@@ -15,6 +15,18 @@ window.OL = {
     venueArea: '진달래동산 일대',
     capacity: 500,
     formUrl: 'https://forms.gle/JfCArNtD6sbM8xMs8',
+
+    // 참가 신청 마감 — 마감일이 지나면 '모집 중' 배지가 자동으로 '마감'으로 바뀝니다.
+    registration: {
+      deadlineISO: '2026-10-06T18:00:00+09:00',
+      deadlineLabel: '2026.10.06(화) 오후 6시',
+      deadlineShort: '10.06(화) 18시', // 좁은 화면 배지용 짧은 표기
+      // 'auto'   = 위 마감일 기준으로 자동 전환 (기본)
+      // 'open'   = 마감일과 무관하게 계속 '모집 중'
+      // 'closed' = 지금 즉시 '마감' (선착순 조기 마감 시 이 값으로 변경)
+      statusOverride: 'auto',
+    },
+
     phone: '032-344-4480',
     phoneTeam: '청소년활동팀',
     organizers: '부천시 · 부천여성청소년재단 · 산울림청소년센터',
