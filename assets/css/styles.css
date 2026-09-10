@@ -217,10 +217,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; }
 @media (min-width: 640px) { .stat-grid { grid-template-columns: repeat(4, 1fr); } }
-.stat { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-xs); padding: .85rem; text-align: center; }
+.stat { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-xs); padding: .85rem; text-align: center; display: flex; flex-direction: column; justify-content: center; }
 .stat__label { display: block; font-size: .72rem; color: var(--ink-muted); }
-.stat__value { display: block; font-weight: 700; font-size: .95rem; color: var(--forest-700); margin-top: .15rem; }
+.stat__value { display: block; font-weight: 700; font-size: .95rem; color: var(--forest-700); margin-top: .2rem; line-height: 1.25; }
 .stat__value--accent { color: var(--blossom-500); }
+.stat__sub { display: block; font-size: .72rem; color: var(--ink-muted); margin-top: .1rem; }
 
 .hero__cta { display: flex; flex-wrap: wrap; gap: .75rem; }
 
