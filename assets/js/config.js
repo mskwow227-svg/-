@@ -55,7 +55,7 @@ window.OL = {
   // 오리엔티어링 기초 교육 영상 (전년도 제작)
   education: {
     videoUrl: 'https://www.youtube.com/watch?v=1H4xNmC8txA',
-    label: '기초 교육 영상 보기',
+    label: '오리엔티어링 기초 영상',
   },
 
   // 당일 타임테이블 (참가자 기준) — 계획서 세부 추진내용 발췌
