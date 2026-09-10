@@ -42,8 +42,12 @@
     var link = document.getElementById("edu-video-link");
     if (!link) return;
     var url = OL.education && OL.education.videoUrl;
-    if (url) link.setAttribute("href", url);
-    else link.hidden = true;
+    if (url) {
+      link.setAttribute("href", url);
+    } else {
+      var wrap = link.closest(".hero__edu") || link;
+      wrap.hidden = true;
+    }
   }
 
   /* ---------- 대회 실시간 기록 ---------- */
