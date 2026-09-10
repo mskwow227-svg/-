@@ -4,197 +4,180 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026 산림레포츠 축제 - 오리엔티어링 대회</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        forest: {
-                            50: '#f2f8f4',
-                            100: '#e1efe5',
-                            500: '#2e5a44',
-                            600: '#244836',
-                            700: '#1a3628'
-                        },
-                        blossom: {
-                            100: '#fce8e6',
-                            500: '#e07a5f',
-                            600: '#c86349'
-                        },
-                        warmbg: '#fdfbf7',
-                        sand: '#f4f1de'
-                    }
-                }
-            }
+
+    <meta name="description" content="2026 산림레포츠 축제 오리엔티어링 대회 — 2026년 10월 17일(토) 부천 진달래동산. 참가비 무료, 선착순 500명. 가족·청소년·청년 7개 클래스, 지도와 나침반으로 즐기는 도심 속 산림레포츠.">
+    <meta name="theme-color" content="#2e5a44">
+    <link rel="canonical" href="https://mskwow227-svg.github.io/-/">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+    <!-- Open Graph / 카카오톡·페이스북 공유 -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:site_name" content="2026 산림레포츠 축제 오리엔티어링 대회">
+    <meta property="og:title" content="2026 산림레포츠 축제 오리엔티어링 대회">
+    <meta property="og:description" content="2026.10.17(토) 부천 진달래동산 · 참가비 무료 · 선착순 500명 모집 중. 지도와 나침반을 들고 진달래동산을 누비다!">
+    <meta property="og:url" content="https://mskwow227-svg.github.io/-/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="2026 산림레포츠 축제 오리엔티어링 대회">
+    <meta name="twitter:description" content="2026.10.17(토) 부천 진달래동산 · 참가비 무료 · 선착순 500명 모집 중.">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "2026 산림레포츠 축제 오리엔티어링 대회",
+      "startDate": "2026-10-17T09:30:00+09:00",
+      "endDate": "2026-10-17T15:00:00+09:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "부천 진달래동산 야외 무대",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "부천시",
+          "addressRegion": "경기도",
+          "addressCountry": "KR"
         }
+      },
+      "image": [],
+      "description": "지도와 나침반을 들고 진달래동산을 누비는 도심 속 산림레포츠 오리엔티어링 대회. 가족·청소년·청년 7개 클래스, 참가비 무료, 선착순 500명.",
+      "organizer": [
+        { "@type": "Organization", "name": "부천시" },
+        { "@type": "Organization", "name": "부천여성청소년재단" },
+        { "@type": "Organization", "name": "산울림청소년센터" }
+      ],
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "KRW",
+        "availability": "https://schema.org/InStock",
+        "url": "https://forms.gle/JfCArNtD6sbM8xMs8",
+        "validFrom": "2026-09-01T00:00:00+09:00"
+      }
+    }
     </script>
-    <style>
-        body {
-            background-color: #fdfbf7;
-            color: #2d3748;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 320px;
-            max-height: 380px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 360px;
-            }
-        }
-    </style>
+
+    <script defer src="assets/js/config.js"></script>
+    <script defer src="assets/js/main.js"></script>
 </head>
-<body class="antialiased selection:bg-blossom-100 selection:text-blossom-600 min-h-screen flex flex-col justify-between">
-
-    <!-- Chosen Palette: Warm Forest & Floral Harmony (Forest Green #2e5a44, Azalea Blossom #e07a5f, Warm Sand Background #fdfbf7) -->
-
-    <!-- Application Structure Plan:
-        1. Hero Banner & Countdown: Highlighting core event info with dynamic time counter, key notices (mats, tumblers), and updated parking note (Annex Parking available, Public Transit recommended).
-        2. Class Recommendation Finder: Interactive quiz tool with category-dependent age and experience dropdowns preventing invalid options.
-        3. Dashboard & Award Visualizations: Chart.js visualization showing the breakdown of 7 classes and 21 awards.
-        4. Interactive Stamp Tour Preview: Displays Beginner Education Booth, Youth Club Mini Orienteering, and 10 Forest Leports Zones with interactive progress tracking.
-        5. Public Transit & Annex Parking Guide: Detail on Subway line 7 access, Annex Parking Lot fees (400 KRW / 30 min + 200 KRW / 10 min, max 6,000 KRW/day), and dynamic parking fee estimator.
-        6. Searchable FAQ Accordion: Answers on free entry, pin holes warning, team picnic mats & personal tumblers, annex parking details, and rules.
-        7. Registration Modal: Direct conversion link to official Google Form (https://forms.gle/JfCArNtD6sbM8xMs8).
-    -->
-
-    <!-- Visualization & Content Choices:
-        - Class & Prize Distribution -> Goal: Inform/Compare -> Chart.js Horizontal Bar Chart -> Canvas rendering.
-        - Dynamic Class Finder Tool -> Goal: Guide User -> Interactive Form Quiz with category-dependent inputs.
-        - Interactive Stamp Tour -> Goal: Engagement -> Interactive Cards with progress bar.
-        - Annex Parking & Transit Guide -> Goal: Clear Parking Rates & Public Transit Encouragement -> High contrast alert cards & interactive fee calculator.
-    -->
-
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+<body>
+    <a class="skip-link" href="#main">본문 바로가기</a>
 
     <!-- Header / Navigation -->
-    <header class="sticky top-0 z-40 bg-warmbg/90 backdrop-blur-md border-b border-forest-100 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <span class="text-2xl">🌲</span>
-                <div>
-                    <h1 class="font-bold text-forest-700 leading-tight text-base sm:text-lg">2026 산림레포츠 축제</h1>
-                    <p class="text-xs text-forest-500 hidden sm:block">부천 진달래동산 오리엔티어링 대회</p>
-                </div>
-            </div>
-            <nav class="hidden md:flex space-x-6 text-sm font-medium text-gray-700">
-                <a href="#about" class="hover:text-forest-500 transition">대회개요</a>
-                <a href="#class-finder" class="hover:text-forest-500 transition">클래스 찾기</a>
-                <a href="#structure" class="hover:text-forest-500 transition">클래스/시상</a>
-                <a href="#booths" class="hover:text-forest-500 transition">체험부스</a>
-                <a href="#transit" class="hover:text-forest-500 transition">오시는길/주차안내</a>
-                <a href="#faq" class="hover:text-forest-500 transition">FAQ & 준비물</a>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="brand" href="#top">
+                <span class="brand__mark" aria-hidden="true">🌲</span>
+                <span>
+                    <span class="brand__title">2026 산림레포츠 축제</span>
+                    <span class="brand__sub">부천 진달래동산 오리엔티어링 대회</span>
+                </span>
+            </a>
+
+            <nav id="primary-nav" class="nav" aria-label="주요 메뉴">
+                <a href="#about">대회개요</a>
+                <a href="#class-finder">클래스 찾기</a>
+                <a href="#structure">클래스/시상</a>
+                <a href="#booths">체험부스</a>
+                <a href="#transit">오시는길/주차안내</a>
+                <a href="#faq">FAQ &amp; 준비물</a>
             </nav>
-            <button onclick="openRegisterModal()" class="bg-blossom-500 hover:bg-blossom-600 text-white font-semibold text-xs sm:text-sm px-4 py-2 rounded-full shadow transition transform active:scale-95">
-                참가 신청하기
-            </button>
+
+            <div class="header-actions">
+                <button type="button" id="nav-toggle" class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="primary-nav">
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn--accent btn--sm btn--pill" data-modal-open="register-modal">
+                    참가 신청하기
+                </button>
+            </div>
         </div>
     </header>
 
-    <main class="flex-grow">
+    <main id="main" tabindex="-1">
+        <span id="top"></span>
+
         <!-- Hero Section -->
-        <section id="about" class="bg-gradient-to-b from-forest-50 via-warmbg to-warmbg py-12 sm:py-16 border-b border-forest-100">
-            <div class="max-w-6xl mx-auto px-4">
-                <div class="grid md:grid-cols-12 gap-8 items-center">
-                    <div class="md:col-span-7 space-y-5">
-                        <div class="inline-flex items-center space-x-2 bg-forest-100 text-forest-700 text-xs px-3 py-1.5 rounded-full font-medium">
-                            <span class="w-2 h-2 rounded-full bg-blossom-500 animate-pulse"></span>
+        <section id="about" class="section hero" aria-labelledby="hero-title">
+            <div class="container">
+                <div class="hero__grid">
+                    <div class="stack">
+                        <span class="pill-live">
+                            <span class="pill-live__dot" aria-hidden="true"></span>
                             <span>선착순 500명 모집 중 (참가비 무료)</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-forest-700 tracking-tight leading-tight">
+                        </span>
+                        <h1 id="hero-title" class="hero__title">
                             지도와 나침반을 들고<br>
-                            <span class="text-blossom-500">진달래동산</span>을 누비다!
-                        </h2>
-                        <p class="text-gray-600 text-base sm:text-lg leading-relaxed">
+                            <span class="accent">진달래동산</span>을 누비다!
+                        </h1>
+                        <p class="hero__lead">
                             가족, 친구와 함께 자연 속에서 한계를 극복하고 완주의 성취감을 느껴보세요. 초보자부터 경력자까지 누구나 즐길 수 있는 도심 속 산림레포츠 액티비티!
                         </p>
-                        
-                        <!-- Quick Stats Grid -->
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3">
-                            <div class="bg-white p-3.5 rounded-xl border border-gray-100 shadow-sm text-center">
-                                <span class="text-xs text-gray-500 block">대회 일시</span>
-                                <span class="font-bold text-sm sm:text-base text-forest-700">2026.10.17(토)</span>
+
+                        <div class="stat-grid">
+                            <div class="stat">
+                                <span class="stat__label">대회 일시</span>
+                                <span class="stat__value"><time datetime="2026-10-17T09:30:00+09:00">2026.10.17(토)</time></span>
                             </div>
-                            <div class="bg-white p-3.5 rounded-xl border border-gray-100 shadow-sm text-center">
-                                <span class="text-xs text-gray-500 block">개최 장소</span>
-                                <span class="font-bold text-sm sm:text-base text-forest-700">진달래동산 일대</span>
+                            <div class="stat">
+                                <span class="stat__label">개최 장소</span>
+                                <span class="stat__value">진달래동산 일대</span>
                             </div>
-                            <div class="bg-white p-3.5 rounded-xl border border-gray-100 shadow-sm text-center">
-                                <span class="text-xs text-gray-500 block">모집 인원</span>
-                                <span class="font-bold text-sm sm:text-base text-forest-700">시민 500명</span>
+                            <div class="stat">
+                                <span class="stat__label">모집 인원</span>
+                                <span class="stat__value">시민 500명</span>
                             </div>
-                            <div class="bg-white p-3.5 rounded-xl border border-gray-100 shadow-sm text-center">
-                                <span class="text-xs text-gray-500 block">시상 내역</span>
-                                <span class="font-bold text-sm sm:text-base text-blossom-500">총 21개 팀</span>
+                            <div class="stat">
+                                <span class="stat__label">시상 내역</span>
+                                <span class="stat__value stat__value--accent">총 21개 팀</span>
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap gap-3 pt-2">
-                            <a href="https://forms.gle/JfCArNtD6sbM8xMs8" target="_blank" rel="noopener noreferrer" class="bg-forest-500 hover:bg-forest-600 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-md transition flex items-center space-x-2">
-                                <span>🚀 선착순 구글폼 신청</span>
+                        <div class="hero__cta">
+                            <a class="btn btn--primary" href="https://forms.gle/JfCArNtD6sbM8xMs8" target="_blank" rel="noopener noreferrer">
+                                🚀 선착순 구글폼 신청
                             </a>
-                            <a href="#class-finder" class="bg-white hover:bg-gray-50 text-forest-700 border border-forest-200 px-5 py-3 rounded-xl font-medium text-sm transition flex items-center space-x-1">
-                                <span>🎯 내 클래스 추천받기</span>
+                            <a class="btn btn--ghost" href="#class-finder">
+                                🎯 내 클래스 추천받기
                             </a>
                         </div>
                     </div>
 
-                    <!-- Interactive Countdown / Info Card -->
-                    <div class="md:col-span-5">
-                        <div class="bg-white p-6 rounded-2xl border border-forest-100 shadow-lg relative overflow-hidden">
-                            <div class="absolute top-0 right-0 bg-blossom-500 text-white text-xs px-3 py-1 rounded-bl-xl font-bold">
-                                D-DAY 카운트다운
-                            </div>
-                            <h3 class="text-lg font-bold text-forest-700 mb-1">대회 개요 및 필수 체크</h3>
-                            <p class="text-xs text-gray-500 mb-4">행사 당일 집결 장소와 필수 준비물을 확인하세요.</p>
-                            
-                            <!-- Timer Box -->
-                            <div id="countdown" class="grid grid-cols-4 gap-2 text-center my-4 bg-sand/50 p-3 rounded-xl border border-sand">
+                    <!-- Countdown / Info Card -->
+                    <div>
+                        <div class="infocard">
+                            <span class="infocard__flag">D-DAY 카운트다운</span>
+                            <h2 class="infocard__title">대회 개요 및 필수 체크</h2>
+                            <p class="infocard__note">행사 당일 집결 장소와 필수 준비물을 확인하세요.</p>
+
+                            <div id="countdown" class="countdown" role="timer" aria-live="off">
                                 <div>
-                                    <span id="days" class="block text-xl font-black text-forest-700">00</span>
-                                    <span class="text-[10px] text-gray-500">일</span>
+                                    <span id="cd-days" class="countdown__num">00</span>
+                                    <span class="countdown__unit">일</span>
                                 </div>
                                 <div>
-                                    <span id="hours" class="block text-xl font-black text-forest-700">00</span>
-                                    <span class="text-[10px] text-gray-500">시간</span>
+                                    <span id="cd-hours" class="countdown__num">00</span>
+                                    <span class="countdown__unit">시간</span>
                                 </div>
                                 <div>
-                                    <span id="minutes" class="block text-xl font-black text-forest-700">00</span>
-                                    <span class="text-[10px] text-gray-500">분</span>
+                                    <span id="cd-minutes" class="countdown__num">00</span>
+                                    <span class="countdown__unit">분</span>
                                 </div>
                                 <div>
-                                    <span id="seconds" class="block text-xl font-black text-blossom-500">00</span>
-                                    <span class="text-[10px] text-gray-500">초</span>
+                                    <span id="cd-seconds" class="countdown__num countdown__num--accent">00</span>
+                                    <span class="countdown__unit">초</span>
                                 </div>
                             </div>
 
-                            <ul class="space-y-2.5 text-xs sm:text-sm text-gray-700 pt-2">
-                                <li class="flex items-start space-x-2">
-                                    <span class="text-forest-500 font-bold shrink-0">⏱️ 운영시간:</span>
-                                    <span>09:30 ~ 15:00 (개회식 및 경기)</span>
-                                </li>
-                                <li class="flex items-start space-x-2">
-                                    <span class="text-forest-500 font-bold shrink-0">📍 집결장소:</span>
-                                    <span>부천 진달래동산 야외 무대</span>
-                                </li>
-                                <li class="flex items-start space-x-2">
-                                    <span class="text-forest-500 font-bold shrink-0">🎒 지참품목:</span>
-                                    <span><strong>팀별 돗자리</strong>, <strong>개인 텀블러</strong>(정수기용)</span>
-                                </li>
-                                <li class="flex items-start space-x-2">
-                                    <span class="text-forest-500 font-bold shrink-0">🚗 주차안내:</span>
-                                    <span>대중교통 이용 권장 (자차 이용 시 <strong>부설 주차장</strong> 이용)</span>
-                                </li>
+                            <ul class="checklist">
+                                <li><b>⏱️ 운영시간:</b> <span>09:30 ~ 15:00 (개회식 및 경기)</span></li>
+                                <li><b>📍 집결장소:</b> <span>부천 진달래동산 야외 무대</span></li>
+                                <li><b>🎒 지참품목:</b> <span><strong>팀별 돗자리</strong>, <strong>개인 텀블러</strong>(정수기용)</span></li>
+                                <li><b>🚗 주차안내:</b> <span>대중교통 이용 권장 (자차 이용 시 <strong>부설 주차장</strong> 이용)</span></li>
                             </ul>
                         </div>
                     </div>
@@ -202,357 +185,232 @@
             </div>
         </section>
 
-        <!-- Interactive Section 1: Class Finder Quiz -->
-        <section id="class-finder" class="py-12 bg-white border-b border-gray-100">
-            <div class="max-w-6xl mx-auto px-4">
-                <div class="text-center max-w-2xl mx-auto mb-8">
-                    <span class="text-blossom-500 text-xs font-bold uppercase tracking-wider">Interactive Finder</span>
-                    <h3 class="text-2xl sm:text-3xl font-extrabold text-forest-700 mt-1">맞춤 참가 클래스 찾기</h3>
-                    <p class="text-gray-600 text-sm mt-2">
-                        참가 유형을 선택하면 해당되는 연령대 옵션만 자동으로 안내되어 정확한 클래스를 바로 추천해 드립니다.
-                    </p>
+        <!-- Class Finder -->
+        <section id="class-finder" class="section section--plain" aria-labelledby="finder-heading">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow eyebrow--blossom">Interactive Finder</span>
+                    <h2 id="finder-heading" class="section-title">맞춤 참가 클래스 찾기</h2>
+                    <p>참가 유형을 선택하면 해당되는 연령대 옵션만 자동으로 안내되어 정확한 클래스를 바로 추천해 드립니다.</p>
                 </div>
 
-                <div class="bg-warmbg border border-forest-100 rounded-2xl p-6 md:p-8 max-w-4xl mx-auto shadow-sm">
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <!-- Step 1: Category -->
-                        <div>
-                            <label class="block text-xs font-bold text-forest-700 mb-2">1. 참가 유형 선택</label>
-                            <select id="finder-category" onchange="onCategoryChange()" class="w-full bg-white border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
-                                <option value="family">가족 그룹 (청소년/어린이 동반)</option>
-                                <option value="youth">청소년 전용 (11세~19세)</option>
-                                <option value="young">청년 전용 (20세~34세)</option>
-                            </select>
+                <div class="finder">
+                    <div class="finder__row">
+                        <div class="field">
+                            <label for="finder-category">1. 참가 유형 선택</label>
+                            <select id="finder-category" class="select"></select>
                         </div>
-
-                        <!-- Step 2: Age of Youngest/Member (Dynamically Updated) -->
-                        <div>
-                            <label class="block text-xs font-bold text-forest-700 mb-2">2. 대상 연령대 선택</label>
-                            <select id="finder-age" onchange="calculateClass()" class="w-full bg-white border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
-                                <!-- Dynamically populated by JS based on category -->
-                            </select>
+                        <div class="field">
+                            <label for="finder-age">2. 대상 연령대 선택</label>
+                            <select id="finder-age" class="select"></select>
                         </div>
-
-                        <!-- Step 3: Experience Level / Team Format -->
-                        <div>
-                            <label class="block text-xs font-bold text-forest-700 mb-2">3. 경력 및 참가 방식</label>
-                            <select id="finder-exp" onchange="calculateClass()" class="w-full bg-white border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
-                                <!-- Dynamically populated by JS based on category -->
-                            </select>
+                        <div class="field">
+                            <label for="finder-exp">3. 경력 및 참가 방식</label>
+                            <select id="finder-exp" class="select"></select>
                         </div>
                     </div>
 
-                    <!-- Recommendation Result Card -->
-                    <div id="recommendation-result" class="mt-6 bg-white rounded-xl p-5 border-2 border-forest-500 transition-all">
-                        <!-- JS Dynamic Content will be inserted here -->
-                    </div>
-                    
-                    <p class="text-xs text-gray-500 mt-3 text-center">
-                        💡 <strong>혼합 연령 참가 팁:</strong> 가족 내 7세와 11세 자녀가 함께 참여 시, 상위 연령 클래스(11~13세)로 선택해 주세요.
-                    </p>
+                    <div id="finder-result" class="finder__result" aria-live="polite"></div>
+
+                    <p id="finder-tip" class="finder__tip"></p>
                 </div>
             </div>
         </section>
 
-        <!-- Interactive Section 2: Class Overview & Award Dashboard (Chart.js) -->
-        <section id="structure" class="py-12 bg-warmbg border-b border-gray-100">
-            <div class="max-w-6xl mx-auto px-4">
-                <div class="text-center max-w-2xl mx-auto mb-8">
-                    <span class="text-forest-500 text-xs font-bold uppercase tracking-wider">Competition Details</span>
-                    <h3 class="text-2xl sm:text-3xl font-extrabold text-forest-700 mt-1">클래스 구성 및 시상 내역</h3>
-                    <p class="text-gray-600 text-sm mt-2">
-                        총 7개 클래스에서 21개 팀이 수상의 영예를 안게 됩니다. 경기 방식과 대상을 한눈에 비교해 보세요.
-                    </p>
+        <!-- Class Overview & Awards -->
+        <section id="structure" class="section section--tint" aria-labelledby="structure-heading">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow eyebrow--forest">Competition Details</span>
+                    <h2 id="structure-heading" class="section-title">클래스 구성 및 시상 내역</h2>
+                    <p>총 7개 클래스에서 21개 팀이 수상의 영예를 안게 됩니다. 경기 방식과 대상을 한눈에 비교해 보세요.</p>
                 </div>
 
-                <div class="grid lg:grid-cols-12 gap-8 items-center">
-                    <!-- Chart Box -->
-                    <div class="lg:col-span-6 bg-white p-5 rounded-2xl border border-gray-100 shadow-sm">
-                        <div class="flex items-center justify-between mb-4">
-                            <h4 class="font-bold text-forest-700 text-sm">클래스별 시상 팀 분포 (총 21팀)</h4>
-                            <span class="text-xs bg-forest-50 text-forest-700 px-2.5 py-1 rounded-md font-medium">1, 2, 3위 시상</span>
+                <div class="awards">
+                    <div class="card card--pad">
+                        <div class="award-chart__head">
+                            <h3>클래스별 시상 팀 분포 (총 21팀)</h3>
+                            <span class="badge badge--soft">1, 2, 3위 시상</span>
                         </div>
-                        <div class="chart-container">
-                            <canvas id="awardsChart"></canvas>
-                        </div>
+                        <div id="award-rows" class="award-rows"></div>
+                        <div id="award-legend" class="award-legend"></div>
                     </div>
 
-                    <!-- Interactive Class Table/Cards -->
-                    <div class="lg:col-span-6 space-y-3">
-                        <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">클래스별 상세 가이드 (클릭하여 확인)</div>
-                        
-                        <div id="class-list-container" class="space-y-2 max-h-[400px] overflow-y-auto pr-1">
-                            <!-- JS Dynamic Interactive List Items -->
-                        </div>
+                    <div>
+                        <p class="list-hint">클래스별 상세 가이드 (클릭하여 확인)</p>
+                        <div id="class-list" class="class-list"></div>
                     </div>
                 </div>
 
-                <!-- Prize Sponsor Badge Box -->
-                <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="bg-white p-4 rounded-xl border border-forest-100 text-center shadow-xs">
-                        <div class="text-2xl mb-1">🥇 1위 (총 7팀)</div>
-                        <div class="font-bold text-forest-700 text-sm">부천시장상</div>
-                        <div class="text-xs text-gray-500 mt-1">각 클래스 최고 득점자</div>
+                <div id="prize-grid" class="prize-grid"></div>
+            </div>
+        </section>
+
+        <!-- Stamp Tour & Booths -->
+        <section id="booths" class="section section--plain" aria-labelledby="booths-heading">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow eyebrow--blossom">Festival Experience</span>
+                    <h2 id="booths-heading" class="section-title">스탬프 투어 &amp; 다채로운 체험 부스</h2>
+                    <p>초보자 교육부터 동아리 기획 미니 게임, 10가지 산림레포츠 체험존까지 즐기고 리워드를 받아가세요!</p>
+                </div>
+
+                <div id="booth-grid" class="booth-grid"></div>
+
+                <div class="stamp-tracker">
+                    <h3>나의 모의 스탬프 달성도</h3>
+                    <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0" aria-label="스탬프 수집 진행도">
+                        <div id="stamp-progress" class="progress__fill"></div>
                     </div>
-                    <div class="bg-white p-4 rounded-xl border border-forest-100 text-center shadow-xs">
-                        <div class="text-2xl mb-1">🥈 2위 (총 7팀)</div>
-                        <div class="font-bold text-forest-700 text-sm">부천여성청소년재단 대표이사상</div>
-                        <div class="text-xs text-gray-500 mt-1">각 클래스 준우승 팀</div>
-                    </div>
-                    <div class="bg-white p-4 rounded-xl border border-forest-100 text-center shadow-xs">
-                        <div class="text-2xl mb-1">🥉 3위 (총 7팀)</div>
-                        <div class="font-bold text-forest-700 text-sm">산울림청소년센터장상</div>
-                        <div class="text-xs text-gray-500 mt-1">각 클래스 3위 팀</div>
-                    </div>
+                    <p id="stamp-status" class="stamp-tracker__status">체험 버튼을 눌러 3개 스탬프를 모아보세요!</p>
                 </div>
             </div>
         </section>
 
-        <!-- Interactive Section 3: Stamp Tour & Side Events Explorer -->
-        <section id="booths" class="py-12 bg-white border-b border-gray-100">
-            <div class="max-w-6xl mx-auto px-4">
-                <div class="text-center max-w-2xl mx-auto mb-8">
-                    <span class="text-blossom-500 text-xs font-bold uppercase tracking-wider">Festival Experience</span>
-                    <h3 class="text-2xl sm:text-3xl font-extrabold text-forest-700 mt-1">스탬프 투어 & 다채로운 체험 부스</h3>
-                    <p class="text-gray-600 text-sm mt-2">
-                        초보자 교육부터 동아리 기획 미니 게임, 10가지 산림레포츠 체험존까지 즐기고 리워드를 받아가세요!
-                    </p>
+        <!-- Transit & Parking -->
+        <section id="transit" class="section section--tint" aria-labelledby="transit-heading">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow eyebrow--forest">Transportation &amp; Parking</span>
+                    <h2 id="transit-heading" class="section-title">오시는 길 및 주차 안내</h2>
+                    <p>행사 당일 진입로 혼잡이 예상되오니 대중교통 이용을 추천합니다. 차량 이용 시 부설 주차장을 이용해 주세요.</p>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-6">
-                    <!-- Booth 1: 교육부스 -->
-                    <div class="bg-warmbg border border-forest-100 p-5 rounded-2xl hover:shadow-md transition flex flex-col justify-between">
+                <div class="transit-grid">
+                    <div class="transit-card transit-card--rec">
                         <div>
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-3xl">🧭</span>
-                                <span class="text-[11px] bg-forest-100 text-forest-700 px-2 py-0.5 rounded font-bold">사전 교육</span>
-                            </div>
-                            <h4 class="font-bold text-forest-700 text-base mb-1">초보자 맞춤 교육부스</h4>
-                            <p class="text-xs text-gray-600 leading-relaxed mb-4">
-                                본 대회 시작 전 나침반 사용법과 지도 읽기 기초를 쉽고 친절하게 배워볼 수 있는 필수 교육 코너입니다.
-                            </p>
-                        </div>
-                        <button onclick="toggleStamp(1)" id="stamp-btn-1" class="w-full bg-white border border-forest-300 text-forest-700 font-semibold text-xs py-2 rounded-lg hover:bg-forest-50 transition">
-                            스탬프 찍어보기 ⭕
-                        </button>
-                    </div>
-
-                    <!-- Booth 2: 미니 오리엔티어링 (동아리 기획) -->
-                    <div class="bg-warmbg border border-forest-100 p-5 rounded-2xl hover:shadow-md transition flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-3xl">🎯</span>
-                                <span class="text-[11px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">동아리 기획</span>
-                            </div>
-                            <h4 class="font-bold text-forest-700 text-base mb-1">동아리 기획 미니 오리엔티어링</h4>
-                            <p class="text-xs text-gray-600 leading-relaxed mb-4">
-                                청소년 동아리가 직접 참신하게 기획하고 운영하는 체험부스로 재미있는 미션 게임이 함께 진행됩니다.
-                            </p>
-                        </div>
-                        <button onclick="toggleStamp(2)" id="stamp-btn-2" class="w-full bg-white border border-forest-300 text-forest-700 font-semibold text-xs py-2 rounded-lg hover:bg-forest-50 transition">
-                            스탬프 찍어보기 ⭕
-                        </button>
-                    </div>
-
-                    <!-- Booth 3: 산림레포츠 체험 (10개 체험존) -->
-                    <div class="bg-warmbg border border-forest-100 p-5 rounded-2xl hover:shadow-md transition flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-3xl">🧗‍♂️</span>
-                                <span class="text-[11px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">10개 체험존</span>
-                            </div>
-                            <h4 class="font-bold text-forest-700 text-base mb-1">산림레포츠 체험존</h4>
-                            <p class="text-xs text-gray-600 leading-relaxed mb-4">
-                                숲밧줄 체험, 에너지바 직접 제작하기 등 풍성하고 다채로운 10개의 산림 체험 활동이 준비되어 있습니다.
-                            </p>
-                        </div>
-                        <button onclick="toggleStamp(3)" id="stamp-btn-3" class="w-full bg-white border border-forest-300 text-forest-700 font-semibold text-xs py-2 rounded-lg hover:bg-forest-50 transition">
-                            스탬프 찍어보기 ⭕
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Stamp Rewards Tracker Bar -->
-                <div class="mt-8 bg-forest-50 border border-forest-200 p-6 rounded-2xl text-center">
-                    <h4 class="font-bold text-forest-700 text-sm mb-2">나의 모의 스탬프 달성도</h4>
-                    <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden max-w-xl mx-auto mb-3">
-                        <div id="stamp-progress" class="bg-blossom-500 h-full w-0 transition-all duration-500"></div>
-                    </div>
-                    <p id="stamp-status-text" class="text-xs text-forest-700 font-medium">
-                        체험 버튼을 눌러 3개 스탬프를 모아보세요!
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 4: Public Transit & Annex Parking Guide + Interactive Fee Calculator -->
-        <section id="transit" class="py-12 bg-warmbg border-b border-gray-100">
-            <div class="max-w-6xl mx-auto px-4">
-                <div class="text-center max-w-2xl mx-auto mb-8">
-                    <span class="text-forest-500 text-xs font-bold uppercase tracking-wider">Transportation & Parking</span>
-                    <h3 class="text-2xl sm:text-3xl font-extrabold text-forest-700 mt-1">오시는 길 및 주차 안내</h3>
-                    <p class="text-gray-600 text-sm mt-2">
-                        행사 당일 진입로 혼잡이 예상되오니 대중교통 이용을 추천합니다. 차량 이용 시 부설 주차장을 이용해 주세요.
-                    </p>
-                </div>
-
-                <div class="grid md:grid-cols-12 gap-6 items-stretch max-w-5xl mx-auto">
-                    <!-- Subway Info -->
-                    <div class="md:col-span-6 bg-white p-6 rounded-2xl border border-forest-200 shadow-sm flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center space-x-3 mb-3">
-                                <span class="text-3xl">🚇</span>
+                            <div class="transit-card__head">
+                                <span class="transit-card__icon" aria-hidden="true">🚇</span>
                                 <div>
-                                    <h4 class="font-bold text-forest-700 text-base">지하철 이용 안내 (적극 권장)</h4>
-                                    <span class="text-xs text-forest-500 font-semibold">도보 5분 거리 최적 코스</span>
+                                    <h3>지하철 이용 안내 (적극 권장)</h3>
+                                    <span>도보 5분 거리 최적 코스</span>
                                 </div>
                             </div>
-                            <p class="text-xs sm:text-sm text-gray-700 leading-relaxed space-y-2 mt-4">
-                                <strong class="text-forest-700">지하철 7호선 '부천종합운동장역' 2번 출구</strong> 이용<br>
+                            <p>
+                                <strong>지하철 7호선 '부천종합운동장역' 2번 출구</strong> 이용.
                                 출구 나온 후 진달래동산 야외 무대 방면으로 도보 약 5분 소요됩니다.
                             </p>
                         </div>
-                        <div class="mt-6 bg-forest-50 p-3 rounded-xl text-center text-xs text-forest-700 font-medium">
-                            🌿 편리하고 막힘없는 대중교통 이용을 권장해 드립니다.
-                        </div>
+                        <div class="callout">🌿 편리하고 막힘없는 대중교통 이용을 권장해 드립니다.</div>
                     </div>
 
-                    <!-- Annex Parking Lot Info & Calculator -->
-                    <div class="md:col-span-6 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between">
+                    <div class="transit-card">
                         <div>
-                            <div class="flex items-center space-x-3 mb-3">
-                                <span class="text-3xl">🅿️</span>
+                            <div class="transit-card__head">
+                                <span class="transit-card__icon" aria-hidden="true">🅿️</span>
                                 <div>
-                                    <h4 class="font-bold text-forest-700 text-base">부천종합운동장 부설 주차장 안내</h4>
-                                    <span class="text-xs text-gray-500">자가용 이용 시 부설주차장 이용</span>
+                                    <h3>부천종합운동장 부설 주차장 안내</h3>
+                                    <span class="muted">자가용 이용 시 부설주차장 이용</span>
                                 </div>
                             </div>
-                            <div class="text-xs text-gray-700 space-y-1.5 mt-3 bg-sand/40 p-3 rounded-xl border border-sand">
-                                <p>• <strong>기본 요금:</strong> 최초 30분 400원</p>
-                                <p>• <strong>추가 요금:</strong> 30분 초과 후 10분마다 200원</p>
-                                <p>• <strong>일 주차료:</strong> 승용차 최대 <strong>6,000원</strong></p>
+                            <div class="fee-table">
+                                <span>• <strong>기본 요금:</strong> 최초 30분 400원</span>
+                                <span>• <strong>추가 요금:</strong> 30분 초과 후 10분마다 200원</span>
+                                <span>• <strong>일 주차료:</strong> 승용차 최대 <strong>6,000원</strong></span>
                             </div>
 
-                            <!-- Interactive Parking Fee Calculator -->
-                            <div class="mt-4 pt-3 border-t border-gray-100">
-                                <label class="block text-xs font-bold text-forest-700 mb-1">
-                                    ⏱️ 주차 예상 시간 선택: <span id="parking-time-text" class="text-blossom-500 font-black">3시간</span>
+                            <div class="parking-calc">
+                                <label for="parking-range">
+                                    ⏱️ 주차 예상 시간 선택: <b id="parking-time">3시간</b>
                                 </label>
-                                <input type="range" id="parking-range" min="30" max="480" step="30" value="180" oninput="calculateParkingFee()" class="w-full accent-forest-500 h-2 bg-gray-200 rounded-lg cursor-pointer">
-                                
-                                <div class="mt-3 flex justify-between items-center bg-forest-50 p-2.5 rounded-lg text-xs">
-                                    <span class="text-gray-600 font-medium">예상 주차 요금:</span>
-                                    <span id="calculated-fee" class="font-black text-forest-700 text-sm">3,400 원</span>
+                                <input type="range" id="parking-range" class="range" min="30" max="480" step="30" value="180">
+                                <div class="parking-result">
+                                    <span class="muted">예상 주차 요금:</span>
+                                    <output id="parking-fee" for="parking-range">3,400 원</output>
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-4 text-[11px] text-gray-400 text-center">
-                            ※ 주차 요금은 참가자 개인 부담이며, 당일 현장 상황에 따라 혼잡할 수 있습니다.
-                        </div>
+                        <p class="fineprint">※ 주차 요금은 참가자 개인 부담이며, 당일 현장 상황에 따라 혼잡할 수 있습니다.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Interactive Section 5: Filterable FAQ Accordion -->
-        <section id="faq" class="py-12 bg-white">
-            <div class="max-w-4xl mx-auto px-4">
-                <div class="text-center mb-8">
-                    <span class="text-blossom-500 text-xs font-bold uppercase tracking-wider">Help & Rules</span>
-                    <h3 class="text-2xl sm:text-3xl font-extrabold text-forest-700 mt-1">자주 묻는 질문 (FAQ) & 유의사항</h3>
-                    <p class="text-gray-600 text-sm mt-2">
-                        참가비, 지참 필수 준비물, 배번표 옷핀 부착, 주차, 우천 시 안내 등을 확인하세요.
-                    </p>
+        <!-- FAQ -->
+        <section id="faq" class="section section--plain" aria-labelledby="faq-heading">
+            <div class="container container--narrow">
+                <div class="section-head">
+                    <span class="eyebrow eyebrow--blossom">Help &amp; Rules</span>
+                    <h2 id="faq-heading" class="section-title">자주 묻는 질문 (FAQ) &amp; 유의사항</h2>
+                    <p>참가비, 지참 필수 준비물, 배번표 옷핀 부착, 주차, 우천 시 안내 등을 확인하세요.</p>
                 </div>
 
-                <!-- Search Input -->
-                <div class="mb-6">
-                    <input type="text" id="faq-search" onkeyup="filterFAQ()" placeholder="🔍 궁금한 키워드를 검색해 보세요 (예: 돗자리, 텀블러, 옷핀, 참가비, 주차, 우천)" class="w-full bg-warmbg border border-forest-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
-                </div>
+                <input type="text" id="faq-search" class="faq-search" placeholder="🔍 궁금한 키워드를 검색해 보세요 (예: 돗자리, 텀블러, 옷핀, 참가비, 주차, 우천)" aria-label="FAQ 키워드 검색">
 
-                <!-- Accordion Items -->
-                <div class="space-y-3" id="faq-list">
-                    <!-- FAQ Item 1: Entry Fee & Essential Items (Mat, Tumbler, Pins) -->
-                    <div class="faq-item border border-gray-100 rounded-xl overflow-hidden bg-warmbg">
-                        <button onclick="toggleFAQ(this)" class="w-full p-4 text-left font-bold text-forest-700 text-sm flex justify-between items-center hover:bg-forest-50 transition">
+                <div class="faq-list" id="faq-list">
+                    <div class="faq-item">
+                        <button type="button" class="faq-item__q" aria-expanded="false">
                             <span>Q. 참가비와 지참 준비물, 배번표 부착 유의사항은 무엇인가요?</span>
-                            <span class="faq-icon text-gray-400 text-lg">+</span>
+                            <span class="faq-item__icon" aria-hidden="true">+</span>
                         </button>
-                        <div class="faq-content hidden p-4 bg-white text-xs text-gray-600 border-t border-gray-100 leading-relaxed space-y-3">
+                        <div class="faq-item__a" hidden>
                             <p>네, <strong>참가비는 전액 무료</strong>입니다! 참가자 전원에게 배번표와 활동 간식이 기본 제공됩니다.</p>
-                            
-                            <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-lg text-emerald-900 space-y-1">
-                                <p class="font-bold text-emerald-800">🎒 챙겨오셔야 할 필수 준비물:</p>
+                            <div class="faq-note faq-note--tip">
+                                <p><strong>🎒 챙겨오셔야 할 필수 준비물</strong></p>
                                 <p>• <strong>팀별 돗자리:</strong> 팀별로 편안하게 앉아서 쉴 수 있도록 꼭 준비해 주세요.</p>
                                 <p>• <strong>개인 텀블러:</strong> 현장 정수기 이용 및 음용수 보관을 위한 텀블러 지참 필수!</p>
                                 <p>• 편안한 운동복과 운동화 착용을 권장합니다.</p>
                             </div>
-
-                            <div class="bg-amber-50 border border-amber-200 p-3 rounded-lg text-amber-800">
-                                ⚠️ <strong>배번표 옷핀 부착 안내:</strong> 배번표가 <strong>옷핀으로 제공되어 의류에 작은 구멍이 날 수 있습니다.</strong> 아끼는 옷보다는 오염이나 구멍에 구애받지 않는 편안한 활동복 착용을 부탁드립니다.
+                            <div class="faq-note faq-note--warn">
+                                <p>⚠️ <strong>배번표 옷핀 부착 안내:</strong> 배번표가 <strong>옷핀으로 제공되어 의류에 작은 구멍이 날 수 있습니다.</strong> 아끼는 옷보다는 오염이나 구멍에 구애받지 않는 편안한 활동복 착용을 부탁드립니다.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- FAQ Item 2: Parking Question -->
-                    <div class="faq-item border border-gray-100 rounded-xl overflow-hidden bg-warmbg">
-                        <button onclick="toggleFAQ(this)" class="w-full p-4 text-left font-bold text-forest-700 text-sm flex justify-between items-center hover:bg-forest-50 transition">
+                    <div class="faq-item">
+                        <button type="button" class="faq-item__q" aria-expanded="false">
                             <span>Q. 행사 당일 자차 주차가 가능한가요?</span>
-                            <span class="faq-icon text-gray-400 text-lg">+</span>
+                            <span class="faq-item__icon" aria-hidden="true">+</span>
                         </button>
-                        <div class="faq-content hidden p-4 bg-white text-xs text-gray-600 border-t border-gray-100 leading-relaxed">
-                            네, <strong>부천종합운동장 부설 주차장</strong> 이용이 가능합니다. (최초 30분 400원, 이후 10분당 200원, 승용차 일 최대 6,000원 개인 부담). 다만 행사 당일 도로 및 주차장이 혼잡할 수 있으니 대중교통(지하철 7호선 부천종합운동장역 2번 출구) 이용을 권장해 드립니다.
+                        <div class="faq-item__a" hidden>
+                            <p>네, <strong>부천종합운동장 부설 주차장</strong> 이용이 가능합니다. (최초 30분 400원, 이후 10분당 200원, 승용차 일 최대 6,000원 개인 부담). 다만 행사 당일 도로 및 주차장이 혼잡할 수 있으니 대중교통(지하철 7호선 부천종합운동장역 2번 출구) 이용을 권장해 드립니다.</p>
                         </div>
                     </div>
 
-                    <!-- FAQ Item 3: Rainy Weather -->
-                    <div class="faq-item border border-gray-100 rounded-xl overflow-hidden bg-warmbg">
-                        <button onclick="toggleFAQ(this)" class="w-full p-4 text-left font-bold text-forest-700 text-sm flex justify-between items-center hover:bg-forest-50 transition">
+                    <div class="faq-item">
+                        <button type="button" class="faq-item__q" aria-expanded="false">
                             <span>Q. 비가 와도 대회는 정상 진행되나요?</span>
-                            <span class="faq-icon text-gray-400 text-lg">+</span>
+                            <span class="faq-item__icon" aria-hidden="true">+</span>
                         </button>
-                        <div class="faq-content hidden p-4 bg-white text-xs text-gray-600 border-t border-gray-100 leading-relaxed">
-                            네! 오리엔티어링 대회는 우천 시에도 정상 진행됩니다. 단, 폭우 및 기상 특보 발효 등 안전상 위험이 판단될 경우 사전 등록하신 연락처로 별도 공지 예정입니다.
+                        <div class="faq-item__a" hidden>
+                            <p>네! 오리엔티어링 대회는 우천 시에도 정상 진행됩니다. 단, 폭우 및 기상 특보 발효 등 안전상 위험이 판단될 경우 사전 등록하신 연락처로 별도 공지 예정입니다.</p>
                         </div>
                     </div>
 
-                    <!-- FAQ Item 4: Course Rules & Restrooms -->
-                    <div class="faq-item border border-gray-100 rounded-xl overflow-hidden bg-warmbg">
-                        <button onclick="toggleFAQ(this)" class="w-full p-4 text-left font-bold text-forest-700 text-sm flex justify-between items-center hover:bg-forest-50 transition">
+                    <div class="faq-item">
+                        <button type="button" class="faq-item__q" aria-expanded="false">
                             <span>Q. 대회 중 화장실 이용이나 코스 이탈이 가능한가요?</span>
-                            <span class="faq-icon text-gray-400 text-lg">+</span>
+                            <span class="faq-item__icon" aria-hidden="true">+</span>
                         </button>
-                        <div class="faq-content hidden p-4 bg-white text-xs text-gray-600 border-t border-gray-100 leading-relaxed">
-                            참가자의 안전과 공정한 기록 측정을 위해 지정된 코스 이탈은 엄격히 금지됩니다. 위반 시 시상 대상에서 제외될 수 있으니 경기 시작 전 야외 무대 근처 화장실을 미리 이용해 주세요.
+                        <div class="faq-item__a" hidden>
+                            <p>참가자의 안전과 공정한 기록 측정을 위해 지정된 코스 이탈은 엄격히 금지됩니다. 위반 시 시상 대상에서 제외될 수 있으니 경기 시작 전 야외 무대 근처 화장실을 미리 이용해 주세요.</p>
                         </div>
                     </div>
 
-                    <!-- FAQ Item 5: LNT Clean Environment -->
-                    <div class="faq-item border border-gray-100 rounded-xl overflow-hidden bg-warmbg">
-                        <button onclick="toggleFAQ(this)" class="w-full p-4 text-left font-bold text-forest-700 text-sm flex justify-between items-center hover:bg-forest-50 transition">
+                    <div class="faq-item">
+                        <button type="button" class="faq-item__q" aria-expanded="false">
                             <span>Q. 현장에 쓰레기통이 설치되어 있나요?</span>
-                            <span class="faq-icon text-gray-400 text-lg">+</span>
+                            <span class="faq-item__icon" aria-hidden="true">+</span>
                         </button>
-                        <div class="faq-content hidden p-4 bg-white text-xs text-gray-600 border-t border-gray-100 leading-relaxed">
-                            자연 속에서 즐기는 산림레포츠인 만큼 본인이 배출한 쓰레기는 되가져가는 <strong>'흔적 남기지 않기(LNT: Leave No Trace)'</strong>가 원칙입니다. 개인 텀블러 사용과 함께 깨끗한 숲 환경을 만들어주세요!
+                        <div class="faq-item__a" hidden>
+                            <p>자연 속에서 즐기는 산림레포츠인 만큼 본인이 배출한 쓰레기는 되가져가는 <strong>'흔적 남기지 않기(LNT: Leave No Trace)'</strong>가 원칙입니다. 개인 텀블러 사용과 함께 깨끗한 숲 환경을 만들어주세요!</p>
                         </div>
                     </div>
                 </div>
+                <p id="faq-empty" class="faq-empty" hidden>검색 결과가 없습니다. 다른 키워드로 검색해 보세요.</p>
             </div>
         </section>
 
-        <!-- Final Call to Action Section -->
-        <section class="py-12 bg-forest-500 text-white">
-            <div class="max-w-4xl mx-auto px-4 text-center space-y-4">
-                <h3 class="text-2xl sm:text-3xl font-extrabold">지금 바로 도전에 신청하세요!</h3>
-                <p class="text-forest-100 text-sm max-w-xl mx-auto">
-                    선착순 500명 마감 예정입니다. 진달래동산에서 가족, 친구와 잊지 못할 추억을 만들어보세요.
-                </p>
-                <div class="pt-2 flex flex-col sm:flex-row justify-center items-center gap-3">
-                    <a href="https://forms.gle/JfCArNtD6sbM8xMs8" target="_blank" rel="noopener noreferrer" class="bg-blossom-500 hover:bg-blossom-600 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
+        <!-- Final CTA -->
+        <section class="section final-cta" aria-labelledby="cta-heading">
+            <div class="container container--narrow">
+                <h2 id="cta-heading">지금 바로 도전에 신청하세요!</h2>
+                <p>선착순 500명 마감 예정입니다. 진달래동산에서 가족, 친구와 잊지 못할 추억을 만들어보세요.</p>
+                <div class="final-cta__actions">
+                    <a class="btn btn--accent" href="https://forms.gle/JfCArNtD6sbM8xMs8" target="_blank" rel="noopener noreferrer">
                         📝 참가 신청 구글폼 이동
                     </a>
-                    <a href="tel:0323444480" class="bg-white/10 hover:bg-white/20 text-white font-medium px-6 py-3.5 rounded-xl transition border border-white/20 text-sm">
+                    <a class="btn btn--outline-light" href="tel:0323444480">
                         📞 문의: 청소년활동팀 (032-344-4480)
                     </a>
                 </div>
@@ -561,338 +419,68 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-forest-700 text-forest-100 text-xs py-8">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+    <footer class="site-footer">
+        <div class="site-footer__inner">
             <div>
-                <p class="font-bold text-sm text-white">2026 산림레포츠 축제 오리엔티어링 대회</p>
-                <p class="mt-1 text-gray-300">주최/주관: 부천시 · 부천여성청소년재단 · 산울림청소년센터</p>
+                <p><strong>2026 산림레포츠 축제 오리엔티어링 대회</strong></p>
+                <p>주최/주관: 부천시 · 부천여성청소년재단 · 산울림청소년센터</p>
             </div>
-            <div class="text-right text-gray-300">
-                <p>문의전화: 032-344-4480 (청소년활동팀)</p>
-                <p class="mt-1">© 2026 Bucheon Forest Leports Festival. All rights reserved.</p>
+            <div class="site-footer__right">
+                <p>문의전화: <a href="tel:0323444480">032-344-4480</a> (청소년활동팀)</p>
+                <p>© 2026 Bucheon Forest Leports Festival. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Registration Modal Popup -->
-    <div id="register-modal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 relative shadow-2xl animate-in fade-in duration-200">
-            <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-lg">✕</button>
-            <div class="text-center">
-                <span class="text-3xl">🏃‍♂️</span>
-                <h4 class="text-xl font-bold text-forest-700 mt-2">대회 참가 신청 안내</h4>
-                <p class="text-xs text-gray-500 mt-1">구글폼을 통해 신청서 작성을 진행합니다.</p>
+    <!-- Registration Modal -->
+    <div id="register-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="register-modal-title" hidden>
+        <div class="modal__panel">
+            <button type="button" class="modal__close" data-modal-close aria-label="닫기">✕</button>
+            <div class="modal__head">
+                <span class="icon" aria-hidden="true">🏃</span>
+                <h2 id="register-modal-title">대회 참가 신청 안내</h2>
+                <p>구글폼을 통해 신청서 작성을 진행합니다.</p>
             </div>
-
-            <div class="bg-warmbg p-4 rounded-xl border border-gray-100 space-y-2 text-xs text-gray-700">
-                <p>✔️ <strong>모집 인원:</strong> 지역 시민 500명 (선착순)</p>
-                <p>✔️ <strong>참가비:</strong> 전액 무료</p>
-                <p>✔️ <strong>지참물:</strong> 팀별 돗자리, 개인 텀블러(정수기용)</p>
-                <p>✔️ <strong>교통:</strong> 지하철 7호선 권장 (자차 시 부설 주차장 이용)</p>
-            </div>
-
-            <div class="space-y-2">
-                <a href="https://forms.gle/JfCArNtD6sbM8xMs8" target="_blank" rel="noopener noreferrer" onclick="closeRegisterModal()" class="block text-center w-full bg-forest-500 hover:bg-forest-600 text-white font-bold py-3 rounded-xl shadow transition">
-                    구글폼 신청서로 이동하기 🔗
-                </a>
-                <button onclick="closeRegisterModal()" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium py-2.5 rounded-xl text-xs transition">
-                    닫기
-                </button>
+            <div class="modal__body">
+                <div class="modal__facts">
+                    <p>✔️ <strong>모집 인원:</strong> 지역 시민 500명 (선착순)</p>
+                    <p>✔️ <strong>참가비:</strong> 전액 무료</p>
+                    <p>✔️ <strong>지참물:</strong> 팀별 돗자리, 개인 텀블러(정수기용)</p>
+                    <p>✔️ <strong>교통:</strong> 지하철 7호선 권장 (자차 시 부설 주차장 이용)</p>
+                </div>
+                <div class="modal__actions">
+                    <a class="btn btn--primary btn--block" href="https://forms.gle/JfCArNtD6sbM8xMs8" target="_blank" rel="noopener noreferrer" data-modal-close>
+                        구글폼 신청서로 이동하기 🔗
+                    </a>
+                    <button type="button" class="btn btn--ghost btn--block" data-modal-close>닫기</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- JavaScript Application Logic -->
-    <script>
-        // Class Data Array
-        const classData = [
-            { id: 'c1', cat: '가족', name: '아기오리가족', target: '7세~10세 청소년 포함 가족', type: '스코어 방식', desc: '어린 자녀와 함께 즐기는 스코어 방식의 가족 입문 코스' },
-            { id: 'c2', cat: '가족', name: '어린오리가족', target: '11세~13세 청소년 포함 가족', type: '포인트 방식', desc: '초등 고학년 자녀와 지정 포인트를 순서대로 탐색하는 코스' },
-            { id: 'c3', cat: '가족', name: '청춘오리가족', target: '14세~19세 청소년 포함 가족', type: '포인트 방식', desc: '청소년 자녀와 팀워크를 발휘해 완주하는 클래스' },
-            { id: 'c4', cat: '청소년', name: '뛰어오리', target: '11세~13세 청소년 (2인 1팀)', type: '포인트 방식', desc: '또래 친구와 함께 협력하여 미션을 수행하는 코스' },
-            { id: 'c5', cat: '청소년', name: '날아오리', target: '14세~19세 청소년 (2인 1팀)', type: '포인트 방식', desc: '중·고등 청소년 친구끼리 도전하는 스피드 코스' },
-            { id: 'c6', cat: '청소년', name: '고수오리', target: '11세~19세 청소년 경력자 (1인 1팀)', type: '포인트 방식', desc: '오리엔티어링 경험이 있는 단독 참가 청소년 베테랑 클래스' },
-            { id: 'c7', cat: '청년', name: '달려오리', target: '20세~34세 청년 (1인 1팀)', type: '포인트 방식', desc: '청년층 단독 주행 정밀 탐색 포인트 코스' }
-        ];
-
-        document.addEventListener("DOMContentLoaded", function() {
-            initCountdown();
-            renderClassList();
-            onCategoryChange(); // Setup finder dropdown options dynamically
-            initChart();
-            calculateParkingFee();
-        });
-
-        // 1. Initialize Chart.js Horizontal Bar Chart
-        function initChart() {
-            const ctx = document.getElementById('awardsChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['아기오리가족', '어린오리가족', '청춘오리가족', '뛰어오리', '날아오리', '고수오리', '달려오리'],
-                    datasets: [
-                        {
-                            label: '🥇 1위 (시장상)',
-                            data: [1, 1, 1, 1, 1, 1, 1],
-                            backgroundColor: '#2e5a44'
-                        },
-                        {
-                            label: '🥈 2위 (대표이사상)',
-                            data: [1, 1, 1, 1, 1, 1, 1],
-                            backgroundColor: '#81b29a'
-                        },
-                        {
-                            label: '🥉 3위 (센터장상)',
-                            data: [1, 1, 1, 1, 1, 1, 1],
-                            backgroundColor: '#e07a5f'
-                        }
-                    ]
-                },
-                options: {
-                    indexAxis: 'y',
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        x: {
-                            stacked: true,
-                            max: 3,
-                            ticks: { stepSize: 1 }
-                        },
-                        y: {
-                            stacked: true,
-                            ticks: { font: { size: 11 } }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: { font: { size: 10 } }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return context.dataset.label + ': 1팀 수상';
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        // 2. Render Interactive Class List
-        function renderClassList() {
-            const container = document.getElementById('class-list-container');
-            container.innerHTML = classData.map(c => `
-                <div class="bg-white p-3.5 rounded-xl border border-gray-100 hover:border-forest-400 transition cursor-pointer" onclick="highlightClass('${c.id}')">
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs font-bold px-2 py-0.5 rounded ${c.cat === '가족' ? 'bg-amber-100 text-amber-800' : c.cat === '청소년' ? 'bg-emerald-100 text-emerald-800' : 'bg-blue-100 text-blue-800'}">${c.cat}</span>
-                        <span class="text-xs font-medium text-blossom-500">${c.type}</span>
-                    </div>
-                    <h5 class="font-bold text-forest-700 text-sm mt-1">${c.name}</h5>
-                    <p class="text-xs text-gray-500">${c.target}</p>
+    <!-- Class Detail Modal -->
+    <div id="class-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="class-modal-title" hidden>
+        <div class="modal__panel modal__panel--wide">
+            <button type="button" class="modal__close" data-modal-close aria-label="닫기">✕</button>
+            <div class="modal__head">
+                <span class="icon" aria-hidden="true">🦆</span>
+                <h2 id="class-modal-title" data-field="name">클래스</h2>
+            </div>
+            <div class="modal__body">
+                <div class="modal__facts">
+                    <p>✔️ <strong>구분:</strong> <span data-field="cat"></span></p>
+                    <p>✔️ <strong>경기 방식:</strong> <span data-field="type"></span></p>
+                    <p>✔️ <strong>대상:</strong> <span data-field="target"></span></p>
+                    <p>✔️ <strong>특징:</strong> <span data-field="desc"></span></p>
                 </div>
-            `).join('');
-        }
-
-        function highlightClass(id) {
-            const item = classData.find(c => c.id === id);
-            if (item) {
-                alert(`[${item.name}]\n- 대상: ${item.target}\n- 방식: ${item.type}\n- 특징: ${item.desc}`);
-            }
-        }
-
-        // 3. Dynamic Category Dropdown Logic & Quiz Engine
-        function onCategoryChange() {
-            const category = document.getElementById('finder-category').value;
-            const ageSelect = document.getElementById('finder-age');
-            const expSelect = document.getElementById('finder-exp');
-
-            if (category === 'family') {
-                ageSelect.innerHTML = `
-                    <option value="7-10">포함 자녀: 7세 ~ 10세 (초등 저학년)</option>
-                    <option value="11-13">포함 자녀: 11세 ~ 13세 (초등 고학년)</option>
-                    <option value="14-19">포함 자녀: 14세 ~ 19세 (중·고등학생)</option>
-                `;
-                expSelect.innerHTML = `
-                    <option value="novice">입문/일반 가족 팀</option>
-                `;
-            } else if (category === 'youth') {
-                ageSelect.innerHTML = `
-                    <option value="11-13">11세 ~ 13세 (초등 고학년)</option>
-                    <option value="14-19">14세 ~ 19세 (중·고등학생)</option>
-                `;
-                expSelect.innerHTML = `
-                    <option value="novice">초보자/입문 (2인 1팀)</option>
-                    <option value="experienced">경력자 (1인 1팀 - 고수오리)</option>
-                `;
-            } else if (category === 'young') {
-                ageSelect.innerHTML = `
-                    <option value="20-34">20세 ~ 34세 (청년)</option>
-                `;
-                expSelect.innerHTML = `
-                    <option value="novice">단독 참가 (1인 1팀)</option>
-                `;
-            }
-
-            calculateClass();
-        }
-
-        function calculateClass() {
-            const category = document.getElementById('finder-category').value;
-            const age = document.getElementById('finder-age').value;
-            const exp = document.getElementById('finder-exp').value;
-            
-            let matchedClass = classData[0]; // default
-
-            if (category === 'family') {
-                if (age === '7-10') matchedClass = classData[0]; // 아기오리가족
-                else if (age === '11-13') matchedClass = classData[1]; // 어린오리가족
-                else matchedClass = classData[2]; // 청춘오리가족
-            } else if (category === 'youth') {
-                if (exp === 'experienced') {
-                    matchedClass = classData[5]; // 고수오리
-                } else {
-                    if (age === '11-13') matchedClass = classData[3]; // 뛰어오리
-                    else matchedClass = classData[4]; // 날아오리
-                }
-            } else if (category === 'young') {
-                matchedClass = classData[6]; // 달려오리
-            }
-
-            const resContainer = document.getElementById('recommendation-result');
-            resContainer.innerHTML = `
-                <div class="flex items-center justify-between">
-                    <span class="text-xs bg-forest-100 text-forest-700 font-bold px-2.5 py-1 rounded-md">추천 클래스</span>
-                    <span class="text-xs text-blossom-500 font-bold">${matchedClass.type}</span>
+                <div class="modal__actions">
+                    <a class="btn btn--accent btn--block" data-field="apply" href="#" target="_blank" rel="noopener noreferrer" data-modal-close>
+                        이 클래스로 신청하기 →
+                    </a>
+                    <button type="button" class="btn btn--ghost btn--block" data-modal-close>닫기</button>
                 </div>
-                <h4 class="text-lg font-black text-forest-700 mt-1">🎉 [${matchedClass.name}] 클래스</h4>
-                <p class="text-xs text-gray-600 mt-1"><strong>대상:</strong> ${matchedClass.target}</p>
-                <p class="text-xs text-gray-500 mt-0.5">${matchedClass.desc}</p>
-            `;
-        }
-
-        // 4. Parking Fee Estimator Logic
-        function calculateParkingFee() {
-            const minutes = parseInt(document.getElementById('parking-range').value);
-            const hours = Math.floor(minutes / 60);
-            const remMins = minutes % 60;
-            
-            let timeStr = "";
-            if (hours > 0) timeStr += `${hours}시간 `;
-            if (remMins > 0) timeStr += `${remMins}분`;
-
-            document.getElementById('parking-time-text').innerText = timeStr;
-
-            let fee = 0;
-            if (minutes <= 30) {
-                fee = 400;
-            } else {
-                const extraMins = minutes - 30;
-                const extraUnits = Math.ceil(extraMins / 10);
-                fee = 400 + (extraUnits * 200);
-            }
-
-            // Cap at 6,000 KRW daily maximum for passenger cars
-            if (fee > 6000) {
-                fee = 6000;
-            }
-
-            document.getElementById('calculated-fee').innerText = `${fee.toLocaleString()} 원 (일 최대 6,000원 적용)`;
-        }
-
-        // 5. Stamp Tour Simulator Logic
-        const stamped = { 1: false, 2: false, 3: false };
-        function toggleStamp(id) {
-            stamped[id] = !stamped[id];
-            const btn = document.getElementById(`stamp-btn-${id}`);
-            if (stamped[id]) {
-                btn.innerText = '스탬프 획득 완료! ✅';
-                btn.classList.replace('bg-white', 'bg-forest-500');
-                btn.classList.replace('text-forest-700', 'text-white');
-            } else {
-                btn.innerText = '스탬프 찍어보기 ⭕';
-                btn.classList.replace('bg-forest-500', 'bg-white');
-                btn.classList.replace('text-white', 'text-forest-700');
-            }
-
-            const count = Object.values(stamped).filter(Boolean).length;
-            const progress = (count / 3) * 100;
-            document.getElementById('stamp-progress').style.width = `${progress}%`;
-
-            const statusText = document.getElementById('stamp-status-text');
-            if (count === 3) {
-                statusText.innerHTML = '🎉 <strong class="text-blossom-500">모든 스탬프 달성!</strong> 푸드트럭 이용권 및 스페셜 기념품 획득 자격 부여!';
-            } else {
-                statusText.innerText = `현재 ${count}/3 개 스탬프 수집 완료!`;
-            }
-        }
-
-        // 6. FAQ Accordion & Filter
-        function toggleFAQ(button) {
-            const content = button.nextElementSibling;
-            const icon = button.querySelector('.faq-icon');
-            const isHidden = content.classList.contains('hidden');
-
-            document.querySelectorAll('.faq-content').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.faq-icon').forEach(el => el.innerText = '+');
-
-            if (isHidden) {
-                content.classList.remove('hidden');
-                icon.innerText = '−';
-            }
-        }
-
-        function filterFAQ() {
-            const query = document.getElementById('faq-search').value.toLowerCase();
-            const items = document.querySelectorAll('.faq-item');
-            
-            items.forEach(item => {
-                const text = item.innerText.toLowerCase();
-                if (text.includes(query)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-
-        // 7. Event Countdown Timer
-        function initCountdown() {
-            const eventDate = new Date('2026-10-17T09:30:00').getTime();
-            
-            function updateTimer() {
-                const now = new Date().getTime();
-                const diff = eventDate - now;
-
-                if (diff <= 0) {
-                    document.getElementById('countdown').innerHTML = '<div class="col-span-4 font-bold text-forest-700">대회가 시작되었습니다!</div>';
-                    return;
-                }
-
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                document.getElementById('days').innerText = days < 10 ? '0' + days : days;
-                document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
-                document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
-                document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
-            }
-
-            updateTimer();
-            setInterval(updateTimer, 1000);
-        }
-
-        // 8. Modal Handling
-        function openRegisterModal() {
-            document.getElementById('register-modal').classList.remove('hidden');
-        }
-
-        function closeRegisterModal() {
-            document.getElementById('register-modal').classList.add('hidden');
-        }
-    </script>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
