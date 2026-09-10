@@ -12,11 +12,11 @@ window.OL = {
     // 항상 KST(+09:00) 명시 — 보는 사람의 브라우저 시간대와 무관하게 동작
     dateISO: '2026-10-17T09:30:00+09:00',
     dateLabel: '2026.10.17(토)',
-    timeLabel: '09:30 ~ 16:00 (개회식 10:30)',
+    timeLabel: '09:30 ~ 15:00 (개회식 10:30)',
     audience: '전국 청소년·시민 500명',
     feeLabel: '참가비 전액 지원 (복권기금)',
-    venue: '원미산 진달래동산 야외 무대',
-    venueArea: '원미산 진달래동산 일대',
+    venue: '진달래동산 야외 무대',
+    venueArea: '진달래동산 일대',
     capacity: 500,
     formUrl: 'https://forms.gle/JfCArNtD6sbM8xMs8',
 
