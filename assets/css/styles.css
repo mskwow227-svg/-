@@ -335,8 +335,10 @@ ul { margin: 0; padding: 0; list-style: none; }
 .parking-calc label { display: block; font-size: .75rem; font-weight: 700; color: var(--forest-700); margin-bottom: .5rem; }
 .parking-calc label b { color: var(--blossom-500); font-weight: 900; }
 .range { width: 100%; height: .5rem; accent-color: var(--forest-500); cursor: pointer; }
-.parking-result { margin-top: .75rem; display: flex; justify-content: space-between; align-items: center; background: var(--forest-50); border-radius: var(--radius-sm); padding: .6rem .75rem; font-size: .8rem; }
+.parking-result { margin-top: .75rem; display: flex; justify-content: space-between; align-items: flex-start; gap: .5rem; background: var(--forest-50); border-radius: var(--radius-sm); padding: .6rem .75rem; font-size: .8rem; }
+.parking-result__amount { text-align: right; }
 .parking-result output { font-weight: 900; color: var(--forest-700); }
+.parking-result__note { display: block; margin-top: .15rem; font-size: .68rem; font-weight: 400; color: var(--ink-muted); }
 .fineprint { margin-top: 1rem; font-size: .7rem; color: var(--ink-faint); text-align: center; }
 
 /* ---------- FAQ ---------- */

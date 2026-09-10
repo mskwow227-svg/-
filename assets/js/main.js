@@ -350,14 +350,23 @@
       return Math.min(fee, p.dailyCap);
     }
 
+    var noteOut = document.getElementById("parking-fee-note");
+
     function update() {
       var mins = parseInt(range.value, 10) || p.baseMinutes;
       var label = fmtTime(mins);
       var fee = calcFee(mins);
-      var capped = fee >= p.dailyCap ? " (일 최대 " + p.dailyCap.toLocaleString() + "원 적용)" : "";
+      var isCapped = fee >= p.dailyCap;
       if (timeOut) timeOut.textContent = label;
-      if (feeOut) feeOut.textContent = fee.toLocaleString() + " 원" + capped;
-      range.setAttribute("aria-valuetext", label + ", 예상 " + fee.toLocaleString() + "원");
+      if (feeOut) feeOut.textContent = fee.toLocaleString() + " 원";
+      if (noteOut) {
+        noteOut.hidden = !isCapped;
+        noteOut.textContent = "(일 최대 " + p.dailyCap.toLocaleString() + "원 적용)";
+      }
+      range.setAttribute(
+        "aria-valuetext",
+        label + ", 예상 " + fee.toLocaleString() + "원" + (isCapped ? " (일 최대 적용)" : "")
+      );
     }
 
     range.addEventListener("input", update);
