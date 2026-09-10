@@ -339,7 +339,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 .transit-card__head h3 { font-size: 1rem; font-weight: 700; }
 .transit-card__head span { font-size: .75rem; color: var(--forest-500); font-weight: 600; }
 .transit-card p { font-size: .85rem; color: var(--ink-soft); }
-.callout { margin-top: 1.5rem; background: var(--forest-50); border-radius: var(--radius); padding: .75rem; text-align: center; font-size: .78rem; color: var(--forest-700); font-weight: 500; }
 .fee-table { font-size: .78rem; color: var(--ink-soft); background: rgba(244, 241, 222, .4); border: 1px solid var(--sand); border-radius: var(--radius); padding: .75rem; margin-top: .75rem; display: grid; gap: .35rem; }
 
 .parking-calc { margin-top: 1rem; padding-top: .75rem; border-top: 1px solid var(--line); }
@@ -351,6 +350,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .parking-result output { font-weight: 900; color: var(--forest-700); }
 .parking-result__note { display: block; margin-top: .15rem; font-size: .68rem; font-weight: 400; color: var(--ink-muted); }
 .fineprint { margin-top: 1rem; font-size: .7rem; color: var(--ink-faint); text-align: center; }
+
+.transit-card__map { margin-top: 1.25rem; }
 
 /* ---------- FAQ ---------- */
 .faq-search { width: 100%; background: var(--warmbg); border: 1px solid var(--forest-100); border-radius: var(--radius); padding: .8rem 1rem; font-size: .875rem; margin-bottom: 1.5rem; }

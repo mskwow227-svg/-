@@ -15,6 +15,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     applyFormLinks();
     initEducationLink();
+    initKakaoMapLink();
     initRegistrationStatus();
     initCountdown();
     renderTimetable();
@@ -44,6 +45,21 @@
     var url = OL.education && OL.education.videoUrl;
     if (url) link.setAttribute("href", url);
     else link.hidden = true;
+  }
+
+  /* ---------- 카카오맵 길찾기 링크 ---------- */
+  function initKakaoMapLink() {
+    var link = document.getElementById("kakao-map-link");
+    var t = OL.event && OL.event.transit;
+    if (!link || !t) return;
+    if (t.kakaoMapUrl) {
+      link.setAttribute("href", t.kakaoMapUrl);
+    } else if (t.kakaoMapQuery) {
+      link.setAttribute(
+        "href",
+        "https://map.kakao.com/link/search/" + encodeURIComponent(t.kakaoMapQuery)
+      );
+    }
   }
 
   /* ---------- 대회 실시간 기록 ---------- */

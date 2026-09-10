@@ -41,6 +41,10 @@ window.OL = {
       station: '부천종합운동장역',
       exit: '2번 출구',
       walkMinutes: 5,
+      // 카카오맵 연결 — 정확한 좌표가 확보되면 kakaoMapUrl 에
+      // 'https://map.kakao.com/link/to/원미산 진달래동산 야외무대,위도,경도' 형태로 넣으면 길찾기로 바뀜
+      kakaoMapUrl: '',
+      kakaoMapQuery: '원미산 진달래동산',
     },
   },
 
