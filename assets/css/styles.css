@@ -181,7 +181,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .nav-toggle[aria-expanded="true"] .nav-toggle__bar::before { transform: translateY(6px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] .nav-toggle__bar::after  { transform: translateY(-6px) rotate(-45deg); }
 
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   .nav {
     position: absolute; left: 0; right: 0; top: 100%;
     flex-direction: column; align-items: stretch; gap: 0;
@@ -206,6 +206,10 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .pill-live__dot { width: .5rem; height: .5rem; border-radius: 50%; background: var(--blossom-500); animation: pulse 2s infinite; }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+.pill-live--closed { background: #f0e2de; color: var(--blossom-600); }
+.pill-live--closed .pill-live__dot { background: var(--blossom-600); animation: none; }
+
+.reg-closed-line { font-size: .85rem; font-weight: 700; color: var(--blossom-600); }
 
 .hero__title { font-size: clamp(1.9rem, 6vw, 3rem); font-weight: 800; letter-spacing: -.02em; }
 .hero__title .accent { color: var(--blossom-500); }
@@ -376,6 +380,28 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 
 @keyframes fade-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 .modal:not([hidden]) .modal__panel { animation: fade-in .18s ease; }
+
+/* ---------- 대회 진행 안내 (준비 중 카드) ---------- */
+.notice-grid { display: grid; gap: 1rem; }
+@media (min-width: 768px) { .notice-grid { grid-template-columns: repeat(3, 1fr); } }
+.notice-card { background: var(--white); border: 1px solid var(--line-strong); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: var(--shadow-xs); }
+.notice-card__icon { font-size: 1.6rem; }
+.notice-card h3 { font-size: .95rem; font-weight: 700; margin-top: .35rem; }
+.notice-card__status { display: inline-block; margin: .45rem 0 .55rem; font-size: .72rem; font-weight: 700; color: var(--forest-600); background: var(--forest-50); border-radius: var(--radius-pill); padding: .2rem .65rem; }
+.notice-card__status--live { color: var(--blossom-600); background: var(--blossom-100); }
+.notice-card p:last-child { font-size: .8rem; color: var(--ink-soft); line-height: 1.6; }
+
+/* ---------- 개인정보·촬영 동의 안내 ---------- */
+.prose { background: var(--white); border: 1px solid var(--line-strong); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm); }
+.prose h3 { font-size: .95rem; font-weight: 700; margin-top: 1.5rem; }
+.prose h3:first-child { margin-top: 0; }
+.prose ul { margin: .6rem 0 0; padding-left: 1.15rem; list-style: disc; display: grid; gap: .45rem; }
+.prose li { font-size: .85rem; color: var(--ink-soft); line-height: 1.65; }
+.prose li b { color: var(--forest-700); }
+.prose__contact { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); font-size: .85rem; font-weight: 600; color: var(--forest-700); }
+.prose__contact a:hover { text-decoration: underline; }
+
+.modal__closed-note { font-size: .8rem; font-weight: 600; color: var(--blossom-600); background: var(--blossom-100); border-radius: var(--radius-sm); padding: .6rem .75rem; text-align: center; }
 
 /* ---------- 유틸 ---------- */
 .text-center { text-align: center; }
