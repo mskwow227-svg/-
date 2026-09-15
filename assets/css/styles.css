@@ -226,6 +226,15 @@ ul { margin: 0; padding: 0; list-style: none; }
 .pill-live--closed { background: #f0e2de; color: var(--blossom-600); }
 .pill-live--closed .pill-live__dot { background: var(--blossom-600); animation: none; }
 
+.hero__badges { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.pill-link {
+  display: inline-flex; align-items: center; gap: .35rem;
+  background: var(--white); color: var(--forest-700);
+  font-size: .75rem; font-weight: 600; padding: .35rem .75rem; border-radius: var(--radius-pill);
+  border: 1px solid var(--forest-200); transition: background-color .15s ease, border-color .15s ease;
+}
+.pill-link:hover { background: var(--forest-50); border-color: var(--forest-500); }
+
 .reg-closed-line { font-size: .85rem; font-weight: 700; color: var(--blossom-600); }
 
 .hero__title { font-size: clamp(1.9rem, 6vw, 3rem); font-weight: 800; letter-spacing: -.02em; }
