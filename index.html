@@ -246,17 +246,21 @@
                         <p>기록의 공정성을 위해 코스 지도는 대회 당일 출발 전 현장에서 배부·공개됩니다.</p>
                     </div>
                     <div class="notice-card">
-                        <span class="notice-card__icon" aria-hidden="true">📍</span>
-                        <h3>행사장 약도</h3>
-                        <p class="notice-card__status">준비 중 · 곧 공개</p>
-                        <p>집결지 · 체험교육부스 · 화장실 · 주차장 위치를 표시한 약도를 준비하고 있습니다.</p>
-                    </div>
-                    <div class="notice-card">
                         <span class="notice-card__icon" aria-hidden="true">🎁</span>
                         <h3>당일 혜택</h3>
                         <p class="notice-card__status notice-card__status--live">현장 제공</p>
                         <p>스탬프 투어 완주 시 식사 제공 · 만족도 조사 제출 시 기념품 · 시상식 경품 추첨.</p>
                     </div>
+                </div>
+
+                <div class="notice-card notice-card--map">
+                    <span class="notice-card__icon" aria-hidden="true">📍</span>
+                    <h3>행사장 약도</h3>
+                    <button type="button" class="map-thumb" data-modal-open="venue-map-modal">
+                        <img src="assets/images/venue-map.webp" alt="행사장 약도: 입구에서 운영본부 접수 후 무대 앞 집결·개회식, 체험교육부스 9개 구역과 오리엔티어링 출발점, 식사 배부처 위치 안내. 확대해서 보려면 선택하세요." loading="lazy">
+                        <span class="map-thumb__zoom" aria-hidden="true">🔍 확대해서 보기</span>
+                    </button>
+                    <p>화장실은 행사장 밖에 있어요 — 원미도서관 · 부천종합운동장 방면 도보 약 5분.</p>
                 </div>
             </div>
         </section>
@@ -606,6 +610,23 @@
                     </a>
                     <button type="button" class="btn btn--ghost btn--block" data-modal-close>닫기</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Venue Map Modal -->
+    <div id="venue-map-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="venue-map-modal-title" hidden>
+        <div class="modal__panel modal__panel--image">
+            <button type="button" class="modal__close" data-modal-close aria-label="닫기">✕</button>
+            <div class="modal__head">
+                <h2 id="venue-map-modal-title">행사장 약도</h2>
+                <p>원미산 진달래동산 야외무대 일대 · 손가락으로 확대해서 보세요</p>
+            </div>
+            <div class="modal__body modal__body--image">
+                <img src="assets/images/venue-map.webp" alt="행사장 약도 전체 이미지" loading="lazy">
+            </div>
+            <div class="modal__actions">
+                <a class="btn btn--ghost btn--block" href="assets/images/venue-map.webp" target="_blank" rel="noopener noreferrer">🔗 새 탭에서 원본 열기 (저장하기)</a>
             </div>
         </div>
     </div>
