@@ -435,7 +435,7 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .stamp-tracker__lead { font-size: .8rem; color: var(--ink-soft); max-width: 34rem; margin: 0 auto .9rem; }
 
 /* ---------- 대회 진행 안내 카드 ---------- */
-.notice-grid { display: grid; gap: 1rem; grid-template-columns: repeat(2, 1fr); }
+.notice-grid { display: grid; gap: 1rem; grid-template-columns: repeat(2, 1fr); align-items: start; }
 @media (min-width: 900px) { .notice-grid { grid-template-columns: repeat(4, 1fr); } }
 .notice-card { background: var(--white); border: 1px solid var(--line-strong); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: var(--shadow-xs); }
 .notice-card--accent { border-color: var(--blossom-500); box-shadow: 0 0 0 1px var(--blossom-500) inset, var(--shadow-xs); }
