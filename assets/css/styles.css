@@ -396,6 +396,8 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .modal[hidden] { display: none; }
 .modal__panel { position: relative; background: var(--white); border-radius: var(--radius-xl); max-width: 28rem; width: 100%; padding: 1.5rem; box-shadow: var(--shadow-lg); max-height: 90vh; overflow-y: auto; }
 .modal__panel--wide { max-width: 30rem; }
+.modal__panel--image { max-width: 56rem; }
+.modal__body--image img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
 .modal__close { position: absolute; top: .9rem; right: .9rem; width: 2rem; height: 2rem; border-radius: 50%; border: 0; background: transparent; color: var(--ink-faint); font-size: 1.1rem; }
 .modal__close:hover { color: var(--ink-soft); background: var(--line); }
 .modal__head { text-align: center; }
@@ -443,6 +445,10 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .notice-card__status { display: inline-block; margin: .45rem 0 .55rem; font-size: .72rem; font-weight: 700; color: var(--forest-600); background: var(--forest-50); border-radius: var(--radius-pill); padding: .2rem .65rem; }
 .notice-card__status--live { color: var(--blossom-600); background: var(--blossom-100); }
 .notice-card p:last-child { font-size: .8rem; color: var(--ink-soft); line-height: 1.6; }
+.map-thumb { display: block; position: relative; width: 100%; border: 0; padding: 0; margin: .5rem 0; background: none; cursor: zoom-in; border-radius: var(--radius); overflow: hidden; }
+.map-thumb img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: left center; border-radius: var(--radius); transition: transform .2s ease; }
+.map-thumb:hover img, .map-thumb:focus-visible img { transform: scale(1.04); }
+.map-thumb__zoom { position: absolute; right: .5rem; bottom: .5rem; background: rgba(0, 0, 0, .6); color: var(--white); font-size: .68rem; font-weight: 600; padding: .25rem .55rem; border-radius: var(--radius-pill); }
 
 /* ---------- 개인정보·촬영 동의 안내 ---------- */
 .prose { background: var(--white); border: 1px solid var(--line-strong); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm); }
