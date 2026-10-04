@@ -397,6 +397,7 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .modal__panel { position: relative; background: var(--white); border-radius: var(--radius-xl); max-width: 28rem; width: 100%; padding: 1.5rem; box-shadow: var(--shadow-lg); max-height: 90vh; overflow-y: auto; }
 .modal__panel--wide { max-width: 30rem; }
 .modal__panel--image { max-width: 56rem; }
+.modal__panel--portrait { max-width: 32rem; }
 .modal__body--image img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
 .modal__close { position: absolute; top: .9rem; right: .9rem; width: 2rem; height: 2rem; border-radius: 50%; border: 0; background: transparent; color: var(--ink-faint); font-size: 1.1rem; }
 .modal__close:hover { color: var(--ink-soft); background: var(--line); }
