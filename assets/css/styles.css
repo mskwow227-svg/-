@@ -347,12 +347,14 @@ ul { margin: 0; padding: 0; list-style: none; }
 .stamp-tracker__status b { color: var(--blossom-500); }
 
 /* ---------- 오시는 길 / 주차 ---------- */
-.transit-grid { display: grid; gap: 1.5rem; max-width: 64rem; margin-inline: auto; align-items: start; }
+.transit-grid { display: grid; gap: 1.5rem; max-width: 64rem; margin-inline: auto; }
 @media (min-width: 768px) { .transit-grid { grid-template-columns: 1fr 1fr; } }
 .transit-card { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--line-strong); border-radius: var(--radius-xl); padding: 1.5rem; box-shadow: var(--shadow-sm); }
 .transit-card--rec { border-color: var(--forest-200); }
 .transit-card__head { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
 .transit-card__icon { font-size: 1.75rem; }
+.transit-card__sub { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .6rem; margin-top: .25rem; }
+.transit-card__sub .btn { padding: .3rem .7rem; font-size: .72rem; }
 .transit-card__head h3 { font-size: 1rem; font-weight: 700; }
 .transit-card__head span { font-size: .75rem; color: var(--forest-500); font-weight: 600; }
 .transit-card p { font-size: .85rem; color: var(--ink-soft); }
@@ -397,6 +399,7 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .modal__panel { position: relative; background: var(--white); border-radius: var(--radius-xl); max-width: 28rem; width: 100%; padding: 1.5rem; box-shadow: var(--shadow-lg); max-height: 90vh; overflow-y: auto; }
 .modal__panel--wide { max-width: 30rem; }
 .modal__panel--image { max-width: 56rem; }
+.modal__panel--portrait { max-width: 32rem; }
 .modal__body--image img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
 .modal__close { position: absolute; top: .9rem; right: .9rem; width: 2rem; height: 2rem; border-radius: 50%; border: 0; background: transparent; color: var(--ink-faint); font-size: 1.1rem; }
 .modal__close:hover { color: var(--ink-soft); background: var(--line); }
