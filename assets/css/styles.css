@@ -353,6 +353,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .transit-card--rec { border-color: var(--forest-200); }
 .transit-card__head { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
 .transit-card__icon { font-size: 1.75rem; }
+.transit-card__sub { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .6rem; margin-top: .25rem; }
+.transit-card__sub .btn { padding: .3rem .7rem; font-size: .72rem; }
 .transit-card__head h3 { font-size: 1rem; font-weight: 700; }
 .transit-card__head span { font-size: .75rem; color: var(--forest-500); font-weight: 600; }
 .transit-card p { font-size: .85rem; color: var(--ink-soft); }
