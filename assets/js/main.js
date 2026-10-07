@@ -17,6 +17,7 @@
     initKakaoMapLink();
     initCountdown();
     renderFlow();
+    initPrivacyDetails();
     initResults();
     renderClassList();
     renderAwards();
@@ -93,6 +94,17 @@
     }
   }
 
+  /* ---------- 개인정보 안내 접이식: #privacy 링크로 오면 자동으로 펼침 ---------- */
+  function initPrivacyDetails() {
+    var d = document.getElementById("privacy-details");
+    if (!d) return;
+    var open = function () { d.open = true; };
+    document.addEventListener("click", function (e) {
+      if (e.target.closest('a[href="#privacy"]')) open();
+    });
+    if (location.hash === "#privacy") open();
+  }
+
   /* ---------- 당일 동선 (행사 당일에는 현재 단계 강조) ---------- */
   function renderFlow() {
     var list = document.getElementById("flow");
@@ -101,17 +113,23 @@
     var day = String(OL.event.dateISO).slice(0, 10);
     var at = function (hhmm) { return new Date(day + "T" + hhmm + ":00+09:00").getTime(); };
 
+    // 모바일에서는 시간·제목만 한 줄로 보이고 눌러서 장소·설명을 펼침 (데스크톱은 항상 펼침)
     list.innerHTML = OL.flow.map(function (s, i) {
       return (
         '<li class="flow__step" data-state="upcoming">' +
-          '<div class="flow__head">' +
-            '<span class="flow__num" aria-hidden="true">' + (i + 1) + "</span>" +
-            '<span class="flow__time">' + s.time + "</span>" +
-            '<span class="flow__now" hidden>지금 진행 중</span>' +
+          '<button type="button" class="flow__toggle" aria-expanded="false">' +
+            '<span class="flow__head">' +
+              '<span class="flow__num" aria-hidden="true">' + (i + 1) + "</span>" +
+              '<span class="flow__time">' + s.time + "</span>" +
+              '<span class="flow__now" hidden>지금 진행 중</span>' +
+            "</span>" +
+            '<span class="flow__title">' + s.title + "</span>" +
+            '<span class="flow__chev" aria-hidden="true">▾</span>' +
+          "</button>" +
+          '<div class="flow__more">' +
+            '<p class="flow__place"><span aria-hidden="true">📍</span> ' + s.place + "</p>" +
+            '<p class="flow__desc">' + s.desc + "</p>" +
           "</div>" +
-          '<h3 class="flow__title">' + s.title + "</h3>" +
-          '<p class="flow__place"><span aria-hidden="true">📍</span> ' + s.place + "</p>" +
-          '<p class="flow__desc">' + s.desc + "</p>" +
         "</li>"
       );
     }).join("");
@@ -124,11 +142,29 @@
         items[i].setAttribute("data-state", state);
         var badge = $(".flow__now", items[i]);
         if (badge) badge.hidden = state !== "active";
+        if (state === "active") $(".flow__toggle", items[i]).setAttribute("aria-expanded", "true");
       });
     }
     update();
     setInterval(update, 60000);
+
+    list.addEventListener("click", function (e) {
+      var btn = e.target.closest(".flow__toggle");
+      if (!btn) return;
+      btn.setAttribute("aria-expanded", String(btn.getAttribute("aria-expanded") !== "true"));
+    });
+
+    // 데스크톱은 항상 펼쳐져 있어 버튼이 필요 없으므로 키보드 포커스에서 제외
+    var wide = window.matchMedia("(min-width: 900px)");
+    function syncFocus() {
+      $$(".flow__toggle", list).forEach(function (b) {
+        if (wide.matches) b.setAttribute("tabindex", "-1"); else b.removeAttribute("tabindex");
+      });
+    }
+    syncFocus();
+    wide.addEventListener("change", syncFocus);
   }
+
 
   /* ---------- 1. 카운트다운 ---------- */
   function initCountdown() {
