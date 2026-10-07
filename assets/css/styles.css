@@ -466,10 +466,17 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .method-guide__item p { font-size: .78rem; color: var(--ink-soft); line-height: 1.55; }
 
 /* ---------- 식사 받는 방법 ---------- */
-.meal-steps { list-style: none; margin: 0 auto 1.5rem; padding: 0; max-width: 64rem; display: grid; gap: .6rem; grid-template-columns: 1fr 1fr; counter-reset: none; }
-@media (min-width: 900px) { .meal-steps { grid-template-columns: repeat(4, 1fr); } }
+.meal-steps { list-style: none; margin: 0 auto 1.5rem; padding: 0; max-width: 64rem; display: grid; gap: .6rem; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .meal-steps { grid-template-columns: repeat(3, 1fr); } }
 .meal-steps__item { position: relative; background: var(--white); border: 1px solid var(--forest-200); border-radius: var(--radius-lg); padding: .8rem .9rem .9rem; display: flex; flex-direction: column; gap: .2rem; box-shadow: var(--shadow-xs); }
 .meal-steps__num { width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--blossom-500); color: #fff; font-size: .78rem; font-weight: 800; display: grid; place-items: center; margin-bottom: .2rem; }
 .meal-steps__item strong { font-size: .9rem; font-weight: 800; }
 .meal-steps__item span:not(.meal-steps__num) { font-size: .76rem; color: var(--ink-soft); line-height: 1.5; }
 .meal-steps__item a { color: var(--forest-700); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }
+
+/* ---------- 정보 카드 강조 항목(준비물·물품보관) ---------- */
+.checklist li.is-key { background: var(--blossom-100); border: 1px solid #f3c9bd; border-radius: var(--radius); padding: .55rem .7rem; color: var(--ink); }
+.checklist li.is-key b { color: var(--blossom-600); }
+
+/* ---------- 체험교육부스 시간 ---------- */
+.booth__time { display: inline-block; margin-bottom: .35rem; font-size: .72rem; font-weight: 700; color: var(--blossom-600); background: var(--blossom-100); border-radius: var(--radius-pill); padding: .15rem .6rem; }

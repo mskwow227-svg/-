@@ -275,6 +275,7 @@
             '<span class="booth__icon" aria-hidden="true">' + b.icon + "</span>" +
             '<span class="badge badge--forest">' + b.tag + "</span>" +
           "</div>" +
+          (b.time ? '<span class="booth__time">🕘 ' + b.time + "</span>" : "") +
           "<h3>" + b.title + "</h3>" +
           "<p>" + b.desc + "</p>" +
         "</div></div>"
