@@ -398,18 +398,18 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 
 
 /* ---------- 대회 진행 안내 카드 ---------- */
-.notice-grid { display: grid; gap: 1rem; grid-template-columns: 1fr; align-items: start; }
-@media (min-width: 768px) { .notice-grid { grid-template-columns: repeat(3, 1fr); } }
-.notice-card { background: var(--white); border: 1px solid var(--line-strong); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: var(--shadow-xs); }
+.notice-grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+@media (min-width: 560px) { .notice-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .notice-grid { grid-template-columns: repeat(4, 1fr); } }
+.notice-card { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--line-strong); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: var(--shadow-xs); }
 .notice-card--map { margin-top: 1rem; }
-.notice-card--wide { margin-bottom: 1rem; }
 .notice-card--accent { border-color: var(--blossom-500); box-shadow: 0 0 0 1px var(--blossom-500) inset, var(--shadow-xs); }
 .notice-card a { color: var(--forest-700); text-decoration: underline; text-underline-offset: 2px; }
 .notice-card__icon { font-size: 1.6rem; }
 .notice-card h3 { font-size: .95rem; font-weight: 700; margin-top: .35rem; }
-.notice-card__status { display: inline-block; margin: .45rem 0 .55rem; font-size: .72rem; font-weight: 700; color: var(--forest-600); background: var(--forest-50); border-radius: var(--radius-pill); padding: .2rem .65rem; }
+.notice-card__status { align-self: flex-start; display: inline-block; margin: .45rem 0 .55rem; font-size: .72rem; font-weight: 700; color: var(--forest-600); background: var(--forest-50); border-radius: var(--radius-pill); padding: .2rem .65rem; }
 .notice-card__status--live { color: var(--blossom-600); background: var(--blossom-100); }
-.notice-card p:last-child { font-size: .8rem; color: var(--ink-soft); line-height: 1.6; }
+.notice-card p:not(.notice-card__status) { font-size: .8rem; color: var(--ink-soft); line-height: 1.6; }
 .map-thumb { display: block; position: relative; width: 100%; border: 0; padding: 0; margin: .5rem 0; background: none; cursor: zoom-in; border-radius: var(--radius); overflow: hidden; }
 .map-thumb img { display: block; width: 100%; height: auto; border-radius: var(--radius); transition: transform .2s ease; }
 .map-thumb:hover img, .map-thumb:focus-visible img { transform: scale(1.04); }
@@ -481,13 +481,14 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .booth__time { display: inline-block; margin-bottom: .35rem; font-size: .72rem; font-weight: 700; color: var(--blossom-600); background: var(--blossom-100); border-radius: var(--radius-pill); padding: .15rem .6rem; }
 
 /* ---------- 출발 리스트 ---------- */
-.notice-card--wide p { font-size: .8rem; color: var(--ink-soft); line-height: 1.6; margin-top: .35rem; }
-.startlist__btn { margin-top: .75rem; }
+.startlist__btn { margin-top: auto; align-self: flex-start; }
+#startlist-card p:not(.notice-card__status) { margin-bottom: .9rem; }
 
 /* ---------- 체험교육부스 1~9 ---------- */
 .booth-list__title { font-size: .95rem; font-weight: 800; margin-bottom: .6rem; }
 .booth-list__title span { font-size: .72rem; font-weight: 600; color: var(--ink-muted); margin-left: .4rem; }
-.booth-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
+.booth-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .booth-list { grid-template-columns: repeat(3, 1fr); } }
 
 /* ---------- 출발 리스트 모달 ---------- */
 .modal__panel--list { max-width: 40rem; }
@@ -508,11 +509,7 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 
 /* ---------- 부스 지도 ↔ 목록 ---------- */
 .booth-explorer { display: grid; gap: 1.25rem; }
-@media (min-width: 900px) {
-  .booth-explorer { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 1.75rem; align-items: start; }
-  .booth-explorer__map { position: sticky; top: 5.5rem; }
-}
-.booth-explorer__map { scroll-margin-top: 5rem; }
+.booth-explorer__map { width: 100%; max-width: 40rem; margin-inline: auto; scroll-margin-top: 5rem; }
 .booth-map { position: relative; overflow: hidden; border-radius: var(--radius-lg); border: 1px solid var(--forest-200); background: var(--forest-50); }
 .booth-map__img { position: absolute; max-width: none; height: auto; display: block; pointer-events: none; }
 .booth-map__pin { position: absolute; width: 2.4rem; height: 2.4rem; transform: translate(-50%, -50%); border-radius: 50%; border: 2px solid transparent; background: transparent; cursor: pointer; padding: 0; }
@@ -522,7 +519,7 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .booth-explorer__hint { display: flex; align-items: center; justify-content: space-between; gap: .5rem; flex-wrap: wrap; margin-top: .5rem; font-size: .75rem; color: var(--ink-muted); }
 .booth-list__title { margin-top: 0; }
 .booth-list li { margin: 0; }
-.booth-item__btn { width: 100%; display: flex; align-items: flex-start; gap: .65rem; text-align: left; background: var(--white); border: 1px solid var(--line-strong); border-radius: var(--radius); padding: .65rem .8rem; box-shadow: var(--shadow-xs); cursor: pointer; font: inherit; color: inherit; transition: border-color .15s ease, background-color .15s ease; }
+.booth-item__btn { width: 100%; height: 100%; display: flex; align-items: flex-start; gap: .65rem; text-align: left; background: var(--white); border: 1px solid var(--line-strong); border-radius: var(--radius); padding: .65rem .8rem; box-shadow: var(--shadow-xs); cursor: pointer; font: inherit; color: inherit; transition: border-color .15s ease, background-color .15s ease; }
 .booth-item__btn:hover { border-color: var(--forest-300); }
 .booth-item__btn.is-active { border-color: var(--blossom-500); background: var(--blossom-100); box-shadow: 0 0 0 1px var(--blossom-500) inset; }
 .booth-item__num { flex: none; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--forest-500); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--forest-500), 0 1px 3px rgba(0, 0, 0, .25); color: #fff; font-size: .8rem; font-weight: 800; display: grid; place-items: center; }

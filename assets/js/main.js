@@ -306,7 +306,6 @@
       mapEl.appendChild(pin);
     });
 
-    var wide = window.matchMedia("(min-width: 900px)");
     var current = null;
 
     function select(no, source) {
@@ -318,12 +317,12 @@
         el.classList.toggle("is-active", on);
       });
       if (same) return;
-      var behavior = reduceMotion ? "auto" : "smooth";
-      if (source === "list" && !wide.matches) {
-        mapEl.parentElement.scrollIntoView({ behavior: behavior, block: "start" });
-      } else if (source === "pin") {
-        var item = $('.booth-item__btn[data-no="' + no + '"]', list);
-        if (item) item.scrollIntoView({ behavior: behavior, block: wide.matches ? "nearest" : "center" });
+      // 대상이 화면 밖이면 보이는 위치로 이동 (지도와 목록이 위아래로 놓여 있음)
+      var target = source === "list" ? mapEl.parentElement : $('.booth-item__btn[data-no="' + no + '"]', list);
+      if (!target) return;
+      var rect = target.getBoundingClientRect();
+      if (rect.top < 72 || rect.bottom > window.innerHeight) {
+        target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: source === "list" ? "start" : "center" });
       }
     }
 

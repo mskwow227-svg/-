@@ -213,14 +213,14 @@
                 <ol id="flow" class="flow" aria-label="당일 동선"></ol>
                 <p class="flow__map-link"><button type="button" class="btn btn--ghost btn--sm btn--pill" data-modal-open="venue-map-modal">📍 행사장 약도에서 위치 보기</button></p>
 
-                <div class="notice-card notice-card--wide" id="startlist-card">
-                    <span class="notice-card__icon" aria-hidden="true">🧭</span>
-                    <h3>오리엔티어링 경기 출발 리스트</h3>
-                    <p>클래스별 출발 시간과 배번을 확인하세요. <strong>출발 10분 전까지 출발 부스에 도착</strong>해 주세요.</p>
-                    <button type="button" class="btn btn--primary btn--sm btn--pill startlist__btn" data-modal-open="startlist-modal">🧭 출발 리스트 보기</button>
-                </div>
-
                 <div class="notice-grid">
+                    <div class="notice-card" id="startlist-card">
+                        <span class="notice-card__icon" aria-hidden="true">🧭</span>
+                        <h3>경기 출발 리스트</h3>
+                        <p class="notice-card__status notice-card__status--live">출발 10분 전까지 도착</p>
+                        <p>클래스별 출발 시간과 배번을 팀명·배번으로 검색해 확인하세요.</p>
+                        <button type="button" class="btn btn--primary btn--sm btn--pill startlist__btn" data-modal-open="startlist-modal">🧭 출발 리스트 보기</button>
+                    </div>
                     <div class="notice-card" id="results-card">
                         <span class="notice-card__icon" aria-hidden="true">📊</span>
                         <h3>실시간 순위</h3>
