@@ -529,3 +529,5 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .notice-card__titlerow { display: flex; align-items: center; flex-wrap: wrap; gap: .35rem .6rem; margin-top: .35rem; }
 .notice-card__titlerow h3 { margin-top: 0; }
 .startlist__btn { padding: .3rem .7rem; font-size: .72rem; }
+
+#meal-steps { scroll-margin-top: 6rem; }
