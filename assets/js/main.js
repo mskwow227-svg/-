@@ -13,30 +13,22 @@
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   document.addEventListener("DOMContentLoaded", function () {
-    applyFormLinks();
     initEducationLink();
     initKakaoMapLink();
-    initRegistrationStatus();
     initCountdown();
-    renderTimetable();
+    renderFlow();
+    initStartList();
+    initSurveyLink();
     initResults();
     renderClassList();
-    initFinder();
     renderAwards();
-    initStampTour();
+    renderBooths();
     initFaq();
     initModals();
     initMobileNav();
     initSmoothScroll();
     initScrollSpy();
   });
-
-  /* ---------- 신청 링크 일괄 적용 (URL 은 config 한 곳에서만 관리) ---------- */
-  function applyFormLinks() {
-    var url = OL.event && OL.event.formUrl;
-    if (!url) return;
-    $$("[data-reg-link]").forEach(function (a) { a.setAttribute("href", url); });
-  }
 
   /* ---------- 오리엔티어링 기초 교육 영상 링크 ---------- */
   function initEducationLink() {
@@ -60,6 +52,29 @@
         "https://map.kakao.com/link/search/" + encodeURIComponent(t.kakaoMapQuery)
       );
     }
+  }
+
+  /* ---------- 만족도 조사 링크 ---------- */
+  function initSurveyLink() {
+    var link = document.getElementById("survey-link");
+    var url = OL.survey && OL.survey.url;
+    if (!link || !url) return;
+    link.setAttribute("href", url);
+    link.hidden = false;
+  }
+
+  /* ---------- 오리엔티어링 경기 출발 리스트 ---------- */
+  function initStartList() {
+    var s = OL.startList || {};
+    var statusEl = document.getElementById("startlist-status");
+    var descEl = document.getElementById("startlist-desc");
+    if (!s.url || !statusEl || !descEl) return;
+
+    statusEl.textContent = "공개";
+    statusEl.classList.add("notice-card__status--live");
+    descEl.innerHTML =
+      (s.note ? s.note + " " : "") +
+      '<a href="' + s.url + '" target="_blank" rel="noopener noreferrer"><strong>출발 리스트 보기 →</strong></a>';
   }
 
   /* ---------- 대회 실시간 기록 ---------- */
@@ -102,57 +117,41 @@
     }
   }
 
-  /* ---------- 당일 타임테이블 ---------- */
-  function renderTimetable() {
-    var body = document.getElementById("timetable-body");
-    if (!body || !OL.timetable) return;
-    body.innerHTML = OL.timetable.map(function (row) {
+  /* ---------- 당일 동선 (행사 당일에는 현재 단계 강조) ---------- */
+  function renderFlow() {
+    var list = document.getElementById("flow");
+    if (!list || !OL.flow || !OL.event) return;
+
+    var day = String(OL.event.dateISO).slice(0, 10);
+    var at = function (hhmm) { return new Date(day + "T" + hhmm + ":00+09:00").getTime(); };
+
+    list.innerHTML = OL.flow.map(function (s, i) {
       return (
-        '<tr>' +
-          '<th scope="row">' + row.time + "</th>" +
-          "<td><strong>" + row.title + "</strong><span>" + row.desc + "</span></td>" +
-        "</tr>"
+        '<li class="flow__step" data-state="upcoming">' +
+          '<div class="flow__head">' +
+            '<span class="flow__num" aria-hidden="true">' + (i + 1) + "</span>" +
+            '<span class="flow__time">' + s.time + "</span>" +
+            '<span class="flow__now" hidden>지금 진행 중</span>' +
+          "</div>" +
+          '<h3 class="flow__title">' + s.title + "</h3>" +
+          '<p class="flow__place"><span aria-hidden="true">📍</span> ' + s.place + "</p>" +
+          '<p class="flow__desc">' + s.desc + "</p>" +
+        "</li>"
       );
     }).join("");
-  }
 
-  /* ---------- 0. 참가 신청 모집 상태 ---------- */
-  function initRegistrationStatus() {
-    var reg = OL.event && OL.event.registration;
-    if (!reg) return;
-
-    var mode = reg.statusOverride || "auto";
-    var open;
-    if (mode === "open") open = true;
-    else if (mode === "closed") open = false;
-    else {
-      var dl = new Date(reg.deadlineISO).getTime();
-      open = isNaN(dl) ? true : Date.now() < dl;
+    var items = $$(".flow__step", list);
+    function update() {
+      var now = Date.now();
+      OL.flow.forEach(function (s, i) {
+        var state = now < at(s.start) ? "upcoming" : now < at(s.end) ? "active" : "past";
+        items[i].setAttribute("data-state", state);
+        var badge = $(".flow__now", items[i]);
+        if (badge) badge.hidden = state !== "active";
+      });
     }
-
-    document.body.setAttribute("data-reg", open ? "open" : "closed");
-
-    // 마감일 라벨 채우기 (여러 위치)
-    $$("[data-reg-deadline]").forEach(function (el) {
-      el.textContent = reg.deadlineLabel + (open ? "" : " (마감)");
-    });
-
-    // 히어로 배지
-    var shortLabel = reg.deadlineShort || reg.deadlineLabel;
-    var badge = document.getElementById("reg-badge");
-    if (badge) {
-      var text = badge.querySelector("[data-reg-text]");
-      if (open) {
-        if (text) text.textContent = "선착순 모집 중 · " + shortLabel + " 대회 신청 마감";
-      } else {
-        badge.classList.add("pill-live--closed");
-        if (text) text.textContent = "대회 접수 마감 (" + shortLabel + " 마감)";
-      }
-    }
-
-    // 열림/마감 상태별로 보이는 안내 문구
-    $$("[data-reg-open-note]").forEach(function (el) { el.hidden = !open; });
-    $$("[data-reg-closed-note]").forEach(function (el) { el.hidden = open; });
+    update();
+    setInterval(update, 60000);
   }
 
   /* ---------- 1. 카운트다운 ---------- */
@@ -243,67 +242,7 @@
     set("[data-field=target]", c.target);
     set("[data-field=desc]", c.desc);
 
-    var apply = $("[data-field=apply]", modal);
-    if (apply && OL.event) apply.href = OL.event.formUrl;
-
     openModal(modal);
-  }
-
-  /* ---------- 3. 클래스 찾기 위저드 ---------- */
-  function initFinder() {
-    var catSel = document.getElementById("finder-category");
-    var ageSel = document.getElementById("finder-age");
-    var expSel = document.getElementById("finder-exp");
-    var result = document.getElementById("finder-result");
-    if (!catSel || !ageSel || !expSel || !result || !OL.finder) return;
-
-    var fillOptions = function (sel, opts) {
-      sel.innerHTML = opts.map(function (o) {
-        return '<option value="' + o.value + '">' + o.label + "</option>";
-      }).join("");
-    };
-
-    fillOptions(catSel, OL.finder.categories);
-
-    function syncSubOptions() {
-      var conf = OL.finder.byCategory[catSel.value];
-      if (!conf) return;
-      fillOptions(ageSel, conf.ages);
-      fillOptions(expSel, conf.exps);
-      // 경력 선택이 1개뿐이면 굳이 노출할 필요 없음
-      var expField = expSel.closest(".field");
-      if (expField) expField.hidden = conf.exps.length <= 1;
-    }
-
-    function recalc() {
-      var conf = OL.finder.byCategory[catSel.value];
-      if (!conf) return;
-      var id = conf.resolve(ageSel.value, expSel.value);
-      var c = classById(id);
-      if (!c) return;
-
-      result.innerHTML =
-        '<div class="finder__result-head">' +
-          '<span class="badge badge--forest">추천 클래스</span>' +
-          '<span class="badge badge--method ' + typeBadgeClass(c.type) + '">' + c.type + "</span>" +
-        "</div>" +
-        "<h4>🎉 " + c.name + " 클래스</h4>" +
-        '<p class="sub"><strong>대상:</strong> ' + c.target + "</p>" +
-        '<p class="desc">' + c.desc + "</p>" +
-        '<a class="btn btn--accent btn--block" href="' + (OL.event ? OL.event.formUrl : "#") + '" target="_blank" rel="noopener noreferrer">이 클래스로 신청하기 →</a>';
-    }
-
-    catSel.addEventListener("change", function () { syncSubOptions(); recalc(); });
-    ageSel.addEventListener("change", recalc);
-    expSel.addEventListener("change", recalc);
-
-    var tip = document.getElementById("finder-tip");
-    if (tip && OL.finder.mixedAgeTip) {
-      tip.innerHTML = "💡 <strong>혼합 연령 참가 팁:</strong> " + OL.finder.mixedAgeTip;
-    }
-
-    syncSubOptions();
-    recalc();
   }
 
   /* ---------- 4. 시상 내역 (1·2·3위 카드) ---------- */
@@ -324,53 +263,24 @@
     }
   }
 
-  /* ---------- 5. 스탬프 투어 ---------- */
-  function initStampTour() {
+  /* ---------- 5. 체험교육부스 카드 ---------- */
+  function renderBooths() {
     var grid = document.getElementById("booth-grid");
-    var progress = document.getElementById("stamp-progress");
-    var status = document.getElementById("stamp-status");
     if (!grid || !OL.booths) return;
 
     grid.innerHTML = OL.booths.map(function (b) {
       return (
-        '<div class="booth">' +
-          "<div>" +
-            '<div class="booth__top">' +
-              '<span class="booth__icon" aria-hidden="true">' + b.icon + "</span>" +
-              '<span class="badge badge--forest">' + b.tag + "</span>" +
-            "</div>" +
-            "<h3>" + b.title + "</h3>" +
-            "<p>" + b.desc + "</p>" +
+        '<div class="booth"><div>' +
+          '<div class="booth__top">' +
+            '<span class="booth__icon" aria-hidden="true">' + b.icon + "</span>" +
+            '<span class="badge badge--forest">' + b.tag + "</span>" +
           "</div>" +
-          '<button type="button" class="stamp-btn" data-action="stamp" data-id="' + b.id + '" data-stamped="false" aria-pressed="false">스탬프 찍어보기 ⭕</button>' +
-        "</div>"
+          (b.time ? '<span class="booth__time">🕘 ' + b.time + "</span>" : "") +
+          "<h3>" + b.title + "</h3>" +
+          "<p>" + b.desc + "</p>" +
+        "</div></div>"
       );
     }).join("");
-
-    var total = OL.booths.length;
-
-    grid.addEventListener("click", function (e) {
-      var btn = e.target.closest('[data-action="stamp"]');
-      if (!btn) return;
-      var on = btn.getAttribute("data-stamped") !== "true";
-      btn.setAttribute("data-stamped", String(on));
-      btn.setAttribute("aria-pressed", String(on));
-      btn.textContent = on ? "스탬프 획득 완료! ✅" : "스탬프 찍어보기 ⭕";
-
-      var count = $$('[data-action="stamp"][data-stamped="true"]', grid).length;
-      if (progress) {
-        progress.style.width = (count / total) * 100 + "%";
-        var bar = progress.parentElement;
-        if (bar) bar.setAttribute("aria-valuenow", String(count));
-      }
-      if (status) {
-        if (count === total) {
-          status.innerHTML = "🎉 <b>" + (OL.boothRewardText || "모든 스탬프 달성!") + "</b>";
-        } else {
-          status.textContent = "현재 " + count + "/" + total + " 개 스탬프 수집 완료!";
-        }
-      }
-    });
   }
 
   /* ---------- 7. FAQ 아코디언 + 검색 ---------- */
