@@ -17,11 +17,11 @@
     initKakaoMapLink();
     initCountdown();
     renderFlow();
-    initStartList();
     initResults();
     renderClassList();
     renderAwards();
     renderBooths();
+    initStartList();
     initFaq();
     initModals();
     initMobileNav();
@@ -51,20 +51,6 @@
         "https://map.kakao.com/link/search/" + encodeURIComponent(t.kakaoMapQuery)
       );
     }
-  }
-
-  /* ---------- 오리엔티어링 경기 출발 리스트 ---------- */
-  function initStartList() {
-    var s = OL.startList || {};
-    var statusEl = document.getElementById("startlist-status");
-    var descEl = document.getElementById("startlist-desc");
-    if (!s.url || !statusEl || !descEl) return;
-
-    statusEl.textContent = "공개";
-    statusEl.classList.add("notice-card__status--live");
-    descEl.innerHTML =
-      (s.note ? s.note + " " : "") +
-      '<a href="' + s.url + '" target="_blank" rel="noopener noreferrer"><strong>출발 리스트 보기 →</strong></a>';
   }
 
   /* ---------- 대회 실시간 기록 ---------- */
@@ -253,24 +239,92 @@
     }
   }
 
-  /* ---------- 5. 체험교육부스 카드 ---------- */
+  /* ---------- 5. 체험교육부스 (기초교육 카드 + 부스 1~9 목록) ---------- */
   function renderBooths() {
+    var edu = OL.basicEdu;
     var grid = document.getElementById("booth-grid");
-    if (!grid || !OL.booths) return;
-
-    grid.innerHTML = OL.booths.map(function (b) {
-      return (
+    if (grid && edu) {
+      grid.innerHTML =
         '<div class="booth"><div>' +
           '<div class="booth__top">' +
-            '<span class="booth__icon" aria-hidden="true">' + b.icon + "</span>" +
-            '<span class="badge badge--forest">' + b.tag + "</span>" +
+            '<span class="booth__icon" aria-hidden="true">' + edu.icon + "</span>" +
+            '<span class="badge badge--forest">' + edu.tag + "</span>" +
           "</div>" +
-          (b.time ? '<span class="booth__time">🕘 ' + b.time + "</span>" : "") +
-          "<h3>" + b.title + "</h3>" +
-          "<p>" + b.desc + "</p>" +
-        "</div></div>"
-      );
+          (edu.time ? '<span class="booth__time">🕘 ' + edu.time + "</span>" : "") +
+          "<h3>" + edu.title + "</h3>" +
+          "<p>" + edu.desc + "</p>" +
+        "</div></div>";
+    }
+
+    var list = document.getElementById("booth-list");
+    if (list && OL.booths) {
+      list.innerHTML = OL.booths.map(function (b) {
+        return (
+          '<li class="booth-item">' +
+            '<span class="booth-item__num" aria-hidden="true">' + b.no + "</span>" +
+            "<div>" +
+              '<strong>' + b.title + "</strong>" +
+              "<span>" + b.org + (b.note ? " · " + b.note : "") + "</span>" +
+            "</div>" +
+          "</li>"
+        );
+      }).join("");
+    }
+  }
+
+  /* ---------- 오리엔티어링 경기 출발 리스트 (탭 + 검색) ---------- */
+  function initStartList() {
+    var data = OL.startList;
+    var body = document.getElementById("startlist-body");
+    var tabsEl = document.getElementById("startlist-tabs");
+    var search = document.getElementById("startlist-search");
+    var empty = document.getElementById("startlist-empty");
+    var notes = document.getElementById("startlist-notes");
+    if (!data || !body || !tabsEl) return;
+
+    var tabs = ["전체"];
+    data.classes.forEach(function (c) { if (tabs.indexOf(c.tab) === -1) tabs.push(c.tab); });
+    var active = "전체";
+
+    tabsEl.innerHTML = tabs.map(function (t) {
+      return '<button type="button" class="startlist__tab" data-tab="' + t + '" aria-pressed="' + (t === active) + '">' + t + "</button>";
     }).join("");
+
+    if (notes) {
+      notes.innerHTML = data.notes.map(function (n) { return "<li>" + n + "</li>"; }).join("");
+    }
+
+    function render() {
+      var q = search ? search.value.replace(/\s+/g, "").toLowerCase() : "";
+      var html = "";
+      var count = 0;
+      data.classes.forEach(function (c) {
+        if (active !== "전체" && c.tab !== active) return;
+        var rows = c.rows.filter(function (r) {
+          return !q || String(r[1]).indexOf(q) !== -1 || String(r[2]).replace(/\s+/g, "").toLowerCase().indexOf(q) !== -1;
+        });
+        if (!rows.length) return;
+        count += rows.length;
+        html += '<tr class="startlist__class"><th colspan="3" scope="colgroup">' + c.name + " 클래스</th></tr>";
+        rows.forEach(function (r) {
+          html += "<tr><td>" + r[0] + "</td><td>" + r[2] + "</td><td>" + r[1] + "</td></tr>";
+        });
+      });
+      body.innerHTML = html;
+      if (empty) empty.hidden = count !== 0;
+    }
+
+    tabsEl.addEventListener("click", function (e) {
+      var btn = e.target.closest("[data-tab]");
+      if (!btn) return;
+      active = btn.getAttribute("data-tab");
+      $$(".startlist__tab", tabsEl).forEach(function (b) {
+        b.setAttribute("aria-pressed", String(b === btn));
+      });
+      render();
+    });
+    if (search) search.addEventListener("input", render);
+    render();
   }
 
   /* ---------- 7. FAQ 아코디언 + 검색 ---------- */
