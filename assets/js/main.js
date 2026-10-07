@@ -17,7 +17,6 @@
     initKakaoMapLink();
     initCountdown();
     renderFlow();
-    initStartList();
     initResults();
     renderClassList();
     renderAwards();
@@ -51,20 +50,6 @@
         "https://map.kakao.com/link/search/" + encodeURIComponent(t.kakaoMapQuery)
       );
     }
-  }
-
-  /* ---------- 오리엔티어링 경기 출발 리스트 ---------- */
-  function initStartList() {
-    var s = OL.startList || {};
-    var statusEl = document.getElementById("startlist-status");
-    var descEl = document.getElementById("startlist-desc");
-    if (!s.url || !statusEl || !descEl) return;
-
-    statusEl.textContent = "공개";
-    statusEl.classList.add("notice-card__status--live");
-    descEl.innerHTML =
-      (s.note ? s.note + " " : "") +
-      '<a href="' + s.url + '" target="_blank" rel="noopener noreferrer"><strong>출발 리스트 보기 →</strong></a>';
   }
 
   /* ---------- 대회 실시간 기록 ---------- */

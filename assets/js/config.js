@@ -44,12 +44,6 @@ window.OL = {
     openLabel: '대회 당일 낮 12시경',
   },
 
-  // 오리엔티어링 경기 출발 리스트 — 파일·시트·이미지 URL 을 url 에 넣으면 카드에 '출발 리스트 보기' 링크가 생김
-  startList: {
-    url: '',     // ★ 출발 리스트 URL (비워두면 '준비 중' 문구 유지)
-    note: '',    // 링크 앞에 붙일 짧은 안내 (선택)
-  },
-
   // 오리엔티어링 기초 교육 영상 (전년도 제작)
   education: {
     videoUrl: 'https://www.youtube.com/watch?v=1H4xNmC8txA',

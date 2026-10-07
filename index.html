@@ -216,8 +216,8 @@
                 <div class="notice-card notice-card--wide" id="startlist-card">
                     <span class="notice-card__icon" aria-hidden="true">🧭</span>
                     <h3>오리엔티어링 경기 출발 리스트</h3>
-                    <p class="notice-card__status" id="startlist-status">준비 중 · 곧 공개</p>
-                    <p id="startlist-desc">클래스별 출발 순서와 시간이 확정되면 이곳에 공개됩니다.</p>
+                    <p>클래스별 출발 시간과 배번을 확인하세요. <strong>출발 10분 전까지 출발 부스에 도착</strong>해 주세요.</p>
+                    <button type="button" class="btn btn--primary btn--sm btn--pill startlist__btn" data-modal-open="startlist-modal">🧭 출발 리스트 보기</button>
                 </div>
 
                 <div class="notice-grid">
@@ -245,7 +245,7 @@
                     <span class="notice-card__icon" aria-hidden="true">📍</span>
                     <h3>행사장 약도</h3>
                     <button type="button" class="map-thumb" data-modal-open="venue-map-modal">
-                        <img src="assets/images/venue-map.webp" alt="행사장 약도: 입구에서 종합안내 부스 접수 후 무대 앞 집결·개회식, 체험교육부스 9개 구역과 오리엔티어링 출발점, 기초교육·식사 배부처(09:30~10:30 기초교육, 12:00~ 식사) 위치 안내. 확대해서 보려면 선택하세요." loading="lazy">
+                        <img src="assets/images/venue-map.jpg" alt="행사장 안내도: 입구 두 곳, 무대(집결지·개회식·시상식), 운영본부·접수, 기초교육·식사 배부처, 오리엔티어링 경기 출발 부스, 의료지원, 체험교육부스 1~9번 위치와 부스별 프로그램 안내. 확대해서 보려면 선택하세요." loading="lazy">
                         <span class="map-thumb__zoom" aria-hidden="true">🔍 확대해서 보기</span>
                     </button>
                     <p>화장실은 행사장 밖에 있어요 — 원미도서관 · 부천종합운동장 방면 도보 약 5분.</p>
@@ -618,6 +618,23 @@
         </div>
     </div>
 
+    <!-- Start List Modal -->
+    <div id="startlist-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="startlist-modal-title" hidden>
+        <div class="modal__panel modal__panel--xl">
+            <button type="button" class="modal__close" data-modal-close aria-label="닫기">✕</button>
+            <div class="modal__head">
+                <h2 id="startlist-modal-title">오리엔티어링 경기 출발 리스트</h2>
+                <p>표를 좌우·상하로 움직이거나 손가락으로 확대해서 보세요</p>
+            </div>
+            <div class="modal__body modal__body--scroll">
+                <img src="assets/images/start-list.jpg" alt="오리엔티어링 경기 클래스별 출발 리스트: 클래스별 출발 시간, 팀명, 배번" loading="lazy">
+            </div>
+            <div class="modal__actions">
+                <a class="btn btn--ghost btn--block" href="assets/images/start-list.jpg" target="_blank" rel="noopener noreferrer">🔗 새 탭에서 원본 열기 (저장하기)</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Venue Map Modal -->
     <div id="venue-map-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="venue-map-modal-title" hidden>
         <div class="modal__panel modal__panel--image">
@@ -627,10 +644,10 @@
                 <p>원미산 진달래동산 야외무대 일대 · 손가락으로 확대해서 보세요</p>
             </div>
             <div class="modal__body modal__body--image">
-                <img src="assets/images/venue-map.webp" alt="행사장 약도 전체 이미지" loading="lazy">
+                <img src="assets/images/venue-map.jpg" alt="행사장 안내도 전체 이미지: 입구, 무대, 운영본부·접수, 기초교육·식사 배부처, 오리엔티어링 경기 출발 부스, 의료지원, 체험교육부스 1~9번 위치와 부스별 프로그램" loading="lazy">
             </div>
             <div class="modal__actions">
-                <a class="btn btn--ghost btn--block" href="assets/images/venue-map.webp" target="_blank" rel="noopener noreferrer">🔗 새 탭에서 원본 열기 (저장하기)</a>
+                <a class="btn btn--ghost btn--block" href="assets/images/venue-map.jpg" target="_blank" rel="noopener noreferrer">🔗 새 탭에서 원본 열기 (저장하기)</a>
             </div>
         </div>
     </div>

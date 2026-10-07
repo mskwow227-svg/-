@@ -412,7 +412,7 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .notice-card__status--live { color: var(--blossom-600); background: var(--blossom-100); }
 .notice-card p:last-child { font-size: .8rem; color: var(--ink-soft); line-height: 1.6; }
 .map-thumb { display: block; position: relative; width: 100%; border: 0; padding: 0; margin: .5rem 0; background: none; cursor: zoom-in; border-radius: var(--radius); overflow: hidden; }
-.map-thumb img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: left center; border-radius: var(--radius); transition: transform .2s ease; }
+.map-thumb img { display: block; width: 100%; height: auto; border-radius: var(--radius); transition: transform .2s ease; }
 .map-thumb:hover img, .map-thumb:focus-visible img { transform: scale(1.04); }
 .map-thumb__zoom { position: absolute; right: .5rem; bottom: .5rem; background: rgba(0, 0, 0, .6); color: var(--white); font-size: .68rem; font-weight: 600; padding: .25rem .55rem; border-radius: var(--radius-pill); }
 
@@ -480,3 +480,10 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 
 /* ---------- 체험교육부스 시간 ---------- */
 .booth__time { display: inline-block; margin-bottom: .35rem; font-size: .72rem; font-weight: 700; color: var(--blossom-600); background: var(--blossom-100); border-radius: var(--radius-pill); padding: .15rem .6rem; }
+
+/* ---------- 출발 리스트 ---------- */
+.notice-card--wide p { font-size: .8rem; color: var(--ink-soft); line-height: 1.6; margin-top: .35rem; }
+.startlist__btn { margin-top: .75rem; }
+.modal__panel--xl { max-width: 72rem; }
+.modal__body--scroll { overflow: auto; max-height: 68vh; border-radius: var(--radius); background: var(--warmbg); }
+.modal__body--scroll img { display: block; width: 100%; min-width: 1100px; height: auto; }

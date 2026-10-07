@@ -28,7 +28,6 @@ assets/
 | 바꾸고 싶은 것 | 위치 |
 |---|---|
 | 날짜·시간·장소·전화 | `config.js` → `OL.event` |
-| **경기 출발 리스트** (URL 넣으면 카드에 링크 생성) | `config.js` → `OL.startList` |
 | 당일 동선(5단계) | `config.js` → `OL.flow` |
 | 클래스 7종 (이름·대상·방식·설명) | `config.js` → `OL.classes` |
 | 시상 내역 (상 이름·팀 수) | `config.js` → `OL.awards` |
