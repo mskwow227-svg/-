@@ -213,14 +213,16 @@
                 <ol id="flow" class="flow" aria-label="당일 동선"></ol>
                 <p class="flow__map-link"><button type="button" class="btn btn--ghost btn--sm btn--pill" data-modal-open="venue-map-modal">📍 행사장 약도에서 위치 보기</button></p>
 
-                <div class="notice-card notice-card--wide" id="startlist-card">
-                    <span class="notice-card__icon" aria-hidden="true">🧭</span>
-                    <h3>오리엔티어링 경기 출발 리스트</h3>
-                    <p>클래스별 출발 시간과 배번을 확인하세요. <strong>출발 10분 전까지 출발 부스에 도착</strong>해 주세요.</p>
-                    <button type="button" class="btn btn--primary btn--sm btn--pill startlist__btn" data-modal-open="startlist-modal">🧭 출발 리스트 보기</button>
-                </div>
-
                 <div class="notice-grid">
+                    <div class="notice-card" id="startlist-card">
+                        <span class="notice-card__icon" aria-hidden="true">🧭</span>
+                        <div class="notice-card__titlerow">
+                            <h3>경기 출발 리스트</h3>
+                            <button type="button" class="btn btn--primary btn--sm btn--pill startlist__btn" data-modal-open="startlist-modal">보기 →</button>
+                        </div>
+                        <p class="notice-card__status notice-card__status--live">출발 10분 전까지 도착</p>
+                        <p>클래스별 출발 시간과 배번을 팀명·배번으로 검색해 확인하세요.</p>
+                    </div>
                     <div class="notice-card" id="results-card">
                         <span class="notice-card__icon" aria-hidden="true">📊</span>
                         <h3>실시간 순위</h3>
@@ -282,8 +284,18 @@
 
                 <div id="booth-grid" class="booth-grid"></div>
 
-                <h3 class="booth-list__title">체험교육부스 프로그램 <span>행사장 안내도의 부스 1~9번</span></h3>
-                <ol id="booth-list" class="booth-list"></ol>
+                <div class="booth-explorer">
+                    <div class="booth-explorer__map">
+                        <div id="booth-map" class="booth-map" role="group" aria-label="체험교육부스 위치 지도"></div>
+                        <p class="booth-explorer__hint">번호를 누르면 목록과 연결돼요
+                            <button type="button" class="btn btn--ghost btn--sm btn--pill" data-modal-open="venue-map-modal">전체 약도 보기</button>
+                        </p>
+                    </div>
+                    <div class="booth-explorer__side">
+                        <h3 class="booth-list__title">체험교육부스 프로그램 <span>지도의 번호와 같아요</span></h3>
+                        <ol id="booth-list" class="booth-list"></ol>
+                    </div>
+                </div>
             </div>
         </section>
 

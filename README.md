@@ -32,6 +32,7 @@ assets/
 | 클래스 7종 (이름·대상·방식·설명) | `config.js` → `OL.classes` |
 | 시상 내역 (상 이름·팀 수) | `config.js` → `OL.awards` |
 | 체험교육부스 1~9 / 기초교육 카드 | `config.js` → `OL.booths` / `OL.basicEdu` |
+| 부스 위치 지도(약도 확대 영역·핀 좌표) — 약도 이미지를 교체하면 다시 맞춰야 함 | `config.js` → `OL.boothMap`, `OL.booths[].pin` |
 | **경기 출발 리스트** (클래스별 팀·배번·시간, 검색 가능) | `config.js` → `OL.startList` |
 | FAQ 질문·답변 | `index.html` 의 `#faq-list` (검색이 DOM 텍스트 기반이라 마크업 유지) |
 | 색상·간격·폰트 | `assets/css/styles.css` 상단 `:root` |
