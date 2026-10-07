@@ -314,16 +314,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .booth__icon { font-size: 1.75rem; }
 .booth h3 { font-size: 1rem; font-weight: 700; margin-bottom: .25rem; }
 .booth p { font-size: .78rem; color: var(--ink-soft); }
-.stamp-btn { width: 100%; background: var(--white); border: 1px solid var(--forest-300); color: var(--forest-700); font-weight: 600; font-size: .78rem; padding: .55rem; border-radius: var(--radius-sm); transition: background-color .15s ease, color .15s ease; }
-.stamp-btn:hover { background: var(--forest-50); }
-.stamp-btn[data-stamped="true"] { background: var(--forest-500); color: #fff; border-color: var(--forest-500); }
 
-.stamp-tracker { margin-top: 2rem; background: var(--forest-50); border: 1px solid var(--forest-200); border-radius: var(--radius-xl); padding: 1.5rem; text-align: center; }
-.stamp-tracker h3 { font-size: .875rem; font-weight: 700; margin-bottom: .5rem; }
-.progress { width: 100%; max-width: 36rem; height: 1rem; margin: 0 auto .75rem; background: var(--line-strong); border-radius: var(--radius-pill); overflow: hidden; }
-.progress__fill { height: 100%; width: 0; background: var(--blossom-500); border-radius: inherit; transition: width .5s ease; }
-.stamp-tracker__status { font-size: .78rem; color: var(--forest-700); font-weight: 500; }
-.stamp-tracker__status b { color: var(--blossom-500); }
 
 /* ---------- 오시는 길 / 주차 ---------- */
 .transit-grid { display: grid; gap: 1.5rem; max-width: 64rem; margin-inline: auto; }
@@ -414,7 +405,6 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .timetable tbody td span { display: block; font-size: .8rem; }
 .timetable tbody tr + tr th, .timetable tbody tr + tr td { border-top: 1px solid var(--line); }
 
-.stamp-tracker__lead { font-size: .8rem; color: var(--ink-soft); max-width: 34rem; margin: 0 auto .9rem; }
 
 /* ---------- 대회 진행 안내 카드 ---------- */
 .notice-grid { display: grid; gap: 1rem; grid-template-columns: 1fr; align-items: start; }

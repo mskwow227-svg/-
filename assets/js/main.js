@@ -21,7 +21,7 @@
     initResults();
     renderClassList();
     renderAwards();
-    initStampTour();
+    renderBooths();
     initFaq();
     initModals();
     initMobileNav();
@@ -230,53 +230,23 @@
     }
   }
 
-  /* ---------- 5. 스탬프 투어 ---------- */
-  function initStampTour() {
+  /* ---------- 5. 체험교육부스 카드 ---------- */
+  function renderBooths() {
     var grid = document.getElementById("booth-grid");
-    var progress = document.getElementById("stamp-progress");
-    var status = document.getElementById("stamp-status");
     if (!grid || !OL.booths) return;
 
     grid.innerHTML = OL.booths.map(function (b) {
       return (
-        '<div class="booth">' +
-          "<div>" +
-            '<div class="booth__top">' +
-              '<span class="booth__icon" aria-hidden="true">' + b.icon + "</span>" +
-              '<span class="badge badge--forest">' + b.tag + "</span>" +
-            "</div>" +
-            "<h3>" + b.title + "</h3>" +
-            "<p>" + b.desc + "</p>" +
+        '<div class="booth"><div>' +
+          '<div class="booth__top">' +
+            '<span class="booth__icon" aria-hidden="true">' + b.icon + "</span>" +
+            '<span class="badge badge--forest">' + b.tag + "</span>" +
           "</div>" +
-          '<button type="button" class="stamp-btn" data-action="stamp" data-id="' + b.id + '" data-stamped="false" aria-pressed="false">스탬프 찍어보기 ⭕</button>' +
-        "</div>"
+          "<h3>" + b.title + "</h3>" +
+          "<p>" + b.desc + "</p>" +
+        "</div></div>"
       );
     }).join("");
-
-    var total = OL.booths.length;
-
-    grid.addEventListener("click", function (e) {
-      var btn = e.target.closest('[data-action="stamp"]');
-      if (!btn) return;
-      var on = btn.getAttribute("data-stamped") !== "true";
-      btn.setAttribute("data-stamped", String(on));
-      btn.setAttribute("aria-pressed", String(on));
-      btn.textContent = on ? "스탬프 획득 완료! ✅" : "스탬프 찍어보기 ⭕";
-
-      var count = $$('[data-action="stamp"][data-stamped="true"]', grid).length;
-      if (progress) {
-        progress.style.width = (count / total) * 100 + "%";
-        var bar = progress.parentElement;
-        if (bar) bar.setAttribute("aria-valuenow", String(count));
-      }
-      if (status) {
-        if (count === total) {
-          status.innerHTML = "🎉 <b>" + (OL.boothRewardText || "모든 스탬프 달성!") + "</b>";
-        } else {
-          status.textContent = "현재 " + count + "/" + total + " 개 스탬프 수집 완료!";
-        }
-      }
-    });
   }
 
   /* ---------- 7. FAQ 아코디언 + 검색 ---------- */
