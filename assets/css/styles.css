@@ -306,8 +306,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .prize__note { font-size: .75rem; color: var(--ink-muted); margin-top: .25rem; }
 
 /* ---------- 부스 / 스탬프 ---------- */
-.booth-grid { display: grid; gap: 1.5rem; }
-@media (min-width: 768px) { .booth-grid { grid-template-columns: repeat(3, 1fr); } }
+.booth-grid { display: grid; gap: 1.5rem; margin-bottom: 1.5rem; }
 .booth { display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; background: var(--warmbg); border: 1px solid var(--forest-100); border-radius: var(--radius-xl); padding: 1.25rem; transition: box-shadow .15s ease; }
 .booth:hover { box-shadow: var(--shadow-md); }
 .booth__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: .5rem; }
@@ -484,6 +483,31 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 /* ---------- 출발 리스트 ---------- */
 .notice-card--wide p { font-size: .8rem; color: var(--ink-soft); line-height: 1.6; margin-top: .35rem; }
 .startlist__btn { margin-top: .75rem; }
-.modal__panel--xl { max-width: 72rem; }
-.modal__body--scroll { overflow: auto; max-height: 68vh; border-radius: var(--radius); background: var(--warmbg); }
-.modal__body--scroll img { display: block; width: 100%; min-width: 1100px; height: auto; }
+
+/* ---------- 체험교육부스 1~9 ---------- */
+.booth-list__title { font-size: .95rem; font-weight: 800; margin-bottom: .6rem; }
+.booth-list__title span { font-size: .72rem; font-weight: 600; color: var(--ink-muted); margin-left: .4rem; }
+.booth-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
+@media (min-width: 560px) { .booth-list { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .booth-list { grid-template-columns: repeat(3, 1fr); } }
+.booth-item { display: flex; align-items: flex-start; gap: .65rem; background: var(--white); border: 1px solid var(--line-strong); border-radius: var(--radius); padding: .7rem .8rem; box-shadow: var(--shadow-xs); }
+.booth-item__num { flex: none; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--blossom-500); color: #fff; font-size: .8rem; font-weight: 800; display: grid; place-items: center; }
+.booth-item strong { display: block; font-size: .85rem; font-weight: 700; line-height: 1.4; }
+.booth-item span:not(.booth-item__num) { display: block; font-size: .72rem; color: var(--ink-muted); margin-top: .1rem; }
+
+/* ---------- 출발 리스트 모달 ---------- */
+.modal__panel--list { max-width: 40rem; }
+.startlist__search { width: 100%; padding: .7rem .85rem; font-size: .9rem; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--white); color: var(--ink); }
+.startlist__tabs { display: flex; flex-wrap: wrap; gap: .4rem; }
+.startlist__tab { border: 1px solid var(--forest-200); background: var(--white); color: var(--forest-700); border-radius: var(--radius-pill); padding: .3rem .75rem; font-size: .75rem; font-weight: 700; cursor: pointer; }
+.startlist__tab[aria-pressed="true"] { background: var(--forest-500); border-color: var(--forest-500); color: #fff; }
+.startlist__table-wrap { max-height: 46vh; overflow-y: auto; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--white); }
+.startlist__table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+.startlist__table thead th { position: sticky; top: 0; background: var(--forest-500); color: #fff; font-size: .75rem; padding: .5rem .6rem; text-align: left; z-index: 1; }
+.startlist__table td { padding: .5rem .6rem; border-top: 1px solid var(--line); }
+.startlist__table td:first-child { font-weight: 700; color: var(--forest-600); white-space: nowrap; }
+.startlist__table td:last-child { font-weight: 700; text-align: right; }
+.startlist__table thead th:last-child { text-align: right; }
+.startlist__class th { background: var(--forest-50); color: var(--forest-700); font-size: .78rem; font-weight: 800; text-align: left; padding: .45rem .6rem; border-top: 1px solid var(--forest-100); }
+.startlist__empty { padding: 1rem; font-size: .8rem; color: var(--ink-muted); text-align: center; }
+.startlist__notes { margin: 0; padding-left: 1.1rem; font-size: .72rem; color: var(--ink-muted); line-height: 1.6; list-style: "※ "; }

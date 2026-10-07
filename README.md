@@ -31,7 +31,8 @@ assets/
 | 당일 동선(5단계) | `config.js` → `OL.flow` |
 | 클래스 7종 (이름·대상·방식·설명) | `config.js` → `OL.classes` |
 | 시상 내역 (상 이름·팀 수) | `config.js` → `OL.awards` |
-| 체험교육부스 | `config.js` → `OL.booths` |
+| 체험교육부스 1~9 / 기초교육 카드 | `config.js` → `OL.booths` / `OL.basicEdu` |
+| **경기 출발 리스트** (클래스별 팀·배번·시간, 검색 가능) | `config.js` → `OL.startList` |
 | FAQ 질문·답변 | `index.html` 의 `#faq-list` (검색이 DOM 텍스트 기반이라 마크업 유지) |
 | 색상·간격·폰트 | `assets/css/styles.css` 상단 `:root` |
 

@@ -308,6 +308,9 @@
                 </ol>
 
                 <div id="booth-grid" class="booth-grid"></div>
+
+                <h3 class="booth-list__title">체험교육부스 프로그램 <span>행사장 안내도의 부스 1~9번</span></h3>
+                <ol id="booth-list" class="booth-list"></ol>
             </div>
         </section>
 
@@ -620,17 +623,24 @@
 
     <!-- Start List Modal -->
     <div id="startlist-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="startlist-modal-title" hidden>
-        <div class="modal__panel modal__panel--xl">
+        <div class="modal__panel modal__panel--list">
             <button type="button" class="modal__close" data-modal-close aria-label="닫기">✕</button>
             <div class="modal__head">
                 <h2 id="startlist-modal-title">오리엔티어링 경기 출발 리스트</h2>
-                <p>표를 좌우·상하로 움직이거나 손가락으로 확대해서 보세요</p>
+                <p>팀명이나 배번으로 검색하거나 클래스를 골라 보세요</p>
             </div>
-            <div class="modal__body modal__body--scroll">
-                <img src="assets/images/start-list.jpg" alt="오리엔티어링 경기 클래스별 출발 리스트: 클래스별 출발 시간, 팀명, 배번" loading="lazy">
-            </div>
-            <div class="modal__actions">
-                <a class="btn btn--ghost btn--block" href="assets/images/start-list.jpg" target="_blank" rel="noopener noreferrer">🔗 새 탭에서 원본 열기 (저장하기)</a>
+            <div class="modal__body">
+                <input type="search" id="startlist-search" class="startlist__search" placeholder="🔍 팀명 또는 배번 (예: 727)" aria-label="출발 리스트 검색" autocomplete="off">
+                <div id="startlist-tabs" class="startlist__tabs" role="group" aria-label="클래스 선택"></div>
+                <div class="startlist__table-wrap">
+                    <table class="startlist__table">
+                        <caption class="sr-only">클래스별 출발 시간, 팀명, 배번</caption>
+                        <thead><tr><th scope="col">출발시간</th><th scope="col">팀명</th><th scope="col">배번</th></tr></thead>
+                        <tbody id="startlist-body"></tbody>
+                    </table>
+                    <p id="startlist-empty" class="startlist__empty" hidden>검색 결과가 없습니다. 팀명이나 배번을 다시 확인해 주세요.</p>
+                </div>
+                <ul id="startlist-notes" class="startlist__notes"></ul>
             </div>
         </div>
     </div>
