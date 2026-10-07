@@ -149,7 +149,7 @@
                                 🔴 실시간 순위 보기
                             </a>
                         </div>
-                        <p class="hero__note">※ <strong>오리엔티어링 대회</strong> 사전 접수는 마감되었습니다. 체험교육부스·부대행사는 <strong>당일 현장에서 누구나 자유롭게</strong> 참여할 수 있습니다.</p>
+                        <p class="hero__note">※ <strong>오리엔티어링 대회</strong>는 접수가 마감되어 <strong>당일 현장 접수도 불가</strong>합니다. 체험교육부스·부대행사는 <strong>당일 현장에서 누구나 자유롭게</strong> 참여할 수 있습니다.</p>
                     </div>
 
                     <!-- Countdown / Info Card -->
@@ -180,7 +180,7 @@
 
                             <ul class="checklist">
                                 <li><b>⏱️ 운영시간:</b> <span>09:30 ~ 15:00 (개회식 10:30)</span></li>
-                                <li><b>📍 집결장소:</b> <span>원미산 진달래동산 야외 무대</span></li>
+                                <li><b>📍 집결장소:</b> <span>원미산 진달래동산 야외 무대<br>(참가 접수: <strong>운영본부 접수처</strong>)</span></li>
                                 <li><b>🎒 준비물:</b> <span><strong>팀별 돗자리</strong>, <strong>개인 텀블러</strong>(정수기용),<br>보온을 위한 <strong>개인 보온물품</strong></span></li>
                                 <li><b>📦 물품보관:</b> <span>개인 물품은 직접 보관<br>(<strong>별도 보관소 없음</strong>)</span></li>
                                 <li><b>🚗 주차안내:</b> <span>대중교통 이용 권장<br>(자차 이용 시 <strong>부천종합운동장 부설주차장</strong> 이용)</span></li>
@@ -210,15 +210,8 @@
                     <p>당일 진행 순서입니다. 세부 시간과 내용은 현장 상황에 따라 일부 변경될 수 있습니다.</p>
                 </div>
 
-                <div class="timetable-wrap">
-                    <table class="timetable">
-                        <caption class="sr-only">2026 산림레포츠 축제 당일 타임테이블</caption>
-                        <thead>
-                            <tr><th scope="col">시간</th><th scope="col">진행 내용</th></tr>
-                        </thead>
-                        <tbody id="timetable-body"></tbody>
-                    </table>
-                </div>
+                <ol id="flow" class="flow" aria-label="당일 동선"></ol>
+                <p class="flow__map-link"><button type="button" class="btn btn--ghost btn--sm btn--pill" data-modal-open="venue-map-modal">📍 행사장 약도에서 위치 보기</button></p>
 
                 <div class="notice-card notice-card--wide" id="startlist-card">
                     <span class="notice-card__icon" aria-hidden="true">🧭</span>
@@ -267,6 +260,17 @@
                     <span class="eyebrow eyebrow--forest">Competition Details</span>
                     <h2 id="structure-heading" class="section-title">클래스 구성 및 시상 내역</h2>
                     <p>총 7개 클래스에서 21개 팀이 수상의 영예를 안게 됩니다. 경기 방식과 대상을 한눈에 비교해 보세요.</p>
+                </div>
+
+                <div class="method-guide">
+                    <div class="method-guide__item">
+                        <span class="badge badge--method badge--score">스코어 방식</span>
+                        <p>순서에 상관없이 포인트를 <strong>많이, 빨리</strong> 찾아오는 방식</p>
+                    </div>
+                    <div class="method-guide__item">
+                        <span class="badge badge--method badge--point">포인트 방식</span>
+                        <p><strong>정식 오리엔티어링</strong> 방식 — 정해진 <strong>순서대로</strong> 포인트를 찾아 빨리 돌아오는 방식</p>
+                    </div>
                 </div>
 
                 <p class="list-hint">클래스별 상세 가이드 (클릭하여 확인)</p>
@@ -361,7 +365,37 @@
                             <span class="faq-item__icon" aria-hidden="true">+</span>
                         </button>
                         <div class="faq-item__a" hidden>
-                            <p><strong>사전 접수가 필요한 것은 오리엔티어링 대회뿐이며, 대회 접수는 마감되었습니다.</strong> 산림·아웃도어 체험교육부스, 청소년 공연 등 부대행사는 <strong>대회 당일 현장에서 별도 신청 없이 누구나 자유롭게</strong> 참여할 수 있습니다. 대회에 신청하지 않은 시민도 부스 체험은 자유롭게 즐기실 수 있습니다.</p>
+                            <p><strong>사전 접수가 필요한 것은 오리엔티어링 대회뿐이며, 대회 접수는 마감되었습니다.</strong> (당일 현장 접수도 대회는 불가, 체험교육부스만 가능) 산림·아웃도어 체험교육부스, 청소년 공연 등 부대행사는 <strong>대회 당일 현장에서 별도 신청 없이 누구나 자유롭게</strong> 참여할 수 있습니다. 대회에 신청하지 않은 시민도 부스 체험은 자유롭게 즐기실 수 있습니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-item__q" aria-expanded="false">
+                            <span>Q. 접수가 마감됐는데 당일 현장에서 대회 접수가 가능한가요?</span>
+                            <span class="faq-item__icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-item__a" hidden>
+                            <p><strong>오리엔티어링 대회는 당일 현장 접수가 불가능합니다.</strong> 현장 접수가 가능한 것은 <strong>체험교육부스</strong>뿐이며, 부스는 별도 신청 없이 누구나 자유롭게 참여할 수 있습니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-item__q" aria-expanded="false">
+                            <span>Q. 대회 당일 접수(배번표·SI카드 수령)는 어디서 하나요?</span>
+                            <span class="faq-item__icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-item__a" hidden>
+                            <p>행사장 <strong>운영본부 접수처</strong>에서 09:30부터 배번표와 SI카드(전자 기록칩)를 받으실 수 있습니다. 위치는 <a href="#schedule">행사장 약도</a>를 참고해 주세요.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-item__q" aria-expanded="false">
+                            <span>Q. 스코어 방식과 포인트 방식은 무엇이 다른가요?</span>
+                            <span class="faq-item__icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-item__a" hidden>
+                            <p><strong>스코어 방식</strong>은 순서에 상관없이 포인트를 많이, 빨리 찾아오는 방식이고, <strong>포인트 방식</strong>은 정식 오리엔티어링 경기 방식으로 정해진 순서대로 포인트를 찾아 빨리 돌아오는 방식입니다. 클래스별 방식은 클래스 카드에서 확인하세요.</p>
                         </div>
                     </div>
 
@@ -489,7 +523,7 @@
         <section class="section final-cta" aria-labelledby="cta-heading">
             <div class="container container--narrow">
                 <h2 id="cta-heading">10월 17일, 진달래동산에서 만나요!</h2>
-                <p>오리엔티어링 대회 접수는 마감되었습니다. 참가가 어려워지셨다면 대회 취소는 전화로 문의해 주세요. 체험교육부스는 당일 현장에서 누구나 즐길 수 있습니다.</p>
+                <p>오리엔티어링 대회는 접수가 마감되어 당일 현장 접수도 불가합니다. 참가가 어려워지셨다면 대회 취소는 전화로 문의해 주세요. 체험교육부스는 당일 현장에서 누구나 즐길 수 있습니다.</p>
                 <div class="final-cta__actions">
                     <a class="btn btn--accent" href="tel:0323444480">
                         📞 취소·문의: 청소년활동팀 (032-344-4480)

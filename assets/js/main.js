@@ -16,7 +16,7 @@
     initEducationLink();
     initKakaoMapLink();
     initCountdown();
-    renderTimetable();
+    renderFlow();
     initStartList();
     initResults();
     renderClassList();
@@ -107,18 +107,41 @@
     }
   }
 
-  /* ---------- 당일 타임테이블 ---------- */
-  function renderTimetable() {
-    var body = document.getElementById("timetable-body");
-    if (!body || !OL.timetable) return;
-    body.innerHTML = OL.timetable.map(function (row) {
+  /* ---------- 당일 동선 (행사 당일에는 현재 단계 강조) ---------- */
+  function renderFlow() {
+    var list = document.getElementById("flow");
+    if (!list || !OL.flow || !OL.event) return;
+
+    var day = String(OL.event.dateISO).slice(0, 10);
+    var at = function (hhmm) { return new Date(day + "T" + hhmm + ":00+09:00").getTime(); };
+
+    list.innerHTML = OL.flow.map(function (s, i) {
       return (
-        '<tr>' +
-          '<th scope="row">' + row.time + "</th>" +
-          "<td><strong>" + row.title + "</strong><span>" + row.desc + "</span></td>" +
-        "</tr>"
+        '<li class="flow__step" data-state="upcoming">' +
+          '<div class="flow__head">' +
+            '<span class="flow__num" aria-hidden="true">' + (i + 1) + "</span>" +
+            '<span class="flow__time">' + s.time + "</span>" +
+            '<span class="flow__now" hidden>지금 진행 중</span>' +
+          "</div>" +
+          '<h3 class="flow__title">' + s.title + "</h3>" +
+          '<p class="flow__place"><span aria-hidden="true">📍</span> ' + s.place + "</p>" +
+          '<p class="flow__desc">' + s.desc + "</p>" +
+        "</li>"
       );
     }).join("");
+
+    var items = $$(".flow__step", list);
+    function update() {
+      var now = Date.now();
+      OL.flow.forEach(function (s, i) {
+        var state = now < at(s.start) ? "upcoming" : now < at(s.end) ? "active" : "past";
+        items[i].setAttribute("data-state", state);
+        var badge = $(".flow__now", items[i]);
+        if (badge) badge.hidden = state !== "active";
+      });
+    }
+    update();
+    setInterval(update, 60000);
   }
 
   /* ---------- 1. 카운트다운 ---------- */
