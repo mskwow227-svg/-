@@ -18,6 +18,7 @@
     initCountdown();
     renderFlow();
     initStartList();
+    initSurveyLink();
     initResults();
     renderClassList();
     renderAwards();
@@ -51,6 +52,15 @@
         "https://map.kakao.com/link/search/" + encodeURIComponent(t.kakaoMapQuery)
       );
     }
+  }
+
+  /* ---------- 만족도 조사 링크 ---------- */
+  function initSurveyLink() {
+    var link = document.getElementById("survey-link");
+    var url = OL.survey && OL.survey.url;
+    if (!link || !url) return;
+    link.setAttribute("href", url);
+    link.hidden = false;
   }
 
   /* ---------- 오리엔티어링 경기 출발 리스트 ---------- */
