@@ -82,8 +82,8 @@
             <nav id="primary-nav" class="nav" aria-label="주요 메뉴">
                 <a href="#about">대회개요</a>
                 <a href="#schedule">진행 안내</a>
-                <a href="#structure">클래스/시상</a>
                 <a href="#booths">체험교육부스</a>
+                <a href="#structure">클래스/시상</a>
                 <a href="#transit">오시는길/주차</a>
                 <a href="#faq">FAQ &amp; 준비물</a>
             </nav>
@@ -245,7 +245,7 @@
                     <span class="notice-card__icon" aria-hidden="true">📍</span>
                     <h3>행사장 약도</h3>
                     <button type="button" class="map-thumb" data-modal-open="venue-map-modal">
-                        <img src="assets/images/venue-map.jpg" alt="행사장 안내도: 입구 두 곳, 무대(집결지·개회식·시상식), 운영본부·접수, 기초교육·식사 배부처, 오리엔티어링 경기 출발 부스, 의료지원, 체험교육부스 1~9번 위치와 부스별 프로그램 안내. 확대해서 보려면 선택하세요." loading="lazy">
+                        <img src="assets/images/venue-map.webp" alt="행사장 약도: 입구에서 운영본부 접수 후 무대 앞 집결·개회식, 체험교육부스 9개 구역과 오리엔티어링 출발점, 기초교육·식사 배부처(09:30~10:30 기초교육, 12:00~ 식사) 위치 안내. 확대해서 보려면 선택하세요." loading="lazy">
                         <span class="map-thumb__zoom" aria-hidden="true">🔍 확대해서 보기</span>
                     </button>
                     <p>화장실은 행사장 밖에 있어요 — 원미도서관 · 부천종합운동장 방면 도보 약 5분.</p>
@@ -253,35 +253,8 @@
             </div>
         </section>
 
-        <!-- Class Overview & Awards -->
-        <section id="structure" class="section section--plain" aria-labelledby="structure-heading">
-            <div class="container">
-                <div class="section-head">
-                    <span class="eyebrow eyebrow--forest">Competition Details</span>
-                    <h2 id="structure-heading" class="section-title">클래스 구성 및 시상 내역</h2>
-                    <p>총 7개 클래스에서 21개 팀이 수상의 영예를 안게 됩니다. 경기 방식과 대상을 한눈에 비교해 보세요.</p>
-                </div>
-
-                <div class="method-guide">
-                    <div class="method-guide__item">
-                        <span class="badge badge--method badge--score">스코어 방식</span>
-                        <p>순서에 상관없이 포인트를 <strong>많이, 빨리</strong> 찾아오는 방식</p>
-                    </div>
-                    <div class="method-guide__item">
-                        <span class="badge badge--method badge--point">포인트 방식</span>
-                        <p><strong>정식 오리엔티어링</strong> 방식 — 정해진 <strong>순서대로</strong> 포인트를 찾아 빨리 돌아오는 방식</p>
-                    </div>
-                </div>
-
-                <p class="list-hint">클래스별 상세 가이드 (클릭하여 확인)</p>
-                <div id="class-list" class="class-list"></div>
-
-                <div id="prize-grid" class="prize-grid"></div>
-            </div>
-        </section>
-
         <!-- Stamp Tour & Booths -->
-        <section id="booths" class="section section--tint" aria-labelledby="booths-heading">
+        <section id="booths" class="section section--plain" aria-labelledby="booths-heading">
             <div class="container">
                 <div class="section-head">
                     <span class="eyebrow eyebrow--blossom">Festival Experience</span>
@@ -311,6 +284,33 @@
 
                 <h3 class="booth-list__title">체험교육부스 프로그램 <span>행사장 안내도의 부스 1~9번</span></h3>
                 <ol id="booth-list" class="booth-list"></ol>
+            </div>
+        </section>
+
+        <!-- Class Overview & Awards -->
+        <section id="structure" class="section section--tint" aria-labelledby="structure-heading">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow eyebrow--forest">Competition Details</span>
+                    <h2 id="structure-heading" class="section-title">클래스 구성 및 시상 내역</h2>
+                    <p>총 7개 클래스에서 21개 팀이 수상의 영예를 안게 됩니다. 경기 방식과 대상을 한눈에 비교해 보세요.</p>
+                </div>
+
+                <div class="method-guide">
+                    <div class="method-guide__item">
+                        <span class="badge badge--method badge--score">스코어 방식</span>
+                        <p>순서에 상관없이 포인트를 <strong>많이, 빨리</strong> 찾아오는 방식</p>
+                    </div>
+                    <div class="method-guide__item">
+                        <span class="badge badge--method badge--point">포인트 방식</span>
+                        <p><strong>정식 오리엔티어링</strong> 방식 — 정해진 <strong>순서대로</strong> 포인트를 찾아 빨리 돌아오는 방식</p>
+                    </div>
+                </div>
+
+                <p class="list-hint">클래스별 상세 가이드 (클릭하여 확인)</p>
+                <div id="class-list" class="class-list"></div>
+
+                <div id="prize-grid" class="prize-grid"></div>
             </div>
         </section>
 
@@ -654,10 +654,10 @@
                 <p>원미산 진달래동산 야외무대 일대 · 손가락으로 확대해서 보세요</p>
             </div>
             <div class="modal__body modal__body--image">
-                <img src="assets/images/venue-map.jpg" alt="행사장 안내도 전체 이미지: 입구, 무대, 운영본부·접수, 기초교육·식사 배부처, 오리엔티어링 경기 출발 부스, 의료지원, 체험교육부스 1~9번 위치와 부스별 프로그램" loading="lazy">
+                <img src="assets/images/venue-map.webp" alt="행사장 약도 전체 이미지" loading="lazy">
             </div>
             <div class="modal__actions">
-                <a class="btn btn--ghost btn--block" href="assets/images/venue-map.jpg" target="_blank" rel="noopener noreferrer">🔗 새 탭에서 원본 열기 (저장하기)</a>
+                <a class="btn btn--ghost btn--block" href="assets/images/venue-map.webp" target="_blank" rel="noopener noreferrer">🔗 새 탭에서 원본 열기 (저장하기)</a>
             </div>
         </div>
     </div>
