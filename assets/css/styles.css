@@ -235,7 +235,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .pill-link:hover { background: var(--forest-50); border-color: var(--forest-500); }
 
-.reg-closed-line { font-size: .85rem; font-weight: 700; color: var(--blossom-600); }
 
 .hero__title { font-size: clamp(1.9rem, 6vw, 3rem); font-weight: 800; letter-spacing: -.02em; }
 .hero__title .accent { color: var(--blossom-500); }
@@ -253,6 +252,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .hero__cta { display: flex; flex-wrap: wrap; gap: .6rem; }
 .hero__cta .btn { flex: 1 1 13rem; }
+.hero__cta:not(:has(a:not([hidden]))) { display: none; }
 /* 오리엔티어링 기초 교육 영상 카드 (히어로 우측, 정보 카드 아래) */
 .edu-card {
   display: flex; align-items: center; gap: .8rem;
@@ -284,27 +284,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 .checklist { display: grid; gap: .6rem; font-size: .85rem; color: var(--ink-soft); padding-top: .5rem; }
 .checklist li { display: flex; gap: .5rem; align-items: flex-start; }
 .checklist b { color: var(--forest-500); flex-shrink: 0; }
-
-/* ---------- 클래스 찾기 ---------- */
-.finder { background: var(--warmbg); border: 1px solid var(--forest-100); border-radius: var(--radius-xl); padding: 1.5rem; max-width: 56rem; margin-inline: auto; box-shadow: var(--shadow-sm); }
-@media (min-width: 768px) { .finder { padding: 2rem; } }
-.finder__row { display: grid; gap: 1.5rem; }
-@media (min-width: 768px) { .finder__row { grid-template-columns: repeat(3, 1fr); } }
-.field label { display: block; font-size: .72rem; font-weight: 700; color: var(--forest-700); margin-bottom: .4rem; }
-.select {
-  width: 100%; background: var(--white); border: 1px solid var(--line-strong); border-radius: var(--radius);
-  padding: .7rem .75rem; font-size: .875rem; color: var(--ink);
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%232e5a44' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right .7rem center; padding-right: 2rem;
-}
-.finder__result { margin-top: 1.5rem; background: var(--white); border: 2px solid var(--forest-500); border-radius: var(--radius); padding: 1.25rem; }
-.finder__result-head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
-.finder__result h4 { font-size: 1.1rem; font-weight: 900; margin-top: .35rem; }
-.finder__result .sub { font-size: .8rem; color: var(--ink-soft); margin-top: .25rem; }
-.finder__result .desc { font-size: .8rem; color: var(--ink-muted); margin-top: .15rem; }
-.finder__result .btn { margin-top: 1rem; }
-.finder__tip { font-size: .75rem; color: var(--ink-muted); margin-top: .75rem; text-align: center; }
 
 /* ---------- 클래스별 상세 가이드 (가로 배치) ---------- */
 .class-list { display: grid; gap: .6rem; grid-template-columns: repeat(2, 1fr); }
@@ -442,6 +421,7 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 @media (min-width: 768px) { .notice-grid { grid-template-columns: repeat(3, 1fr); } }
 .notice-card { background: var(--white); border: 1px solid var(--line-strong); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: var(--shadow-xs); }
 .notice-card--map { margin-top: 1rem; }
+.notice-card--wide { margin-bottom: 1rem; }
 .notice-card--accent { border-color: var(--blossom-500); box-shadow: 0 0 0 1px var(--blossom-500) inset, var(--shadow-xs); }
 .notice-card a { color: var(--forest-700); text-decoration: underline; text-underline-offset: 2px; }
 .notice-card__icon { font-size: 1.6rem; }
@@ -464,7 +444,6 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .prose__contact { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); font-size: .85rem; font-weight: 600; color: var(--forest-700); }
 .prose__contact a:hover { text-decoration: underline; }
 
-.modal__closed-note { font-size: .8rem; font-weight: 600; color: var(--blossom-600); background: var(--blossom-100); border-radius: var(--radius-sm); padding: .6rem .75rem; text-align: center; }
 
 /* ---------- 유틸 ---------- */
 .text-center { text-align: center; }

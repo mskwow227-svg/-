@@ -13,15 +13,13 @@
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   document.addEventListener("DOMContentLoaded", function () {
-    applyFormLinks();
     initEducationLink();
     initKakaoMapLink();
-    initRegistrationStatus();
     initCountdown();
     renderTimetable();
+    initStartList();
     initResults();
     renderClassList();
-    initFinder();
     renderAwards();
     initStampTour();
     initFaq();
@@ -30,13 +28,6 @@
     initSmoothScroll();
     initScrollSpy();
   });
-
-  /* ---------- 신청 링크 일괄 적용 (URL 은 config 한 곳에서만 관리) ---------- */
-  function applyFormLinks() {
-    var url = OL.event && OL.event.formUrl;
-    if (!url) return;
-    $$("[data-reg-link]").forEach(function (a) { a.setAttribute("href", url); });
-  }
 
   /* ---------- 오리엔티어링 기초 교육 영상 링크 ---------- */
   function initEducationLink() {
@@ -60,6 +51,20 @@
         "https://map.kakao.com/link/search/" + encodeURIComponent(t.kakaoMapQuery)
       );
     }
+  }
+
+  /* ---------- 오리엔티어링 경기 출발 리스트 ---------- */
+  function initStartList() {
+    var s = OL.startList || {};
+    var statusEl = document.getElementById("startlist-status");
+    var descEl = document.getElementById("startlist-desc");
+    if (!s.url || !statusEl || !descEl) return;
+
+    statusEl.textContent = "공개";
+    statusEl.classList.add("notice-card__status--live");
+    descEl.innerHTML =
+      (s.note ? s.note + " " : "") +
+      '<a href="' + s.url + '" target="_blank" rel="noopener noreferrer"><strong>출발 리스트 보기 →</strong></a>';
   }
 
   /* ---------- 대회 실시간 기록 ---------- */
@@ -114,45 +119,6 @@
         "</tr>"
       );
     }).join("");
-  }
-
-  /* ---------- 0. 참가 신청 모집 상태 ---------- */
-  function initRegistrationStatus() {
-    var reg = OL.event && OL.event.registration;
-    if (!reg) return;
-
-    var mode = reg.statusOverride || "auto";
-    var open;
-    if (mode === "open") open = true;
-    else if (mode === "closed") open = false;
-    else {
-      var dl = new Date(reg.deadlineISO).getTime();
-      open = isNaN(dl) ? true : Date.now() < dl;
-    }
-
-    document.body.setAttribute("data-reg", open ? "open" : "closed");
-
-    // 마감일 라벨 채우기 (여러 위치)
-    $$("[data-reg-deadline]").forEach(function (el) {
-      el.textContent = reg.deadlineLabel + (open ? "" : " (마감)");
-    });
-
-    // 히어로 배지
-    var shortLabel = reg.deadlineShort || reg.deadlineLabel;
-    var badge = document.getElementById("reg-badge");
-    if (badge) {
-      var text = badge.querySelector("[data-reg-text]");
-      if (open) {
-        if (text) text.textContent = "선착순 모집 중 · " + shortLabel + " 대회 신청 마감";
-      } else {
-        badge.classList.add("pill-live--closed");
-        if (text) text.textContent = "대회 접수 마감 (" + shortLabel + " 마감)";
-      }
-    }
-
-    // 열림/마감 상태별로 보이는 안내 문구
-    $$("[data-reg-open-note]").forEach(function (el) { el.hidden = !open; });
-    $$("[data-reg-closed-note]").forEach(function (el) { el.hidden = open; });
   }
 
   /* ---------- 1. 카운트다운 ---------- */
@@ -243,67 +209,7 @@
     set("[data-field=target]", c.target);
     set("[data-field=desc]", c.desc);
 
-    var apply = $("[data-field=apply]", modal);
-    if (apply && OL.event) apply.href = OL.event.formUrl;
-
     openModal(modal);
-  }
-
-  /* ---------- 3. 클래스 찾기 위저드 ---------- */
-  function initFinder() {
-    var catSel = document.getElementById("finder-category");
-    var ageSel = document.getElementById("finder-age");
-    var expSel = document.getElementById("finder-exp");
-    var result = document.getElementById("finder-result");
-    if (!catSel || !ageSel || !expSel || !result || !OL.finder) return;
-
-    var fillOptions = function (sel, opts) {
-      sel.innerHTML = opts.map(function (o) {
-        return '<option value="' + o.value + '">' + o.label + "</option>";
-      }).join("");
-    };
-
-    fillOptions(catSel, OL.finder.categories);
-
-    function syncSubOptions() {
-      var conf = OL.finder.byCategory[catSel.value];
-      if (!conf) return;
-      fillOptions(ageSel, conf.ages);
-      fillOptions(expSel, conf.exps);
-      // 경력 선택이 1개뿐이면 굳이 노출할 필요 없음
-      var expField = expSel.closest(".field");
-      if (expField) expField.hidden = conf.exps.length <= 1;
-    }
-
-    function recalc() {
-      var conf = OL.finder.byCategory[catSel.value];
-      if (!conf) return;
-      var id = conf.resolve(ageSel.value, expSel.value);
-      var c = classById(id);
-      if (!c) return;
-
-      result.innerHTML =
-        '<div class="finder__result-head">' +
-          '<span class="badge badge--forest">추천 클래스</span>' +
-          '<span class="badge badge--method ' + typeBadgeClass(c.type) + '">' + c.type + "</span>" +
-        "</div>" +
-        "<h4>🎉 " + c.name + " 클래스</h4>" +
-        '<p class="sub"><strong>대상:</strong> ' + c.target + "</p>" +
-        '<p class="desc">' + c.desc + "</p>" +
-        '<a class="btn btn--accent btn--block" href="' + (OL.event ? OL.event.formUrl : "#") + '" target="_blank" rel="noopener noreferrer">이 클래스로 신청하기 →</a>';
-    }
-
-    catSel.addEventListener("change", function () { syncSubOptions(); recalc(); });
-    ageSel.addEventListener("change", recalc);
-    expSel.addEventListener("change", recalc);
-
-    var tip = document.getElementById("finder-tip");
-    if (tip && OL.finder.mixedAgeTip) {
-      tip.innerHTML = "💡 <strong>혼합 연령 참가 팁:</strong> " + OL.finder.mixedAgeTip;
-    }
-
-    syncSubOptions();
-    recalc();
   }
 
   /* ---------- 4. 시상 내역 (1·2·3위 카드) ---------- */

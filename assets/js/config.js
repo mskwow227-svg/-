@@ -18,18 +18,6 @@ window.OL = {
     venue: '원미산 진달래동산 야외 무대',
     venueArea: '원미산 진달래동산 일대',
     capacity: 500,
-    formUrl: 'https://forms.gle/JfCArNtD6sbM8xMs8',
-
-    // 참가 신청 마감 — 마감일이 지나면 '모집 중' 배지가 자동으로 '마감'으로 바뀝니다.
-    registration: {
-      deadlineISO: '2026-10-06T18:00:00+09:00',
-      deadlineLabel: '2026.10.06(화) 오후 6시',
-      deadlineShort: '10월 6일(화) 18시', // 히어로 배지용 표기
-      // 'auto'   = 위 마감일 기준으로 자동 전환 (기본)
-      // 'open'   = 마감일과 무관하게 계속 '모집 중'
-      // 'closed' = 지금 즉시 '마감' (선착순 조기 마감 시 이 값으로 변경)
-      statusOverride: 'auto',
-    },
 
     phone: '032-344-4480',
     phoneTeam: '청소년활동팀',
@@ -54,6 +42,12 @@ window.OL = {
     status: 'before',
     url: '',                    // ★ 업체에게 받은 실시간 결과 페이지 URL 을 여기에
     openLabel: '대회 당일 낮 12시경',
+  },
+
+  // 오리엔티어링 경기 출발 리스트 — 파일·시트·이미지 URL 을 url 에 넣으면 카드에 '출발 리스트 보기' 링크가 생김
+  startList: {
+    url: '',     // ★ 출발 리스트 URL (비워두면 '준비 중' 문구 유지)
+    note: '',    // 링크 앞에 붙일 짧은 안내 (선택)
   },
 
   // 오리엔티어링 기초 교육 영상 (전년도 제작)
@@ -83,63 +77,6 @@ window.OL = {
     { id: 'c6', cat: '청소년', name: '고수오리',     target: '11세~19세 청소년 경력자 (1인 1팀)', type: '포인트 방식', desc: '오리엔티어링 경험이 있는 단독 참가 청소년 베테랑 클래스' },
     { id: 'c7', cat: '청년',   name: '달려오리',     target: '20세~34세 청년 (1인 1팀)',         type: '포인트 방식', desc: '청년층 단독 주행 정밀 탐색 포인트 코스' },
   ],
-
-  /*
-   * 클래스 찾기 위저드
-   * category → 2·3단계 드롭다운 옵션과, 선택 조합이 어떤 클래스로 매칭되는지 정의
-   * resolve(age, exp) 는 classes 배열의 id 를 반환
-   */
-  finder: {
-    categories: [
-      { value: 'family', label: '가족 그룹 (청소년/어린이 동반)' },
-      { value: 'youth',  label: '청소년 전용 (11세~19세)' },
-      { value: 'young',  label: '청년 전용 (20세~34세)' },
-    ],
-    byCategory: {
-      family: {
-        ages: [
-          { value: '7-10',  label: '포함 자녀: 7세 ~ 10세 (초등 저학년)' },
-          { value: '11-13', label: '포함 자녀: 11세 ~ 13세 (초등 고학년)' },
-          { value: '14-19', label: '포함 자녀: 14세 ~ 19세 (중·고등학생)' },
-        ],
-        exps: [
-          { value: 'novice', label: '입문/일반 가족 팀' },
-        ],
-        resolve: function (age) {
-          if (age === '7-10') return 'c1';
-          if (age === '11-13') return 'c2';
-          return 'c3';
-        },
-      },
-      youth: {
-        ages: [
-          { value: '11-13', label: '11세 ~ 13세 (초등 고학년)' },
-          { value: '14-19', label: '14세 ~ 19세 (중·고등학생)' },
-        ],
-        exps: [
-          { value: 'novice',      label: '초보자/입문 (2인 1팀)' },
-          { value: 'experienced', label: '경력자 (1인 1팀 - 고수오리)' },
-        ],
-        resolve: function (age, exp) {
-          if (exp === 'experienced') return 'c6';
-          return age === '11-13' ? 'c4' : 'c5';
-        },
-      },
-      young: {
-        ages: [
-          { value: '20-34', label: '20세 ~ 34세 (청년)' },
-        ],
-        exps: [
-          { value: 'novice', label: '단독 참가 (1인 1팀)' },
-        ],
-        resolve: function () {
-          return 'c7';
-        },
-      },
-    },
-    mixedAgeTip:
-      '가족 내 7세와 11세 자녀가 함께 참여 시, 상위 연령 클래스(11~13세)로 선택해 주세요.',
-  },
 
   // 시상 구조 (클래스별 1·2·3위)
   awards: [
