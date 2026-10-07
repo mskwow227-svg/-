@@ -282,8 +282,18 @@
 
                 <div id="booth-grid" class="booth-grid"></div>
 
-                <h3 class="booth-list__title">체험교육부스 프로그램 <span>행사장 안내도의 부스 1~9번</span></h3>
-                <ol id="booth-list" class="booth-list"></ol>
+                <div class="booth-explorer">
+                    <div class="booth-explorer__map">
+                        <div id="booth-map" class="booth-map" role="group" aria-label="체험교육부스 위치 지도"></div>
+                        <p class="booth-explorer__hint">번호를 누르면 목록과 연결돼요
+                            <button type="button" class="btn btn--ghost btn--sm btn--pill" data-modal-open="venue-map-modal">전체 약도 보기</button>
+                        </p>
+                    </div>
+                    <div class="booth-explorer__side">
+                        <h3 class="booth-list__title">체험교육부스 프로그램 <span>지도의 번호와 같아요</span></h3>
+                        <ol id="booth-list" class="booth-list"></ol>
+                    </div>
+                </div>
             </div>
         </section>
 

@@ -260,16 +260,81 @@
     if (list && OL.booths) {
       list.innerHTML = OL.booths.map(function (b) {
         return (
-          '<li class="booth-item">' +
-            '<span class="booth-item__num" aria-hidden="true">' + b.no + "</span>" +
-            "<div>" +
-              '<strong>' + b.title + "</strong>" +
-              "<span>" + b.org + (b.note ? " · " + b.note : "") + "</span>" +
-            "</div>" +
+          '<li class="booth-item" data-no="' + b.no + '">' +
+            '<button type="button" class="booth-item__btn" data-no="' + b.no + '" aria-pressed="false">' +
+              '<span class="booth-item__num" aria-hidden="true">' + b.no + "</span>" +
+              "<span class=\"booth-item__text\">" +
+                "<strong>" + b.title + "</strong>" +
+                "<span>" + b.org + (b.note ? " · " + b.note : "") + "</span>" +
+              "</span>" +
+            "</button>" +
           "</li>"
         );
       }).join("");
+      initBoothMap(list);
     }
+  }
+
+  /* ---------- 체험교육부스 지도 ↔ 목록 연결 ---------- */
+  function initBoothMap(list) {
+    var mapEl = document.getElementById("booth-map");
+    var cfg = OL.boothMap;
+    if (!mapEl || !cfg || !OL.booths) return;
+    var c = cfg.crop;
+
+    mapEl.style.aspectRatio = c.w + " / " + c.h;
+    var img = document.createElement("img");
+    img.src = cfg.src;
+    img.alt = "";
+    img.className = "booth-map__img";
+    img.style.width = (cfg.w / c.w) * 100 + "%";
+    img.style.left = -(c.x / c.w) * 100 + "%";
+    img.style.top = -(c.y / c.h) * 100 + "%";
+    img.loading = "lazy";
+    mapEl.appendChild(img);
+
+    OL.booths.forEach(function (b) {
+      if (!b.pin) return;
+      var pin = document.createElement("button");
+      pin.type = "button";
+      pin.className = "booth-map__pin";
+      pin.setAttribute("data-no", b.no);
+      pin.setAttribute("aria-pressed", "false");
+      pin.setAttribute("aria-label", "부스 " + b.no + " " + b.title);
+      pin.style.left = ((b.pin[0] - c.x) / c.w) * 100 + "%";
+      pin.style.top = ((b.pin[1] - c.y) / c.h) * 100 + "%";
+      mapEl.appendChild(pin);
+    });
+
+    var wide = window.matchMedia("(min-width: 900px)");
+    var current = null;
+
+    function select(no, source) {
+      var same = current === no;
+      current = same ? null : no;
+      $$(".booth-map__pin, .booth-item__btn").forEach(function (el) {
+        var on = !same && el.getAttribute("data-no") === String(no);
+        el.setAttribute("aria-pressed", String(on));
+        el.classList.toggle("is-active", on);
+      });
+      if (same) return;
+      var behavior = reduceMotion ? "auto" : "smooth";
+      if (source === "list" && !wide.matches) {
+        mapEl.parentElement.scrollIntoView({ behavior: behavior, block: "start" });
+      } else if (source === "pin") {
+        var item = $('.booth-item__btn[data-no="' + no + '"]', list);
+        if (item) item.scrollIntoView({ behavior: behavior, block: wide.matches ? "nearest" : "center" });
+      }
+    }
+
+    mapEl.addEventListener("click", function (e) {
+      var pin = e.target.closest(".booth-map__pin");
+      if (pin) select(pin.getAttribute("data-no"), "pin");
+    });
+    list.addEventListener("click", function (e) {
+      var btn = e.target.closest(".booth-item__btn");
+      if (btn) select(btn.getAttribute("data-no"), "list");
+    });
   }
 
   /* ---------- 오리엔티어링 경기 출발 리스트 (탭 + 검색) ---------- */

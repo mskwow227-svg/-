@@ -488,12 +488,6 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .booth-list__title { font-size: .95rem; font-weight: 800; margin-bottom: .6rem; }
 .booth-list__title span { font-size: .72rem; font-weight: 600; color: var(--ink-muted); margin-left: .4rem; }
 .booth-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
-@media (min-width: 560px) { .booth-list { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 900px) { .booth-list { grid-template-columns: repeat(3, 1fr); } }
-.booth-item { display: flex; align-items: flex-start; gap: .65rem; background: var(--white); border: 1px solid var(--line-strong); border-radius: var(--radius); padding: .7rem .8rem; box-shadow: var(--shadow-xs); }
-.booth-item__num { flex: none; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--blossom-500); color: #fff; font-size: .8rem; font-weight: 800; display: grid; place-items: center; }
-.booth-item strong { display: block; font-size: .85rem; font-weight: 700; line-height: 1.4; }
-.booth-item span:not(.booth-item__num) { display: block; font-size: .72rem; color: var(--ink-muted); margin-top: .1rem; }
 
 /* ---------- 출발 리스트 모달 ---------- */
 .modal__panel--list { max-width: 40rem; }
@@ -511,3 +505,27 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .startlist__class th { background: var(--forest-50); color: var(--forest-700); font-size: .78rem; font-weight: 800; text-align: left; padding: .45rem .6rem; border-top: 1px solid var(--forest-100); }
 .startlist__empty { padding: 1rem; font-size: .8rem; color: var(--ink-muted); text-align: center; }
 .startlist__notes { margin: 0; padding-left: 1.1rem; font-size: .72rem; color: var(--ink-muted); line-height: 1.6; list-style: "※ "; }
+
+/* ---------- 부스 지도 ↔ 목록 ---------- */
+.booth-explorer { display: grid; gap: 1.25rem; }
+@media (min-width: 900px) {
+  .booth-explorer { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 1.75rem; align-items: start; }
+  .booth-explorer__map { position: sticky; top: 5.5rem; }
+}
+.booth-explorer__map { scroll-margin-top: 5rem; }
+.booth-map { position: relative; overflow: hidden; border-radius: var(--radius-lg); border: 1px solid var(--forest-200); background: var(--forest-50); }
+.booth-map__img { position: absolute; max-width: none; height: auto; display: block; pointer-events: none; }
+.booth-map__pin { position: absolute; width: 2.4rem; height: 2.4rem; transform: translate(-50%, -50%); border-radius: 50%; border: 2px solid transparent; background: transparent; cursor: pointer; padding: 0; }
+.booth-map__pin:hover { border-color: rgba(224, 122, 95, .6); }
+.booth-map__pin.is-active { border-color: var(--blossom-500); background: rgba(224, 122, 95, .22); animation: pin-pulse 1.4s ease-out 2; }
+@keyframes pin-pulse { 0% { box-shadow: 0 0 0 0 rgba(224, 122, 95, .55); } 100% { box-shadow: 0 0 0 .9rem rgba(224, 122, 95, 0); } }
+.booth-explorer__hint { display: flex; align-items: center; justify-content: space-between; gap: .5rem; flex-wrap: wrap; margin-top: .5rem; font-size: .75rem; color: var(--ink-muted); }
+.booth-list__title { margin-top: 0; }
+.booth-list li { margin: 0; }
+.booth-item__btn { width: 100%; display: flex; align-items: flex-start; gap: .65rem; text-align: left; background: var(--white); border: 1px solid var(--line-strong); border-radius: var(--radius); padding: .65rem .8rem; box-shadow: var(--shadow-xs); cursor: pointer; font: inherit; color: inherit; transition: border-color .15s ease, background-color .15s ease; }
+.booth-item__btn:hover { border-color: var(--forest-300); }
+.booth-item__btn.is-active { border-color: var(--blossom-500); background: var(--blossom-100); box-shadow: 0 0 0 1px var(--blossom-500) inset; }
+.booth-item__num { flex: none; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--forest-500); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--forest-500), 0 1px 3px rgba(0, 0, 0, .25); color: #fff; font-size: .8rem; font-weight: 800; display: grid; place-items: center; }
+.booth-item__text strong { display: block; font-size: .85rem; font-weight: 700; line-height: 1.4; }
+.booth-item__text span { display: block; font-size: .72rem; color: var(--ink-muted); margin-top: .1rem; }
+@media (prefers-reduced-motion: reduce) { .booth-map__pin.is-active { animation: none; } }
