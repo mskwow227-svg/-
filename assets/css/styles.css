@@ -481,8 +481,6 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .booth__time { display: inline-block; margin-bottom: .35rem; font-size: .72rem; font-weight: 700; color: var(--blossom-600); background: var(--blossom-100); border-radius: var(--radius-pill); padding: .15rem .6rem; }
 
 /* ---------- 출발 리스트 ---------- */
-.startlist__btn { margin-top: auto; align-self: flex-start; }
-#startlist-card p:not(.notice-card__status) { margin-bottom: .9rem; }
 
 /* ---------- 체험교육부스 1~9 ---------- */
 .booth-list__title { font-size: .95rem; font-weight: 800; margin-bottom: .6rem; }
@@ -526,3 +524,8 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .booth-item__text strong { display: block; font-size: .85rem; font-weight: 700; line-height: 1.4; }
 .booth-item__text span { display: block; font-size: .72rem; color: var(--ink-muted); margin-top: .1rem; }
 @media (prefers-reduced-motion: reduce) { .booth-map__pin.is-active { animation: none; } }
+
+/* ---------- 카드 제목 옆 버튼 ---------- */
+.notice-card__titlerow { display: flex; align-items: center; flex-wrap: wrap; gap: .35rem .6rem; margin-top: .35rem; }
+.notice-card__titlerow h3 { margin-top: 0; }
+.startlist__btn { padding: .3rem .7rem; font-size: .72rem; }

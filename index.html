@@ -216,10 +216,12 @@
                 <div class="notice-grid">
                     <div class="notice-card" id="startlist-card">
                         <span class="notice-card__icon" aria-hidden="true">🧭</span>
-                        <h3>경기 출발 리스트</h3>
+                        <div class="notice-card__titlerow">
+                            <h3>경기 출발 리스트</h3>
+                            <button type="button" class="btn btn--primary btn--sm btn--pill startlist__btn" data-modal-open="startlist-modal">보기 →</button>
+                        </div>
                         <p class="notice-card__status notice-card__status--live">출발 10분 전까지 도착</p>
                         <p>클래스별 출발 시간과 배번을 팀명·배번으로 검색해 확인하세요.</p>
-                        <button type="button" class="btn btn--primary btn--sm btn--pill startlist__btn" data-modal-open="startlist-modal">🧭 출발 리스트 보기</button>
                     </div>
                     <div class="notice-card" id="results-card">
                         <span class="notice-card__icon" aria-hidden="true">📊</span>
