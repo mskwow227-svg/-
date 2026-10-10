@@ -1,5 +1,5 @@
 /*
- * 2026 산림레포츠 축제 OL 대회 — 프론트엔드 로직
+ * 2026 산림레포츠 축제 OL 축제 — 프론트엔드 로직
  * ─────────────────────────────────────────────
  * 데이터는 config.js(window.OL). 이 파일은 렌더링과 상호작용만 담당합니다.
  * 모든 DOM 조회는 없을 수도 있다고 가정하고 방어적으로 작성했습니다.
@@ -54,7 +54,7 @@
     }
   }
 
-  /* ---------- 대회 실시간 기록 ---------- */
+  /* ---------- 축제 실시간 기록 ---------- */
   function initResults() {
     var r = OL.results || {};
     var status = r.status || "before";
@@ -67,8 +67,8 @@
     var heroLink = document.getElementById("results-hero-link");
 
     if (!live) {
-      // 대회 전 — 진행 안내 카드에 안내 문구만
-      if (statusEl) statusEl.textContent = (r.openLabel || "대회 당일") + " 공개";
+      // 축제 전 — 진행 안내 카드에 안내 문구만
+      if (statusEl) statusEl.textContent = (r.openLabel || "축제 당일") + " 공개";
       if (heroLink) heroLink.hidden = true;
       return;
     }
@@ -185,7 +185,7 @@
     function tick() {
       var diff = target - Date.now();
       if (diff <= 0) {
-        root.innerHTML = '<p class="countdown__done">대회가 시작되었습니다!</p>';
+        root.innerHTML = '<p class="countdown__done">축제가 시작되었습니다!</p>';
         clearInterval(timer);
         return;
       }
@@ -197,7 +197,7 @@
       if (slots.hours) slots.hours.textContent = pad(h);
       if (slots.minutes) slots.minutes.textContent = pad(m);
       if (slots.seconds) slots.seconds.textContent = pad(s);
-      root.setAttribute("aria-label", "대회까지 " + d + "일 " + h + "시간 " + m + "분 남음");
+      root.setAttribute("aria-label", "축제까지 " + d + "일 " + h + "시간 " + m + "분 남음");
     }
 
     tick();
