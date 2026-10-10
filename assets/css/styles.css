@@ -1,5 +1,5 @@
 /* =============================================================
-   2026 산림레포츠 축제 OL 대회 — 스타일시트
+   2026 산림레포츠 축제 OL 경기 — 스타일시트
    디자인 토큰(CSS 변수) + 컴포넌트 클래스. 빌드 도구 없음.
    ============================================================= */
 
@@ -397,7 +397,7 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 /* ---------- 타임테이블 ---------- */
 
 
-/* ---------- 대회 진행 안내 카드 ---------- */
+/* ---------- 축제 진행 안내 카드 ---------- */
 .notice-grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
 @media (min-width: 560px) { .notice-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 900px) { .notice-grid { grid-template-columns: repeat(4, 1fr); } }
