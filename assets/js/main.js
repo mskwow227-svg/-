@@ -18,6 +18,7 @@
     initCountdown();
     renderFlow();
     initPrivacyDetails();
+    initNotices();
     initResults();
     renderClassList();
     renderAwards();
@@ -92,6 +93,15 @@
       heroLink.textContent = isFinal ? "🏆 최종 결과 보기" : "🔴 실시간 순위 보기";
       heroLink.hidden = false;
     }
+  }
+
+  /* ---------- 공통 안내 문구 ([data-notice="키"] 요소에 config 의 OL.notices 값을 채움) ---------- */
+  function initNotices() {
+    var n = OL.notices || {};
+    $$("[data-notice]").forEach(function (el) {
+      var text = n[el.getAttribute("data-notice")];
+      if (text) el.textContent = "⚠️ " + text;
+    });
   }
 
   /* ---------- 개인정보 안내 접이식: #privacy 링크로 오면 자동으로 펼침 ---------- */
