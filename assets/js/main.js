@@ -273,6 +273,12 @@
         );
       }).join("");
     }
+
+    var warn = document.getElementById("prize-warn");
+    if (warn && OL.notices && OL.notices.roster) {
+      warn.innerHTML = "⚠️ <strong>" + OL.notices.roster + "</strong> " + (OL.notices.rosterNote || "");
+      warn.hidden = false;
+    }
   }
 
   /* ---------- 5. 체험교육부스 (기초교육 카드 + 부스 1~9 목록) ---------- */
@@ -391,7 +397,10 @@
     }).join("");
 
     if (notes) {
-      notes.innerHTML = data.notes.map(function (n) { return "<li>" + n + "</li>"; }).join("");
+      var rosterNotice = OL.notices && OL.notices.roster
+        ? ["<strong>" + OL.notices.roster + "</strong> " + (OL.notices.rosterNote || "")]
+        : [];
+      notes.innerHTML = rosterNotice.concat(data.notes).map(function (n) { return "<li>" + n + "</li>"; }).join("");
     }
 
     function render() {
