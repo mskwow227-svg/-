@@ -18,6 +18,7 @@
     initCountdown();
     renderFlow();
     initPrivacyDetails();
+    initNotices();
     initResults();
     renderClassList();
     renderAwards();
@@ -92,6 +93,15 @@
       heroLink.textContent = isFinal ? "🏆 최종 결과 보기" : "🔴 실시간 순위 보기";
       heroLink.hidden = false;
     }
+  }
+
+  /* ---------- 공통 안내 문구 ([data-notice="키"] 요소에 config 의 OL.notices 값을 채움) ---------- */
+  function initNotices() {
+    var n = OL.notices || {};
+    $$("[data-notice]").forEach(function (el) {
+      var text = n[el.getAttribute("data-notice")];
+      if (text) el.textContent = "⚠️ " + text;
+    });
   }
 
   /* ---------- 개인정보 안내 접이식: #privacy 링크로 오면 자동으로 펼침 ---------- */
@@ -273,6 +283,12 @@
         );
       }).join("");
     }
+
+    var warn = document.getElementById("prize-warn");
+    if (warn && OL.notices && OL.notices.roster) {
+      warn.innerHTML = "⚠️ <strong>" + OL.notices.roster + "</strong> " + (OL.notices.rosterNote || "");
+      warn.hidden = false;
+    }
   }
 
   /* ---------- 5. 체험교육부스 (기초교육 카드 + 부스 1~9 목록) ---------- */
@@ -391,7 +407,10 @@
     }).join("");
 
     if (notes) {
-      notes.innerHTML = data.notes.map(function (n) { return "<li>" + n + "</li>"; }).join("");
+      var rosterNotice = OL.notices && OL.notices.roster
+        ? ["<strong>" + OL.notices.roster + "</strong> " + (OL.notices.rosterNote || "")]
+        : [];
+      notes.innerHTML = rosterNotice.concat(data.notes).map(function (n) { return "<li>" + n + "</li>"; }).join("");
     }
 
     function render() {

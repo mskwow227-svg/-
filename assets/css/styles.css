@@ -557,3 +557,7 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
   .flow__more { display: none; }
   .flow__toggle[aria-expanded="true"] + .flow__more { display: block; padding-left: 2.2rem; }
 }
+
+.prize-warn { max-width: 56rem; margin: 1rem auto 0; text-align: center; line-height: 1.6; }
+
+.hero__note-warn { display: block; margin-top: .3rem; color: var(--blossom-600); }
