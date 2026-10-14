@@ -113,6 +113,7 @@
     if (!el || !n) return;
     var rows = [
       ["⏰", n.checkin],
+      ["🎪", n.general],
       ["👨‍👩‍👧", n.party],
       ["⚠️", n.rosterShort && (n.rosterShort + " " + (n.classLock || ""))],
     ];
