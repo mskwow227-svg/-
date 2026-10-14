@@ -546,3 +546,21 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .booth-item__num { flex: none; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--forest-500); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--forest-500), 0 1px 3px rgba(0, 0, 0, .25); color: #fff; font-size: .8rem; font-weight: 800; display: grid; place-items: center; }
 .booth-item__text strong { display: block; font-size: .85rem; font-weight: 700; line-height: 1.4; }
 .booth-item__text span { display: block; font-size: .72rem; color: var(--ink-muted); margin-top: .1rem; }
+
+/* ---------- 경기 규칙 ---------- */
+.rules-key { list-style: none; margin: 0 auto 1rem; padding: 0; max-width: 64rem; display: grid; gap: .6rem; }
+@media (min-width: 768px) { .rules-key { grid-template-columns: repeat(3, 1fr); } }
+.rules-key__item { display: flex; gap: .65rem; align-items: flex-start; background: var(--amber-soft-bg); border: 1px solid var(--amber-soft-line); border-radius: var(--radius); padding: .8rem .9rem; color: var(--amber-soft-fg); }
+.rules-key__icon { font-size: 1.3rem; line-height: 1.2; }
+.rules-key__item strong { display: block; font-size: .88rem; font-weight: 800; }
+.rules-key__item p { font-size: .75rem; line-height: 1.55; margin-top: .2rem; }
+.rules-details { max-width: 56rem; margin: 0 auto 1.5rem; }
+.rules-body h3 { margin-top: 1.25rem; }
+.rules-body h3:first-child { margin-top: 0; }
+.rules-step-title { margin-top: .9rem; font-size: .8rem; font-weight: 800; color: var(--forest-700); }
+.rules-gear-wrap { overflow-x: auto; margin-top: .5rem; }
+.rules-gear { width: 100%; border-collapse: collapse; font-size: .82rem; }
+.rules-gear th, .rules-gear td { text-align: left; padding: .5rem .6rem; border-top: 1px solid var(--line); vertical-align: top; }
+.rules-gear thead th { background: var(--forest-50); color: var(--forest-700); font-size: .75rem; border-top: 0; }
+.rules-gear tbody th { white-space: nowrap; font-weight: 700; color: var(--ink); }
+.rules-gear td { color: var(--ink-soft); }

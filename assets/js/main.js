@@ -18,6 +18,7 @@
     initCountdown();
     renderFlow();
     initPrivacyDetails();
+    renderRules();
     initNotices();
     initResults();
     renderClassList();
@@ -104,16 +105,48 @@
     });
   }
 
-  /* ---------- 개인정보 안내 접이식: #privacy 링크로 오면 자동으로 펼침 ---------- */
+  /* ---------- 접이식 안내: 해당 앵커 링크로 오면 자동으로 펼침 ---------- */
   function initPrivacyDetails() {
-    var d = document.getElementById("privacy-details");
-    if (!d) return;
-    var open = function () { d.open = true; };
-    document.addEventListener("click", function (e) {
-      if (e.target.closest('a[href="#privacy"]')) open();
+    [["privacy", "privacy-details"], ["rules-details", "rules-details"]].forEach(function (pair) {
+      var d = document.getElementById(pair[1]);
+      if (!d) return;
+      var open = function () { d.open = true; };
+      document.addEventListener("click", function (e) {
+        if (e.target.closest('a[href="#' + pair[0] + '"]')) open();
+      });
+      if (location.hash === "#" + pair[0]) open();
     });
-    if (location.hash === "#privacy") open();
   }
+
+  /* ---------- 경기 방법·규칙·장비 ---------- */
+  function renderRules() {
+    var r = OL.rules;
+    if (!r) return;
+
+    var key = document.getElementById("rules-key");
+    if (key && r.key) {
+      key.innerHTML = r.key.map(function (k) {
+        return '<li class="rules-key__item"><span class="rules-key__icon" aria-hidden="true">' + k.icon + "</span>" +
+          "<div><strong>" + k.title + "</strong><p>" + k.desc + "</p></div></li>";
+      }).join("");
+    }
+
+    var body = document.getElementById("rules-body");
+    if (!body) return;
+    var ul = function (arr) { return "<ul>" + arr.map(function (t) { return "<li>" + t + "</li>"; }).join("") + "</ul>"; };
+    body.innerHTML =
+      "<h3>경기 지도 보는 법</h3>" + ul(r.map) +
+      "<h3>경기 방식과 순위 기준</h3>" + ul(r.rank) +
+      "<h3>오리엔티어링 장비</h3>" +
+      '<div class="rules-gear-wrap"><table class="rules-gear"><thead><tr><th scope="col">장비</th><th scope="col">설명</th></tr></thead><tbody>' +
+        r.gear.map(function (g) { return "<tr><th scope=\"row\">" + g[0] + "</th><td>" + g[1] + "</td></tr>"; }).join("") +
+      "</tbody></table></div>" + ul(r.gearNotes) +
+      "<h3>당일 참가 순서</h3>" +
+      '<p class="rules-step-title">경기 전</p>' + ul(r.before) +
+      '<p class="rules-step-title">경기 중</p>' + ul(r.during) +
+      '<p class="rules-step-title">경기 후</p>' + ul(r.after);
+  }
+
 
   /* ---------- 당일 동선 (행사 당일에는 현재 단계 강조) ---------- */
   function renderFlow() {
