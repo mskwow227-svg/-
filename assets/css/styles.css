@@ -564,3 +564,9 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .rules-gear thead th { background: var(--forest-50); color: var(--forest-700); font-size: .75rem; border-top: 0; }
 .rules-gear tbody th { white-space: nowrap; font-weight: 700; color: var(--ink); }
 .rules-gear td { color: var(--ink-soft); }
+
+/* 경기 규칙 펼침 버튼 — 눈에 띄게 */
+.rules-details > summary { width: 100%; max-width: 30rem; padding: .9rem 1.25rem; font-size: 1rem; font-weight: 800; color: #fff; background: var(--forest-500); border-color: var(--forest-500); box-shadow: var(--shadow-md); transition: background-color .15s ease, transform .15s ease; }
+.rules-details > summary:hover { background: var(--forest-600); }
+.rules-details > summary:active { transform: translateY(1px); }
+.rules-details > summary::before { content: "📘 "; }
