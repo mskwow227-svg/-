@@ -20,6 +20,7 @@
     initPrivacyDetails();
     renderRules();
     initNotices();
+    renderDayNotice();
     initResults();
     renderClassList();
     renderAwards();
@@ -103,6 +104,22 @@
       var text = n[el.getAttribute("data-notice")];
       if (text) el.textContent = "⚠️ " + text;
     });
+  }
+
+  /* ---------- 히어로 '당일 꼭 확인' 안내 (문자 안내와 같은 내용) ---------- */
+  function renderDayNotice() {
+    var el = document.getElementById("day-notice");
+    var n = OL.notices;
+    if (!el || !n) return;
+    var rows = [
+      ["⏰", n.checkin],
+      ["🎪", n.general],
+      ["👨‍👩‍👧", n.party],
+      ["⚠️", n.rosterShort && (n.rosterShort + " " + (n.classLock || ""))],
+    ];
+    el.innerHTML = rows.filter(function (r) { return r[1]; }).map(function (r) {
+      return '<li><span aria-hidden="true">' + r[0] + "</span><span>" + r[1] + "</span></li>";
+    }).join("");
   }
 
   /* ---------- 접이식 안내: 해당 앵커 링크로 오면 자동으로 펼침 ---------- */
@@ -376,10 +393,11 @@
     }).join("");
 
     if (notes) {
+      var checkinNotice = OL.notices && OL.notices.checkinShort ? ["<strong>" + OL.notices.checkinShort + "</strong>"] : [];
       var rosterNotice = OL.notices && OL.notices.roster
         ? ["<strong>" + OL.notices.roster + "</strong> " + (OL.notices.rosterNote || "")]
         : [];
-      notes.innerHTML = rosterNotice.concat(data.notes).map(function (n) { return "<li>" + n + "</li>"; }).join("");
+      notes.innerHTML = checkinNotice.concat(rosterNotice, data.notes).map(function (n) { return "<li>" + n + "</li>"; }).join("");
     }
 
     function render() {

@@ -149,7 +149,8 @@
                                 🔴 실시간 순위 보기
                             </a>
                         </div>
-                        <p class="hero__note">※ <strong>오리엔티어링 경기</strong>는 접수가 마감되어 <strong>당일 현장 접수도 불가</strong>합니다. 체험교육부스·부대행사는 <strong>당일 현장에서 누구나 자유롭게</strong> 참여할 수 있습니다. <strong class="hero__note-warn" data-notice="rosterShort"></strong></p>
+                        <p class="hero__note">※ <strong>오리엔티어링 경기</strong>는 접수가 마감되어 <strong>당일 현장 접수도 불가</strong>합니다. 체험교육부스·부대행사는 <strong>당일 현장에서 누구나 자유롭게</strong> 참여할 수 있습니다.</p>
+                        <ul id="day-notice" class="day-notice" aria-label="당일 꼭 확인할 안내"></ul>
                     </div>
 
                     <!-- Countdown / Info Card -->
@@ -180,8 +181,8 @@
 
                             <ul class="checklist">
                                 <li><b>⏱️ 운영시간:</b> <span>09:30 ~ 15:00 (개회식 10:30)</span></li>
-                                <li><b>📍 집결장소:</b> <span>원미산 진달래동산 야외 무대<br>(참가 접수: <strong>종합안내 부스</strong>)</span></li>
-                                <li class="is-key"><b>🎒 준비물:</b> <span><strong>팀별 돗자리</strong>, <strong>개인 텀블러</strong>(정수기용),<br>보온을 위한 <strong>개인 보온물품</strong></span></li>
+                                <li><b>📍 집결장소:</b> <span>원미산 진달래동산 야외 무대<br>(접수: <strong>종합안내 부스(접수처)</strong>)</span></li>
+                                <li class="is-key"><b>🎒 준비물:</b> <span><strong>팀별 돗자리</strong>, <strong>개인 텀블러</strong>(물병),<br><strong>개인 보온물품</strong>, 편한 <strong>운동화·활동복</strong></span></li>
                                 <li class="is-key"><b>📦 물품보관:</b> <span>개인 물품은 직접 보관<br>(<strong>별도 보관소 없음</strong>)</span></li>
                                 <li><b>🚗 주차안내:</b> <span>대중교통 이용 권장<br>(자차 이용 시 <strong>부천종합운동장 부설주차장</strong> 이용)</span></li>
                             </ul>
@@ -413,7 +414,17 @@
                             <span class="faq-item__icon" aria-hidden="true">+</span>
                         </button>
                         <div class="faq-item__a" hidden>
-                            <p>행사장 <strong>종합안내 부스</strong>에서 09:30부터 배번표와 SI카드(전자 기록칩)를 받으실 수 있습니다. 위치는 <a href="#schedule">행사장 약도</a>를 참고해 주세요.</p>
+                            <p>행사장 <strong>종합안내 부스(접수처)</strong>에서 <strong>경기 참가 접수는 09:30부터 10:50까지</strong> 배번표와 SI카드(전자 기록칩)를 받으실 수 있습니다. 일반 참가(체험교육부스 등) 접수는 11:00부터 같은 종합안내 부스(접수처)에서 가능합니다. 위치는 <a href="#schedule">행사장 약도</a>를 참고해 주세요.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-item__q" aria-expanded="false">
+                            <span>Q. 접수 시간에 늦으면 어떻게 되나요?</span>
+                            <span class="faq-item__icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-item__a" hidden>
+                            <p><strong>경기 접수는 10:50에 마감되며, 마감 이후에는 경기에 참가할 수 없습니다.</strong> (일반 참가 접수는 11:00부터 종합안내 부스에서 가능합니다.) 가능하면 개회식(10:30) 전에 도착해 주세요. 개회식에서 안전 수칙 안내와 준비 운동을 합니다. 신청서에 적은 팀원 전원이 함께 종합안내 부스(접수처)로 오셔야 접수할 수 있습니다.</p>
                         </div>
                     </div>
 
@@ -447,10 +458,10 @@
                             <div class="faq-note faq-note--tip">
                                 <p><strong>🎒 준비물 안내</strong></p>
                                 <p>• <strong>팀별 돗자리:</strong> 팀별로 편안하게 앉아서 쉴 수 있도록 꼭 준비해 주세요.</p>
-                                <p>• <strong>개인 텀블러:</strong> 현장 정수기 이용 및 음용수 보관을 위한 텀블러 지참 필수!</p>
+                                <p>• <strong>개인 텀블러(물병):</strong> 현장 정수기 이용 및 음용수 보관을 위한 텀블러·물병 지참 필수!</p>
                                 <p>• <strong>개인 보온물품:</strong> 야외에서 오래 머무르니 보온을 위한 개인 물품을 준비해 주세요.</p>
                                 <p>• <strong>개인 물품 보관:</strong> 별도 보관소가 없으니 개인 물품은 직접 보관해 주세요.</p>
-                                <p>• 편안한 운동복과 운동화 착용을 권장합니다.</p>
+                                <p>• <strong>편한 운동화·활동복:</strong> 야외 활동에 맞게 준비해 주세요.</p>
                             </div>
                             <div class="faq-note faq-note--warn">
                                 <p>⚠️ <strong>배번표 옷핀 부착 안내:</strong> 배번표가 <strong>옷핀으로 제공되어 의류에 작은 구멍이 날 수 있습니다.</strong> 아끼는 옷보다는 오염이나 구멍에 구애받지 않는 편안한 활동복 착용을 부탁드립니다.</p>
@@ -474,7 +485,7 @@
                             <span class="faq-item__icon" aria-hidden="true">+</span>
                         </button>
                         <div class="faq-item__a" hidden>
-                            <p>경기 참가와 기록 측정은 가능하지만, <strong>10월 6일(화) 접수 마감 이후 명단(이름 교체)이나 인원(팀원 추가·삭제)이 변경된 팀은 모두 시상에서 제외</strong>됩니다. 경기 당일 변경도 같습니다. 모든 클래스에 동일하게 적용됩니다.</p>
+                            <p>경기 참가와 기록 측정은 가능하지만, <strong>10월 6일(화) 접수 마감 이후 명단(이름 교체)이나 인원(팀원 추가·삭제)이 변경된 팀은 모두 시상에서 제외</strong>됩니다. 경기 당일 변경도 같습니다. 모든 클래스에 동일하게 적용되며, <strong>클래스(종목) 변경은 불가</strong>합니다.</p>
                             <div class="faq-note faq-note--warn">
                                 <p>⚠️ <strong>변경 신청은 10월 16일(금)까지 가능합니다.</strong> 변경이 필요하면 청소년활동팀 <a href="tel:0323444480">032-344-4480</a>으로 문의해 주세요.</p>
                             </div>
@@ -487,7 +498,7 @@
                             <span class="faq-item__icon" aria-hidden="true">+</span>
                         </button>
                         <div class="faq-item__a" hidden>
-                            <p>네! 오리엔티어링 경기는 우천 시에도 정상 진행됩니다. 단, 폭우 및 기상 특보 발효 등 안전상 위험이 판단될 경우 사전 등록하신 연락처로 별도 공지 예정입니다.</p>
+                            <p>소량의 비는 정상 진행합니다. 폭우 등 안전상 위험이 판단되면 <strong>당일 오전 7시에 별도 안내</strong>드립니다.</p>
                         </div>
                     </div>
 
