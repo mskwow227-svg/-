@@ -60,7 +60,11 @@
   /* ---------- 축제 실시간 기록 ---------- */
   function initResults() {
     var r = OL.results || {};
-    var status = r.status || "before";
+    var status = r.status || "auto";
+    if (status === "auto") {
+      var now = Date.now(), lf = Date.parse(r.liveFromISO), ff = Date.parse(r.finalFromISO);
+      status = (!isNaN(ff) && now >= ff) ? "final" : (!isNaN(lf) && now >= lf) ? "live" : "before";
+    }
     var live = (status === "live" || status === "final") && !!r.url;
     var isFinal = status === "final";
 
@@ -72,6 +76,10 @@
     if (!live) {
       // 축제 전 — 진행 안내 카드에 안내 문구만
       if (statusEl) statusEl.textContent = (r.openLabel || "축제 당일") + " 공개";
+      if (descEl && r.url) {
+        descEl.innerHTML = "전자 기록(SI카드) 기반 클래스별 순위가 축제 당일 이곳에서 공개됩니다. " +
+          '<a href="' + r.url + '" target="_blank" rel="noopener noreferrer"><strong>순위 페이지 열기 →</strong></a>';
+      }
       if (heroLink) heroLink.hidden = true;
       return;
     }

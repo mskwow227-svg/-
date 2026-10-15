@@ -572,6 +572,9 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 .rules-details > summary::before { content: "📘 "; }
 
 /* ---------- 히어로 당일 꼭 확인 안내 ---------- */
-.day-notice { list-style: none; margin: .6rem 0 0; padding: .7rem .85rem; display: grid; gap: .45rem; background: var(--amber-soft-bg); border: 1px solid var(--amber-soft-line); border-radius: var(--radius); color: var(--amber-soft-fg); font-size: .8rem; line-height: 1.55; }
+.day-notice { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; background: none; border: 0; border-radius: 0; color: var(--amber-soft-fg); font-size: .8rem; line-height: 1.55; }
 .day-notice li { display: flex; gap: .5rem; align-items: flex-start; }
 .day-notice li:first-child { font-weight: 800; font-size: .86rem; }
+
+.day-notice-box { background: var(--amber-soft-bg); border: 2px solid #f59e0b; border-radius: var(--radius-lg); padding: .8rem .95rem; color: var(--amber-soft-fg); box-shadow: var(--shadow-sm); }
+.day-notice__title { font-size: .95rem; font-weight: 900; margin-bottom: .5rem; color: #92400e; }
