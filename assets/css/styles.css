@@ -578,3 +578,6 @@ mark { background: var(--sand); color: inherit; padding: 0 .1em; border-radius: 
 
 .day-notice-box { background: var(--amber-soft-bg); border: 2px solid #f59e0b; border-radius: var(--radius-lg); padding: .8rem .95rem; color: var(--amber-soft-fg); box-shadow: var(--shadow-sm); }
 .day-notice__title { font-size: .95rem; font-weight: 900; margin-bottom: .5rem; color: #92400e; }
+
+.countdown--message { display: block; line-height: 1.6; }
+.countdown--message .countdown__done a { color: var(--forest-700); text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }

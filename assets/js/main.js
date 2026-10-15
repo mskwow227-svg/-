@@ -234,13 +234,17 @@
   }
 
 
-  /* ---------- 1. 카운트다운 ---------- */
+  /* ---------- 1. 카운트다운 (행사 당일에는 단계별 안내로 전환) ---------- */
   function initCountdown() {
     var root = document.getElementById("countdown");
+    var flag = document.getElementById("countdown-flag");
     if (!root || !OL.event) return;
 
-    var target = new Date(OL.event.dateISO).getTime();
-    if (isNaN(target)) return;
+    var start = new Date(OL.event.dateISO).getTime();
+    if (isNaN(start)) return;
+    var close = new Date(OL.event.checkinCloseISO).getTime();
+    var end = new Date(OL.event.endISO).getTime();
+    var liveFrom = OL.results ? Date.parse(OL.results.liveFromISO) : NaN;
 
     var slots = {
       days: document.getElementById("cd-days"),
@@ -249,14 +253,43 @@
       seconds: document.getElementById("cd-seconds"),
     };
     var pad = function (n) { return n < 10 ? "0" + n : String(n); };
+    var phase = "before";
+
+    function resultsLink(label) {
+      return OL.results && OL.results.url
+        ? ' <a href="' + OL.results.url + '" target="_blank" rel="noopener noreferrer"><strong>' + label + " →</strong></a>"
+        : "";
+    }
+    var lastHtml = "";
+    function show(next, html, flagText) {
+      phase = next;
+      if (html === lastHtml) return;
+      lastHtml = html;
+      root.classList.add("countdown--message");
+      root.innerHTML = '<p class="countdown__done">' + html + "</p>";
+      if (flag && flagText) flag.textContent = flagText;
+    }
 
     function tick() {
-      var diff = target - Date.now();
-      if (diff <= 0) {
-        root.innerHTML = '<p class="countdown__done">축제가 시작되었습니다!</p>';
+      var now = Date.now();
+
+      if (!isNaN(end) && now >= end) {
+        show("ended", "축제가 종료되었습니다.<br>참여해 주셔서 감사합니다." + resultsLink("최종 결과 보기"), "축제 종료");
         clearInterval(timer);
         return;
       }
+      if (!isNaN(close) && now >= close) {
+        var label = !isNaN(liveFrom) && now >= liveFrom ? "실시간 순위 보기" : "순위 페이지";
+        show("running", "🎉 축제 진행 중입니다!" + resultsLink(label), "진행 중");
+        return;
+      }
+      if (now >= start) {
+        var left = Math.max(0, Math.ceil((close - now) / 60000));
+        show("checkin", "<strong>경기 접수 중</strong><br>마감 10:50까지 약 " + left + "분 남았어요.", "경기 접수 중");
+        return;
+      }
+
+      var diff = start - now;
       var d = Math.floor(diff / 86400000);
       var h = Math.floor((diff % 86400000) / 3600000);
       var m = Math.floor((diff % 3600000) / 60000);
